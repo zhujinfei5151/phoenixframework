@@ -3,7 +3,6 @@ package org.phoenix.model;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -50,7 +49,7 @@ public class ScenarioBean {
 	public void setId(int id) {
 		this.id = id;
 	}
-	@OneToMany(mappedBy="scenarioBean",cascade={CascadeType.ALL},fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="scenarioBean",fetch=FetchType.EAGER)
     @LazyCollection(LazyCollectionOption.FALSE)
     @Fetch(FetchMode.SUBSELECT)
 	public Set<CaseBean> getCaseBeans() {

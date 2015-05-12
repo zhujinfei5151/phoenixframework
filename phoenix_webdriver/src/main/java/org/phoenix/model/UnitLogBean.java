@@ -1,6 +1,5 @@
 package org.phoenix.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,21 +17,26 @@ public class UnitLogBean {
 	
 	private int id;
 	private String content;
+	private String stepName;
 	private String remark;
+	private String status;
 	private String screenShot;
 	private CaseLogBean caseLogBean;
 	
 	public UnitLogBean() {
 	}
-	public UnitLogBean(String content, String remark, String screenShot,
-			CaseLogBean caseLogBean) {
+	
+	public UnitLogBean(String content, String stepName, String remark,
+			String status, String screenShot, CaseLogBean caseLogBean) {
 		super();
 		this.content = content;
+		this.stepName = stepName;
 		this.remark = remark;
+		this.status = status;
 		this.screenShot = screenShot;
 		this.caseLogBean = caseLogBean;
 	}
-	
+
 	@Id
 	@GeneratedValue
 	public int getId() {
@@ -59,7 +63,7 @@ public class UnitLogBean {
 	public void setScreenShot(String screenShot) {
 		this.screenShot = screenShot;
 	}
-	@ManyToOne(cascade={CascadeType.REMOVE},fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="caseLogId")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	public CaseLogBean getCaseLogBean() {
@@ -67,5 +71,17 @@ public class UnitLogBean {
 	}
 	public void setCaseLogBean(CaseLogBean caseLogBean) {
 		this.caseLogBean = caseLogBean;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getStepName() {
+		return stepName;
+	}
+	public void setStepName(String stepName) {
+		this.stepName = stepName;
 	}
 }

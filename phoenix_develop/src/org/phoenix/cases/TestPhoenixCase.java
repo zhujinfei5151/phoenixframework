@@ -1,11 +1,12 @@
 package org.phoenix.cases;
 
-import java.io.Serializable;
+import java.util.LinkedList;
 
 import org.phoenix.action.WebElementAction;
+import org.phoenix.model.CaseLogBean;
+import org.phoenix.model.UnitLogBean;
 
-public class TestPhoenixCase extends WebElementAction implements Serializable{
-	private static final long serialVersionUID = 1L;
+public class TestPhoenixCase extends WebElementAction{
 	private static int caseName = 1;
 	
 	public TestPhoenixCase() {
@@ -13,8 +14,8 @@ public class TestPhoenixCase extends WebElementAction implements Serializable{
 	}
 
 	@Override
-	public void run() {
-		init(caseName);
+	public LinkedList<UnitLogBean> run(CaseLogBean caseLogBean) {
+		init(caseName,caseLogBean);
 		openNewWindowByIE("http://www.baidu.com");
 		WebElement("set").setText("1");
 		String s = WebElement("click").getAttrValue("value");
@@ -22,5 +23,7 @@ public class TestPhoenixCase extends WebElementAction implements Serializable{
 		WebElement("click").click();
 		sleep(1000);
 		closeWindow();	
+		
+		return getUnitLog();
 	}
 }

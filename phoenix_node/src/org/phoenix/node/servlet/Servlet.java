@@ -3,7 +3,6 @@ package org.phoenix.node.servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +16,6 @@ import org.phoenix.node.util.WriteResponse;
 
 import com.alibaba.fastjson.JSON;
 
-@WebServlet("/Servlet")
 public class Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     public Servlet() {
@@ -41,6 +39,7 @@ public class Servlet extends HttpServlet {
 		TaskType taskType = Enum.valueOf(TaskType.class, request.getParameter("taskType"));
 		taskDataDTO.setTaskId(Integer.parseInt(request.getParameter("taskId")));
 		taskDataDTO.setTaskType(taskType);
+
 		RunAction runAction = actionFactory.getRunAction(taskType);
 		runAction.action(taskDataDTO);	
 	}

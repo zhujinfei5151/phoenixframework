@@ -8,7 +8,9 @@ import javax.validation.Valid;
 
 import org.phoenix.web.auth.AuthClass;
 import org.phoenix.web.auth.AuthMethod;
+import org.phoenix.web.dto.UserDTO;
 import org.phoenix.web.model.User;
+import org.phoenix.web.service.IScenarioService;
 import org.phoenix.web.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @AuthClass("login") 
 public class UserController {
 	private IUserService userService;
+	private IScenarioService scenarioService;
 
 	public IUserService getUserService() {
 		return userService;
@@ -36,6 +39,14 @@ public class UserController {
 	@Resource
 	public void setUserService(IUserService userService) {
 		this.userService = userService;
+	}
+
+	public IScenarioService getScenarioService() {
+		return scenarioService;
+	}
+    @Resource
+	public void setScenarioService(IScenarioService scenarioService) {
+		this.scenarioService = scenarioService;
 	}
 
 	@RequestMapping("/list") 
@@ -64,73 +75,64 @@ public class UserController {
 	@RequestMapping(value="/update/{id}",method=RequestMethod.GET)
 	public String update(@PathVariable Integer id,Model model){
 		model.addAttribute(userService.load(id));
-		model.addAttribute("userDTO", new User());
+		model.addAttribute("userDTO", new UserDTO());
 		return "user/edit";
 	}
 	
 	@RequestMapping(value="/update/{id}",method=RequestMethod.POST)
-	public String update(@PathVariable int id,@Valid User user,BindingResult br,Model model) {
+	public String update(@PathVariable Integer id,@Valid UserDTO userDTO,BindingResult br,Model model) {
 		if(br.hasErrors()) {
 			return "user/edit";
 		}
-		User ou = userService.load(id);
-		ou.setNickname(user.getNickname());
-		ou.setEmail(user.getEmail());
-		ou.setPassword(user.getPassword());
-		ou.setUsername(user.getUsername());
-		ou.setRoleName(user.getRole()==0?"管理员":"普通用户");
-		ou.setRole(user.getRole());
-		userService.update(ou);
+		User u = userService.load(id);
+		u.setNickname(userDTO.getNickname());
+		u.setEmail(userDTO.getEmail());
+		u.setPassword(userDTO.getPassword());
+		u.setUsername(userDTO.getUsername());
+		u.setRoleName(userDTO.getRole()==0?"管理员":"普通用户");
+		u.setRole(userDTO.getRole());
+		userService.update(u);
 		return "redirect:/user/list";
 	}
 	
 	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
 	public String delete(@PathVariable int id) {
+		scenarioService.deleteByUser(id);
 		userService.delete(id);
 		return "redirect:/user/list";
 	}
 	
-	@RequestMapping(value="/{id}",method=RequestMethod.GET)
-	public String show(@PathVariable int id,Model model) {
-		model.addAttribute(userService.load(id));
-		return "user/show";
-	}
-	
-	@RequestMapping("/showSelf")
+	@RequestMapping(value="/self",method=RequestMethod.GET)
 	@AuthMethod
-	public String showSelf(Model model,HttpSession session) {
+	public String self(Model model,HttpSession session) {
 		User user = (User)session.getAttribute("loginUser");
 		model.addAttribute(user);
-		return "user/show";
+		return "user/self";
+	}
+	@RequestMapping(value="/selfedit",method=RequestMethod.GET)
+	@AuthMethod
+	public String selfEdit(Model model,HttpSession session) {
+		User user = (User)session.getAttribute("loginUser");
+		model.addAttribute(user);
+		model.addAttribute(new UserDTO());
+		return "user/selfedit";
 	}
 	
-	@RequestMapping(value="/updatePwd",method=RequestMethod.GET)
+	@RequestMapping(value="/{id}",method=RequestMethod.POST)
 	@AuthMethod
-	public String updatePwd(Model model,HttpSession session) {
-		User u = (User)session.getAttribute("loginUser");
-		model.addAttribute(u);
-		return "user/updatePwd";
-	}
-	
-	@RequestMapping(value="/update/self",method=RequestMethod.GET)
-	@AuthMethod
-	public String updateSelf(Model model,HttpSession session) {
-		User u = (User)session.getAttribute("loginUser");
-		model.addAttribute(u);
-		return "user/updateSelf";
-	}
-	
-	@RequestMapping(value="/update/self",method=RequestMethod.POST)
-	@AuthMethod
-	public String updateSelf(@Valid User user,BindingResult br,Model model,HttpSession session) {
-		if(br.hasErrors()) {
-			return "user/updateSelf";
+	public String self(@PathVariable Integer id,@Valid UserDTO userDTO,BindingResult br,HttpSession session){
+		
+		if(br.hasErrors()){
+			return "user/selfedit";
 		}
-		User ou = userService.load(user.getId());
-		ou.setNickname(user.getNickname());
-		ou.setEmail(user.getEmail());
-		userService.update(ou);
-		session.setAttribute("loginUser", ou);
-		return "redirect:/admin/user/showSelf";
+		User u = userService.load(id);
+		u.setNickname(userDTO.getNickname());
+		u.setEmail(userDTO.getEmail());
+		u.setPassword(userDTO.getPassword());
+		u.setUsername(userDTO.getUsername());
+		userService.update(u);
+		session.setAttribute("loginUser", u);
+		return "redirect:/user/self";
 	}
+
 }

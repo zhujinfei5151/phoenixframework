@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -58,7 +59,7 @@
             <td>${us.roleName }</td>
             <td>${us.nickname }</td>
             <td>${us.email }</td>
-            <td>${us.createDate }</td>
+            <td><fmt:formatDate value="${us.createDate }" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate></td>
             <td>
                   <a href="<%=request.getContextPath()%>/user/update/${us.id}">编辑</a>&nbsp;&nbsp;
                   <a href="<%=request.getContextPath()%>/user/delete/${us.id}">删除</a>&nbsp;&nbsp;

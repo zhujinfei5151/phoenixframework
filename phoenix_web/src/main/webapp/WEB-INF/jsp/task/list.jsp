@@ -83,7 +83,7 @@
         <th>任务名称</th>
         <th>任务类型</th>
         <th>SlaveIP</th>
-        <th>任务数据</th>
+        <th>任务数据Id</th>
         <th>任务状态</th>
         <th>执行参数</th>
         <th>开始时间</th>
@@ -97,7 +97,7 @@
             <td>${ts.id }</td>
             <td>${ts.taskName }
             <td>${ts.taskType }</td>
-			<td>${ts.slaveIP }</td>
+			<td>${ts.slaveModel.slaveIP }</td>
 			<td>${ts.taskData }</td>
 			<td>${ts.taskStatusType }</td>
 			<td>${ts.taskParameter }</td>

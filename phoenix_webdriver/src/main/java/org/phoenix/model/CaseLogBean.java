@@ -1,16 +1,18 @@
 package org.phoenix.model;
 
-import javax.persistence.CascadeType;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name="l_web_case")
@@ -24,15 +26,16 @@ public class CaseLogBean {
 	private String EndTime;
 	private String duration;
 	private String status;
-	private CaseBean caseBean;
+	private int scenarioLogBeanId;
 	private BatchLogBean batchLogBean;
+	private Set<UnitLogBean> unitLogBeans;
 	
 	public CaseLogBean() {
 	}
 	
 	public CaseLogBean(String actor, String clientIP, String engineType,
 			String startTime, String endTime, String duration, String status,
-			CaseBean caseBean, BatchLogBean batchLogBean) {
+			int scenarioLogBeanId) {
 		super();
 		this.actor = actor;
 		this.clientIP = clientIP;
@@ -41,9 +44,9 @@ public class CaseLogBean {
 		EndTime = endTime;
 		this.duration = duration;
 		this.status = status;
-		this.caseBean = caseBean;
-		this.batchLogBean = batchLogBean;
+		this.scenarioLogBeanId = scenarioLogBeanId;
 	}
+
 	@Id
 	@GeneratedValue
 	public int getId() {
@@ -94,23 +97,31 @@ public class CaseLogBean {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	@ManyToOne(cascade={CascadeType.REMOVE},fetch=FetchType.EAGER)
-	@JoinColumn(name="caseId")
-	@LazyCollection(LazyCollectionOption.FALSE)
-	public CaseBean getCaseBean() {
-		return caseBean;
+
+    public int getScenarioLogBeanId() {
+		return scenarioLogBeanId;
 	}
-	public void setCaseBean(CaseBean caseBean) {
-		this.caseBean = caseBean;
+
+	public void setScenarioLogBeanId(int scenarioLogBeanId) {
+		this.scenarioLogBeanId = scenarioLogBeanId;
 	}
-    @ManyToOne(cascade={CascadeType.REMOVE})
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="batchLogId")
-    @LazyCollection(LazyCollectionOption.FALSE)
 	public BatchLogBean getBatchLogBean() {
 		return batchLogBean;
 	}
 
 	public void setBatchLogBean(BatchLogBean batchLogBean) {
 		this.batchLogBean = batchLogBean;
+	}
+
+	@OneToMany(mappedBy="caseLogBean",targetEntity=UnitLogBean.class)
+    @Fetch(FetchMode.SUBSELECT)
+	public Set<UnitLogBean> getUnitLogBeans() {
+		return unitLogBeans;
+	}
+
+	public void setUnitLogBeans(Set<UnitLogBean> unitLogBeans) {
+		this.unitLogBeans = unitLogBeans;
 	}
 }

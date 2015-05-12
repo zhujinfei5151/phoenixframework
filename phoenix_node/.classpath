@@ -13,5 +13,49 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/c3p0-0.9.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/cglib-nodep-2.2.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-codec-1.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-dbcp-1.2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-exec-1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-logging-1.1.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-pool-1.6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ehcache-core-2.4.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/fastjson-1.2.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/guava-18.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hibernate-c3p0-4.1.7.Final.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hibernate-commons-annotations-4.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hibernate-core-4.1.7.Final.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hibernate-ehcache-4.1.7.Final.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpclient-4.3.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpcore-4.3.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javassist-3.15.0-GA.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jboss-logging-3.1.0.GA.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jboss-transaction-api_1.1_spec-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jna-3.4.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.17-bin.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/phoenix_db-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/phoenix_webdriver-0.0.1-SNAPSHOT-sources.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/phoenix_webdriver-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/platform-3.4.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/quartz.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/selenide-2.15-sources.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/selenide-2.15.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/selenium-api-2.44.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/selenium-chrome-driver-2.44.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/selenium-firefox-driver-2.44.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/selenium-ie-driver-2.44.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/selenium-java-2.44.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/selenium-remote-driver-2.44.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/selenium-support-2.44.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/testng-6.8.13.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

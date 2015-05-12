@@ -12,6 +12,7 @@ import org.phoenix.web.auth.AuthClass;
 import org.phoenix.web.dto.CaseDTO;
 import org.phoenix.web.model.User;
 import org.phoenix.web.service.ICaseService;
+import org.phoenix.web.service.IScenarioService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,6 +27,7 @@ public class CaseController {
 	
 	private ICaseService caseService;
     private CaseDTO caseDTO;
+    private IScenarioService scenarioService;
 
 	public CaseDTO getCaseDTO() {
 		return caseDTO;
@@ -44,6 +46,14 @@ public class CaseController {
 		this.caseService = caseService;
 	}
 	
+	public IScenarioService getScenarioService() {
+		return scenarioService;
+	}
+    @Resource
+	public void setScenarioService(IScenarioService scenarioService) {
+		this.scenarioService = scenarioService;
+	}
+
 	public CaseController() {
 		
 	}
@@ -75,8 +85,11 @@ public class CaseController {
 		model.addAttribute("caseDTO", new CaseDTO());
 		return "case/add";
 	}
+	
 	@RequestMapping(value="/add",method=RequestMethod.GET)
-	public String add(Integer scenId,Model model){
+	public String add(Integer scenId,Model model,HttpSession session){
+		User u = (User) session.getAttribute("loginUser");
+		model.addAttribute("sceanList", scenarioService.getScenarioBeanList(u.getId()));
 		model.addAttribute("caseDTO", new CaseDTO());
 		return "case/add";
 	}
@@ -102,8 +115,10 @@ public class CaseController {
 	}
 	
 	@RequestMapping(value="/update/{id}",method=RequestMethod.GET)
-	public String update(@PathVariable Integer id,Model model){
+	public String update(@PathVariable Integer id,Model model,HttpSession session){
+		User u = (User) session.getAttribute("loginUser");
 		model.addAttribute(caseService.getCaseBean(id));
+		model.addAttribute("scenList", scenarioService.getScenarioBeanList(u.getId()));
 		model.addAttribute(new CaseDTO());
 		return "case/edit";
 	}

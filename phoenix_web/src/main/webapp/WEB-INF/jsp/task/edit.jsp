@@ -35,7 +35,7 @@
         }
     </style>
 </head>
-<sf:form method="post" action="${taskModel.id }" modelAttribute="taskModel">
+<sf:form method="post" action="${taskModel.id }" modelAttribute="taskModelDTO">
 <table class="table table-bordered table-hover definewidth m10">
     <tr>
         <td width="10%" class="tableleft">任务名称</td>
@@ -45,29 +45,45 @@
         <td width="10%" class="tableleft">任务类型</td>
         <td>
            <sf:select path="taskType">
-              <sf:options items="${types }"/>
+              <c:forEach items="${types }" var="ts">
+                <c:choose>
+                  <c:when test="${ts.key eq taskModel.taskType }">
+                    <sf:option value="${ts.value }" selected="selected"/>
+                  </c:when>
+                  <c:otherwise>
+                   <sf:option value="${ts.value }"/>
+                  </c:otherwise>
+                </c:choose>
+              </c:forEach>
 			</sf:select>
         </td>
     </tr>
     <tr>
-        <td class="tableleft">任务数据</td>  
+        <td class="tableleft">任务数据Id</td>  
         <td><sf:input path="taskData" value="${taskModel.taskData }"/><sf:errors path="taskData"/></td>
     </tr> 
     <tr>
         <td class="tableleft">选择执行机</td>   
         <td>
-           <select name="slaveIP">
-              <option value="localhost:8080">localhost:8080</option>
-              <option value="127.0.0.1:8080">127.0.0.1:8080</option>
-              <option value="192.168.1.11:8080">192.168.1.11:8080</option>
-           </select>
+          <sf:select path="slaveId">
+            <c:forEach items="${slaves }" var="sl">
+               <c:choose>
+                 <c:when test="${taskModel.slaveModel.id eq sl.id }">
+                    <sf:option selected="selected" value="${sl.id }">${sl.slaveIP } -- ${sl.remark }</sf:option>
+                 </c:when>
+                 <c:otherwise>
+                    <sf:option value="${sl.id }">${sl.slaveIP } -- ${sl.remark }</sf:option>
+                 </c:otherwise>
+               </c:choose>
+            </c:forEach>
+          </sf:select>
               &nbsp;&nbsp;列表为空，代表暂无可用执行机
         </td>
     </tr>  
     <tr>
             <td class="tableleft">执行参数</td>   
         <td>
-            <sf:input path="taskParameter"/>
+            <sf:input path="taskParameter" value="${taskModel.taskParameter}"/>
               &nbsp;&nbsp;若为空，则代表仅执行一次
         </td>
     </tr> 

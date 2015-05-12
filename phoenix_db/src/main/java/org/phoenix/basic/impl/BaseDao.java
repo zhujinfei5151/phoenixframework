@@ -412,4 +412,11 @@ public class BaseDao<T> implements IBaseDao<T> {
 		return null;
 	}
 
+	@Override
+	public void addBatchData(List<T> t) {
+		for(T it: t){
+			getSession().save(it);
+		}
+	}
+
 }

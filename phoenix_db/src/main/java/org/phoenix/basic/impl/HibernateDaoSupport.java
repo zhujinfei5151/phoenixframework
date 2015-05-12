@@ -86,5 +86,15 @@ public class HibernateDaoSupport<T> implements IBaseDao<T>{
 		//entityManager.close();
 		return t;
 	}
+	@Override
+	public void addBatchData(List<T> t) {
+		EntityManager entityManager = EntityManagerUtil.getEntityManagerInstance();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		for(T it : t){
+			entityManager.persist(it);
+		}
+		entityTransaction.commit();		
+	}
 
 }

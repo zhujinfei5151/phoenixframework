@@ -1,6 +1,7 @@
 package org.phoenix.node.dto;
 
 public enum TaskStatusType {
+	 NOT_RUNNING("NOT_RUNNING"),
      RUNNING("RUNNING"),
      SUCCESS("SUCCESS"),
      FAIL("FAIL"),

@@ -5,23 +5,27 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.phoenix.node.dto.TaskStatusType;
+import org.phoenix.node.dto.TaskType;
 
 @Entity
 @Table(name="t_task")
 public class TaskModel {
 	
 	private int id;
-	private String taskType;
+	private TaskType taskType;
 	private String taskName;
 	private String taskData;
-	private String slaveIP;
+	private SlaveModel slaveModel;
 	private String taskParameter;
 	private String message;
 	private TaskStatusType taskStatusType;
@@ -31,14 +35,14 @@ public class TaskModel {
 	public TaskModel() {
 	}
 	
-	public TaskModel(String taskType, String taskName, String taskData,
-			String slaveIP, String taskParameter,
+	public TaskModel(TaskType taskType, String taskName, String taskData,
+			SlaveModel slaveModel, String taskParameter,
 			TaskStatusType taskStatusType, int userId) {
 		super();
 		this.taskType = taskType;
 		this.taskName = taskName;
 		this.taskData = taskData;
-		this.slaveIP = slaveIP;
+		this.slaveModel = slaveModel;
 		this.taskParameter = taskParameter;
 		this.taskStatusType = taskStatusType;
 		this.userId = userId;
@@ -52,10 +56,11 @@ public class TaskModel {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getTaskType() {
+	@Enumerated(EnumType.STRING)
+	public TaskType getTaskType() {
 		return taskType;
 	}
-	public void setTaskType(String taskType) {
+	public void setTaskType(TaskType taskType) {
 		this.taskType = taskType;
 	}
 	public String getTaskName() {
@@ -67,21 +72,26 @@ public class TaskModel {
 	public String getTaskData() {
 		return taskData;
 	}
-	public void setTaskData(String taskData) {
-		this.taskData = taskData;
-	}
-	public String getSlaveIP() {
-		return slaveIP;
-	}
-	public void setSlaveIP(String slaveIP) {
-		this.slaveIP = slaveIP;
-	}
+	
 	public String getMessage() {
 		return message;
 	}
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public void setTaskData(String taskData) {
+		this.taskData = taskData;
+	}
+	@ManyToOne(fetch=FetchType.EAGER,targetEntity=SlaveModel.class)
+	@JoinColumn(name="slaveId")
+	public SlaveModel getSlaveModel() {
+		return slaveModel;
+	}
+
+	public void setSlaveModel(SlaveModel slaveModel) {
+		this.slaveModel = slaveModel;
 	}
 
 	public String getTaskParameter() {

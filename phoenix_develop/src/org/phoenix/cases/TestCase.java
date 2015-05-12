@@ -56,9 +56,11 @@ public class TestCase {
 			scenarioBean.setId(6);
 			//session.save(new CaseBean("测试用例1","testCode","首页用例",scenarioBean));
 			//session.save(new CaseBean("测试用例2","testCode","首页用例",scenarioBean));
-			CaseBean caseBean = new CaseBean("测试用例3",Obj2Stream.Obj2String(new TestPhoenixCase()),"首页用例3",1,new Date(),scenarioBean,1);
-			caseBean.setId(20);
-			session.update(caseBean);
+			
+			//CaseBean caseBean = new CaseBean("测试用例3",Obj2Stream.Obj2String(new TestPhoenixCase()),"首页用例3",1,new Date(),scenarioBean,1);
+			//caseBean.setId(20);
+			//session.update(caseBean);
+			
 			//session.save(new CaseBean("测试用例4","testCode","首页用例",1,new Date(),scenarioBean,1));
 			//session.save(caseBean);
 			session.getTransaction().commit();		
@@ -122,7 +124,7 @@ public class TestCase {
 			//System.out.println(obj);
 			TestPhoenixCase u = (TestPhoenixCase) Obj2Stream.String2Obj(obj);
 			//System.out.println(u.getUsername());
-			u.run();
+			//u.run();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -195,7 +197,7 @@ public class TestCase {
 								"System.out.println(\"1111111\");"+
 							"}"+
 						"}";
-		System.out.println(Obj2Stream.Obj2String(new TestPhoenixCase()));
+		//System.out.println(Obj2Stream.Obj2String(new TestPhoenixCase()));
 		//TestPhoenixCase tc = (TestPhoenixCase) Obj2Stream.String2Obj("%C2%AC%C3%AD%00%05sr%00%21org.phoenix.cases.TestPhoenixCase%00%00%00%00%00%00%00%01%02%00%00xp");
 		//tc.run();
 	}
@@ -211,7 +213,7 @@ public class TestCase {
 			//System.out.println(obj);
 			TestPhoenixCase u = (TestPhoenixCase) Obj2Stream.String2Obj(obj);
 			//System.out.println(u.getUsername());
-			u.run();
+			//u.run();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

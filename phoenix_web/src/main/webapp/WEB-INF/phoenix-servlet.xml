@@ -19,7 +19,6 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/case/**"/>
-			<mvc:mapping path="/index/**"/>
 			<mvc:mapping path="/user/**"/>
 			<mvc:mapping path="/locator/**"/>
 			<mvc:mapping path="/task/**"/>

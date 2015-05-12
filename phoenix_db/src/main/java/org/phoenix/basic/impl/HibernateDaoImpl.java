@@ -95,5 +95,15 @@ public class HibernateDaoImpl<T> implements IBaseDao<T>{
 		session.close();
 		return t;
 	}
+	@Override
+	public void addBatchData(List<T> t) {
+		Session session = HibernateUtil.openSession();
+		session.beginTransaction();
+		for(T it : t){
+			session.save(it);
+		}
+		session.getTransaction().commit();	
+		session.close();
+	}
 
 }

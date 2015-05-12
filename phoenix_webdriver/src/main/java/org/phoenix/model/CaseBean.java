@@ -3,7 +3,6 @@ package org.phoenix.model;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -88,7 +87,7 @@ public class CaseBean {
 	public void setScenarioBean(ScenarioBean scenarioBean) {
 		this.scenarioBean = scenarioBean;
 	}
-	@OneToMany(mappedBy="caseBean",targetEntity=LocatorBean.class,cascade={CascadeType.ALL})
+	@OneToMany(mappedBy="caseBean",targetEntity=LocatorBean.class)
     @LazyCollection(LazyCollectionOption.FALSE)
     @Fetch(FetchMode.SUBSELECT)
 	public Set<LocatorBean> getLocatorBeans() {

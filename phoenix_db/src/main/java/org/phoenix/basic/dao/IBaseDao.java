@@ -47,5 +47,11 @@ public interface IBaseDao<T> {
 	
 	public List<T> loadAll(String hql);
 	
+	/**
+	 * 批量插入数据
+	 * @param t
+	 */
+	public void addBatchData(List<T> t);
+	
 }
 

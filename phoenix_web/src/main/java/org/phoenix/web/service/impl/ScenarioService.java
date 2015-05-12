@@ -1,5 +1,7 @@
 package org.phoenix.web.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.phoenix.basic.paging.Pager;
@@ -44,6 +46,16 @@ public class ScenarioService implements IScenarioService{
 	@Override
 	public Pager<ScenarioBean> getScenarioBeanPager(int uid) {
 		return scenarioDao.getScenarioBeanPager(uid);
+	}
+
+	@Override
+	public List<ScenarioBean> getScenarioBeanList(int uid) {
+		return scenarioDao.getScenarioBeanList(uid);
+	}
+
+	@Override
+	public void deleteByUser(int uid) {
+		scenarioDao.deleteByUser(uid);
 	}
 
 }

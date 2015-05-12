@@ -14,6 +14,8 @@ public class WebElementLocator extends LocatorDao{
 			case CSS:  return $(locator);
 			case NAME: return $(By.name(locator));
 			case XPATH: return $(By.xpath(locator));
+			case LINKTEXT:return $(By.linkText(locator));
+			case TAGNAME:return $(By.tagName(locator));
 		default:;
 	    }
 		return null;

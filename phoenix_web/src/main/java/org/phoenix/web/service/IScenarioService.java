@@ -1,5 +1,7 @@
 package org.phoenix.web.service;
 
+import java.util.List;
+
 import org.phoenix.basic.paging.Pager;
 import org.phoenix.model.ScenarioBean;
 
@@ -21,6 +23,11 @@ public interface IScenarioService {
     */
    void delete(int id);
    /**
+    * 删除指定用户下的所有场景数据
+    * @param uid
+    */
+   void deleteByUser(int uid);
+   /**
     * 更新数据
     * @param scenarioBean
     */
@@ -39,4 +46,10 @@ public interface IScenarioService {
     * @return
     */
    Pager<ScenarioBean> getScenarioBeanPager(int uid);
+   /**
+    * 获取当前用户下的场景列表
+    * @param uid
+    * @return
+    */
+   List<ScenarioBean> getScenarioBeanList(int uid);
 }

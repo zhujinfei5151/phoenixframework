@@ -7,10 +7,14 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.phoenix.web.dto.AjaxObj;
+import org.phoenix.web.dto.TaskModelDTO;
+import org.phoenix.web.dto.TaskStatusType;
 import org.phoenix.web.dto.TaskType;
 import org.phoenix.web.filter.InitServlet;
+import org.phoenix.web.model.SlaveModel;
 import org.phoenix.web.model.TaskModel;
 import org.phoenix.web.model.User;
+import org.phoenix.web.service.ISlaveService;
 import org.phoenix.web.service.ITaskService;
 import org.phoenix.web.util.EnumUtils;
 import org.phoenix.web.util.HttpRequestSender;
@@ -26,6 +30,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/task")
 public class TaskController {
 	private ITaskService taskService;
+	private ISlaveService slaveService;
 	
 	public ITaskService getTaskService() {
 		return taskService;
@@ -35,8 +40,16 @@ public class TaskController {
 		this.taskService = taskService;
 	}
 
+	public ISlaveService getSlaveService() {
+		return slaveService;
+	}
+	@Resource
+	public void setSlaveService(ISlaveService slaveService) {
+		this.slaveService = slaveService;
+	}
 	public TaskController() {
 	}
+	
 	
 	@RequestMapping("/list")
 	public String list(Model model,HttpSession httpSession){
@@ -48,16 +61,26 @@ public class TaskController {
 	@RequestMapping(value="/add",method=RequestMethod.GET)
 	public String add(Model model){
 		model.addAttribute("types", EnumUtils.enumProp2NameMap(TaskType.class, "name"));
-		model.addAttribute(new TaskModel());
+		model.addAttribute("slaves", slaveService.getSlaveModelList());
+		model.addAttribute(new TaskModelDTO());
 		return "task/add";
 	}
 	@RequestMapping(value="/add",method=RequestMethod.POST)
-	public String add(@Valid TaskModel taskModel,BindingResult br,HttpSession httpSession){
+	public String add(@Valid TaskModelDTO taskModelDTO,BindingResult br,HttpSession httpSession){
 		if(br.hasErrors()){
 			return "task/add";
 		}
+		SlaveModel slaveModel = new SlaveModel();
+		slaveModel.setId(taskModelDTO.getSlaveId());
 		User user = (User)httpSession.getAttribute("loginUser");
+		TaskModel taskModel = new TaskModel();
 		taskModel.setUser(user);
+		taskModel.setSlaveModel(slaveModel);
+		taskModel.setTaskName(taskModelDTO.getTaskName());
+		taskModel.setTaskParameter(taskModelDTO.getTaskParameter());
+		taskModel.setTaskStatusType(TaskStatusType.NOT_RUNNING);
+		taskModel.setTaskType(taskModelDTO.getTaskType());
+		taskModel.setTaskData(taskModelDTO.getTaskData());
 		taskService.add(taskModel);
 		return "redirect:/task/list";
 	}
@@ -69,20 +92,26 @@ public class TaskController {
 	@RequestMapping(value="/update/{id}",method=RequestMethod.GET)
 	public String update(@PathVariable Integer id,Model model){
 		model.addAttribute("types", EnumUtils.enumProp2NameMap(TaskType.class, "name"));
-		model.addAttribute(taskService.getTaskModel(id));
+		model.addAttribute("slaves", slaveService.getSlaveModelList());
+		model.addAttribute("taskModel",taskService.getTaskModel(id));
+		model.addAttribute("taskModelDTO",new TaskModelDTO());
 		return "task/edit";
 	}
 	@RequestMapping(value="/update/{id}",method=RequestMethod.POST)
-	public String update(@PathVariable Integer id,@Valid TaskModel taskModel,BindingResult br,Model model){
+	public String update(@PathVariable Integer id,@Valid TaskModelDTO taskModelDTO,BindingResult br,Model model){
 		if(br.hasErrors()){
 			return "task/edit";
 		}
+		SlaveModel slaveModel = new SlaveModel();
+		slaveModel.setId(taskModelDTO.getSlaveId());
 		TaskModel taskModelSrc = taskService.getTaskModel(id);
-		taskModelSrc.setSlaveIP(taskModel.getSlaveIP());
-		taskModelSrc.setTaskName(taskModel.getTaskName());
-		taskModelSrc.setTaskParameter(taskModel.getTaskParameter());
-		taskModelSrc.setTaskStatusType(taskModel.getTaskStatusType());
-		taskModelSrc.setTaskType(taskModel.getTaskType());
+		taskModelSrc.setSlaveModel(slaveModel);
+		taskModelSrc.setTaskName(taskModelDTO.getTaskName());
+		taskModelSrc.setTaskParameter(taskModelDTO.getTaskParameter());
+		taskModelSrc.setTaskStatusType(taskModelDTO.getTaskStatusType());
+		taskModelSrc.setTaskType(taskModelDTO.getTaskType());
+		taskModelSrc.setTaskStatusType(TaskStatusType.NOT_RUNNING);
+		taskModelSrc.setTaskData(taskModelDTO.getTaskData());
 		taskService.update(taskModelSrc);
 		return "redirect:/task/list";
 	}
@@ -90,7 +119,7 @@ public class TaskController {
 	@RequestMapping(value="/start/{id}",method=RequestMethod.POST)
 	public @ResponseBody AjaxObj start(@PathVariable Integer id){
 		TaskModel taskModel = taskService.getTaskModel(id);
-		String hostIP = taskModel.getSlaveIP();
+		String hostIP = taskModel.getSlaveModel().getSlaveIP();
 		int taskId = taskModel.getId();
 		
 		final String  url = "http://"+hostIP+"/phoenix_node/action.do?taskId="+taskId+"&taskType="+taskModel.getTaskType();

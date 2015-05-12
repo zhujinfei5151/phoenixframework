@@ -26,7 +26,7 @@ public class TaskModel {
 	private TaskType taskType;
 	private String taskName;
 	private String taskData;
-	private String slaveIP;
+	private SlaveModel slaveModel;
 	private String taskParameter;
 	private String message;
 	private TaskStatusType taskStatusType;
@@ -37,13 +37,13 @@ public class TaskModel {
 	}
 	
 	public TaskModel(TaskType taskType, String taskName, String taskData,
-			String slaveIP, String taskParameter,
+			SlaveModel slaveModel, String taskParameter,
 			TaskStatusType taskStatusType, User user) {
 		super();
 		this.taskType = taskType;
 		this.taskName = taskName;
 		this.taskData = taskData;
-		this.slaveIP = slaveIP;
+		this.slaveModel = slaveModel;
 		this.taskParameter = taskParameter;
 		this.taskStatusType = taskStatusType;
 		this.user = user;
@@ -87,12 +87,16 @@ public class TaskModel {
 	public void setTaskData(String taskData) {
 		this.taskData = taskData;
 	}
-	public String getSlaveIP() {
-		return slaveIP;
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="slaveId")
+	public SlaveModel getSlaveModel() {
+		return slaveModel;
 	}
-	public void setSlaveIP(String slaveIP) {
-		this.slaveIP = slaveIP;
+
+	public void setSlaveModel(SlaveModel slaveModel) {
+		this.slaveModel = slaveModel;
 	}
+
 	public String getTaskParameter() {
 		return taskParameter;
 	}

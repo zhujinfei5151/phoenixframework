@@ -1,0 +1,43 @@
+package org.phoenix.web.service.impl;
+
+import javax.annotation.Resource;
+
+import org.phoenix.basic.paging.Pager;
+import org.phoenix.model.BatchLogBean;
+import org.phoenix.web.dao.IBatchLogDao;
+import org.phoenix.web.service.IBatchLogService;
+import org.springframework.stereotype.Service;
+
+/**
+ * 日志批次操作服务
+ * @author mengfeiyang
+ *
+ */
+@Service
+public class BatchLogService implements IBatchLogService{
+	private IBatchLogDao batchLogDao;
+	public IBatchLogDao getBatchLogDao() {
+		return batchLogDao;
+	}
+	@Resource
+	public void setBatchLogDao(IBatchLogDao batchLogDao) {
+		this.batchLogDao = batchLogDao;
+	}
+	/*
+	 * (non-Javadoc)
+	 * @see org.phoenix.web.service.IBatchLogService#deleteBatchLog(int)
+	 */
+	@Override
+	public void deleteBatchLog(int id) {
+		batchLogDao.deleteBatchLog(id);
+	}
+	/*
+	 * (non-Javadoc)
+	 * @see org.phoenix.web.service.IBatchLogService#getBatchLogPager(int)
+	 */
+	@Override
+	public Pager<BatchLogBean> getBatchLogPager(int uid) {
+		return batchLogDao.getBatchLogPager(uid);
+	}
+
+}

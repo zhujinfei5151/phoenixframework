@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
@@ -53,12 +54,12 @@
         <td>
            <c:choose>
              <c:when test="${user.role eq 0}">
-              <sf:radiobutton checked="checked" path="roleName" value="0"/>管理员
-              <sf:radiobutton path="roleName" value="1"/>普通账户
+              <sf:radiobutton checked="checked" path="role" value="0"/>管理员
+              <sf:radiobutton path="role" value="1"/>普通账户
               </c:when>
               <c:otherwise>
-              <sf:radiobutton path="roleName" value="0"/>管理员
-              <sf:radiobutton  checked="checked" path="roleName" value="1"/>普通账户
+              <sf:radiobutton path="role" value="0"/>管理员
+              <sf:radiobutton  checked="checked" path="role" value="1"/>普通账户
               </c:otherwise>
             </c:choose>
         </td>
@@ -66,7 +67,11 @@
     <tr>
         <td class="tableleft">Email</td>   
         <td><sf:input path="email" value="${user.email}"/><sf:errors path="email"/></td>
-    </tr>   
+    </tr>  
+    <tr>
+        <td class="tableleft">创建时间</td>
+        <td><fmt:formatDate value="${user.createDate }" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate></td>
+    </tr> 
     <tr>
         <td class="tableleft"></td>
         <td>

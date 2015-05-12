@@ -53,7 +53,7 @@ public class AjaxObj {
 		this.msg = msg;
 	}
 	public AjaxObj(int result) {
-		super();
+		super(); 
 		this.result = result;
 	}
 	

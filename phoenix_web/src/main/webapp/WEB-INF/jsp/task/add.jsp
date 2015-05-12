@@ -34,7 +34,7 @@
         }
     </style>
 </head>
-<sf:form method="post" action="add" modelAttribute="taskModel" id="addForm">
+<sf:form method="post" action="add" modelAttribute="taskModelDTO" id="addForm">
 <table class="table table-bordered table-hover definewidth m10">
     <tr>
         <td width="10%" class="tableleft">任务名称</td>
@@ -50,17 +50,17 @@
         </td>
     </tr>
     <tr>
-        <td class="tableleft">任务数据</td>  
+        <td class="tableleft">任务数据Id</td>  
         <td><sf:input path="taskData"/><sf:errors path="taskData"/></td>
     </tr>  
     <tr>
         <td class="tableleft">选择执行机</td>   
         <td>
-           <select name="slaveIP">
-              <option value="localhost:8080">localhost:8080</option>
-              <option value="127.0.0.1:8080">127.0.0.1:8080</option>
-              <option value="192.168.1.11:8080">192.168.1.11:8080</option>
-           </select>
+           <sf:select path="slaveId">
+             <c:forEach items="${slaves}" var="sl">
+              <option value="${sl.id }">${sl.slaveIP } -- ${sl.remark }</option>
+              </c:forEach>
+           </sf:select>
               &nbsp;&nbsp;列表为空，代表暂无可用执行机
         </td>
     </tr>  
