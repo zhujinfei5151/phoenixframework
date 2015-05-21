@@ -12,6 +12,7 @@ public class CaseDTO {
 	private Integer scenId;
 	private String caseName;
 	private String codeContent;
+	private String className;
 	private String remark;
 	private int status = 1;
 	private Date createDate;
@@ -48,6 +49,14 @@ public class CaseDTO {
 	public void setCodeContent(String codeContent) {
 		this.codeContent = codeContent;
 	}
+	public String getClassName() {
+		return className;
+	}
+
+	public void setClassName(String className) {
+		this.className = className;
+	}
+
 	@NotEmpty(message="请填写用例功能说明")
 	public String getRemark() {
 		return remark;

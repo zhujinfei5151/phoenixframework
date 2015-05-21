@@ -54,7 +54,7 @@
             <td>${bs.id }</td>
             <td>${bs.batchId }
             <td>${bs.taskType }</td>
-            <td><%-- <fmt:formatDate value="${bs.batchId }" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate> --%></td>
+            <td><fmt:formatDate value="${bs.createDate }" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate></td>
             <td>  
                   <a href="<%=request.getContextPath()%>/log/${bs.taskType}/${bs.id}">详细信息</a>&nbsp;&nbsp;
                   <a href="deletebatch/${bs.id}">删除批次</a>&nbsp;&nbsp;

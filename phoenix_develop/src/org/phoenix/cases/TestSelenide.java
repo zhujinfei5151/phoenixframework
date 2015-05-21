@@ -14,6 +14,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.phoenix.action.WebElementAction;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 public class TestSelenide {
@@ -28,9 +29,13 @@ public class TestSelenide {
 	@Test
 	public void test01(){
 		open("https://www.baidu.com");
-		$("#kw").setValue("123");
+		$("#kw").setValue("1");
 		$("#su").getAttribute("value");
 		$("#su").click();
+		
+		$("#su").val();
+		
+		
 		sleep(2000);
 		Iterator<SelenideElement> els = $(".s_tab").$$(By.tagName("a")).iterator();
 		while(els.hasNext()){

@@ -26,6 +26,7 @@ public class CaseLogBean {
 	private String EndTime;
 	private String duration;
 	private String status;
+	private String caseName;
 	private int scenarioLogBeanId;
 	private BatchLogBean batchLogBean;
 	private Set<UnitLogBean> unitLogBeans;
@@ -123,5 +124,13 @@ public class CaseLogBean {
 
 	public void setUnitLogBeans(Set<UnitLogBean> unitLogBeans) {
 		this.unitLogBeans = unitLogBeans;
+	}
+
+	public String getCaseName() {
+		return caseName;
+	}
+
+	public void setCaseName(String caseName) {
+		this.caseName = caseName;
 	}
 }

@@ -30,8 +30,8 @@
 	<classpathentry kind="lib" path="lib/phoenix_db-0.0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="lib/platform-3.4.0.jar"/>
 	<classpathentry kind="lib" path="lib/selenide-2.15-sources.jar"/>
-	<classpathentry kind="lib" path="lib/selenide-2.15.jar"/>
-	<classpathentry kind="lib" path="lib/selenium-api-2.44.0.jar"/>
+	<classpathentry kind="lib" path="lib/selenide-2.15.jar" sourcepath="D:/Program Files/Java/maven/com/codeborne/selenide/2.15/selenide-2.15-sources.jar"/>
+	<classpathentry kind="lib" path="lib/selenium-api-2.44.0.jar" sourcepath="D:/Program Files/Java/maven/org/seleniumhq/selenium/selenium-api/2.44.0/selenium-api-2.44.0-sources.jar"/>
 	<classpathentry kind="lib" path="lib/selenium-chrome-driver-2.44.0.jar"/>
 	<classpathentry kind="lib" path="lib/selenium-firefox-driver-2.44.0.jar"/>
 	<classpathentry kind="lib" path="lib/selenium-ie-driver-2.44.0.jar"/>

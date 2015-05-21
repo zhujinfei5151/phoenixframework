@@ -29,6 +29,7 @@ public class CaseBean {
 	private int id;
 	private String caseName;
 	private String codeContent;
+	private String className;
 	private String remark;
 	private int status = 1;
 	private Date createDate;
@@ -128,6 +129,14 @@ public class CaseBean {
 
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+	public String getClassName() {
+		return className;
+	}
+
+	public void setClassName(String className) {
+		this.className = className;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

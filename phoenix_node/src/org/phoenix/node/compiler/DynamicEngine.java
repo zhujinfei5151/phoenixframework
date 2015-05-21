@@ -76,6 +76,7 @@ public class DynamicEngine {
             for (Diagnostic diagnostic : diagnostics.getDiagnostics()) {
                 error = error + compilePrint(diagnostic);
             }
+            throw new Exception("代码编译失败，请检查代码语法是否有误");
         }
         long end = System.currentTimeMillis();
         PhoenixLogger.info("javaCodeToClass use:"+(end-start)+"ms");

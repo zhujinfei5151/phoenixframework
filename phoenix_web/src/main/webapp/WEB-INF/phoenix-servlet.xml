@@ -22,6 +22,7 @@
 			<mvc:mapping path="/user/**"/>
 			<mvc:mapping path="/locator/**"/>
 			<mvc:mapping path="/task/**"/>
+			<mvc:mapping path="/log/**"/>
 			<bean class="org.phoenix.web.filter.AuthInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>

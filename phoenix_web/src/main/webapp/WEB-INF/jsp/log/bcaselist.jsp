@@ -43,7 +43,8 @@
     <thead>
     <tr>
         <th>日志编号</th>
-        <th>日志批次Id</th>
+        <th>日志批次</th>
+        <th>用例名称</th>
         <th>客户端IP</th>
         <th>状态</th>
         <th>驱动类型</th>
@@ -54,7 +55,8 @@
        <c:forEach items="${datas.datas}" var="cs">
 	     <tr>
             <td>${cs.id }</td>
-            <td>${cs.batchLogBean.batchId }
+            <td>${cs.batchLogBean.batchId }</td>
+            <td>${cs.caseName }</td>
             <td>${cs.clientIP }</td>
             <td>${cs.status }</td>
             <td>${cs.engineType }</td>

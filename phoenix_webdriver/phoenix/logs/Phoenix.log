@@ -1,3 +1,10 @@
 2015-04-21 19:02:54 [ main:0 ] - [ INFO ] 1111111112312
 2015-04-21 19:03:46 [ main:0 ] - [ INFO ] 1111111112312
 2015-04-21 19:04:56 [ main:0 ] - [ INFO ] 1111111112312
+2015-05-15 11:18:23 [ main:0 ] - [ INFO ] HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+2015-05-15 11:18:23 [ main:0 ] - [ INFO ] HHH000412: Hibernate Core {4.1.7.Final}
+2015-05-15 11:18:23 [ main:0 ] - [ INFO ] HHH000206: hibernate.properties not found
+2015-05-15 11:18:23 [ main:0 ] - [ INFO ] HHH000021: Bytecode provider name : javassist
+2015-05-15 11:18:23 [ main:31 ] - [ INFO ] HHH000043: Configuring from resource: /hibernate.cfg.xml
+2015-05-15 11:18:23 [ main:31 ] - [ INFO ] HHH000040: Configuration resource: /hibernate.cfg.xml
+2015-05-15 11:18:23 [ main:187 ] - [ INFO ] HHH000041: Configured SessionFactory: null

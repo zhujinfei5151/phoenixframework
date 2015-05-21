@@ -57,5 +57,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/selenium-support-2.44.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/testng-6.8.13.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/junit-4.10.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

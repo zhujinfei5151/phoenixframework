@@ -15,13 +15,13 @@ public interface ISlaveService {
 	 * 获取分机列表，不含分页数据
 	 * @return
 	 */
-	List<SlaveModel> getSlaveModelList();
+	List<SlaveModel> getSlaveModelList(int uid);
 	
 	/**
 	 * 获取分机列表，包含分页数据
 	 * @return
 	 */
-	Pager<SlaveModel> getSlaveModelPager();
+	Pager<SlaveModel> getSlaveModelPager(int uid);
 	
 	/**
 	 * 增加一条记录

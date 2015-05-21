@@ -42,30 +42,25 @@
 		var localObj = window.location;
 		var contextPath = localObj.pathname.split("/")[1];
 		var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
+		var myDialog = 	art.dialog({
+			icon : 'face-smile',
+			title : '提示',
+			drag : true,
+			resize : false,
+			content : '任务发布成功，等待分机响应....',
+			ok : true,
+		});
+
    		 JSer.url(basePath+"/task/start/"+id).ajax({
 			    method:"POST", 
 			    success:function(d){
 			    	obj = JSON.parse(d);//字符串转为json对象
 			    	if(obj.result == 1){
-						art.dialog({
-							icon : 'succeed',
-							title : '提示',
-							drag : true,
-							resize : false,
-							content : "任务启动成功！<br>可在 <a href='tasklist.jsp'><strong>任务列表检视</strong></a> 模块查看该任务的状态",
-							ok : true,
-						});
+			    		myDialog.content(obj.msg);
 			    	} else {
-						art.dialog({
-							icon : 'error',
-							title : '提示',
-							drag : true,
-							resize : false,
-							content : d,
-							ok : true,
-						});
+			    		myDialog.content(obj.msg);
 			    	}
-			    } 
+			    },
 			});
       }
    </script>

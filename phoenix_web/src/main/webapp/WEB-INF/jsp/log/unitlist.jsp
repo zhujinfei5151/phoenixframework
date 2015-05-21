@@ -45,7 +45,7 @@
         <th width="7%">Step编号</th>
         <th width="10%">步骤名称</th>
         <th width="26%">步骤内容</th>
-        <th width="10%">步骤备注</th>
+        <th width="10%">步骤类型</th>
         <th width="10%">状态</th>
         <th width="7%">用例LOG编号</th>
         <th width="20%">截图路径</th>
@@ -58,7 +58,7 @@
             <td>${us.id }</td>
             <td>${us.stepName }
             <td>${us.content }</td>
-            <td>${us.remark }</td>
+            <td>${us.stepType }</td>
             <td>${us.status }</td>
             <td>${us.caseLogBean.id }</td>
             <td>${us.screenShot }</td>

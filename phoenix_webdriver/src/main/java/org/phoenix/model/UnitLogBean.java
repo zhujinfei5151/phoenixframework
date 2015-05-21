@@ -18,7 +18,7 @@ public class UnitLogBean {
 	private int id;
 	private String content;
 	private String stepName;
-	private String remark;
+	private String stepType;
 	private String status;
 	private String screenShot;
 	private CaseLogBean caseLogBean;
@@ -26,12 +26,12 @@ public class UnitLogBean {
 	public UnitLogBean() {
 	}
 	
-	public UnitLogBean(String content, String stepName, String remark,
+	public UnitLogBean(String content, String stepName, String stepType,
 			String status, String screenShot, CaseLogBean caseLogBean) {
 		super();
 		this.content = content;
 		this.stepName = stepName;
-		this.remark = remark;
+		this.stepType = stepType;
 		this.status = status;
 		this.screenShot = screenShot;
 		this.caseLogBean = caseLogBean;
@@ -51,12 +51,15 @@ public class UnitLogBean {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getRemark() {
-		return remark;
+
+	public String getStepType() {
+		return stepType;
 	}
-	public void setRemark(String remark) {
-		this.remark = remark;
+
+	public void setStepType(String stepType) {
+		this.stepType = stepType;
 	}
+
 	public String getScreenShot() {
 		return screenShot;
 	}

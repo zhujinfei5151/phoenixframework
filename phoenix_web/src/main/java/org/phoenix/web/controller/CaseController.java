@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.phoenix.model.CaseBean;
 import org.phoenix.model.ScenarioBean;
+import org.phoenix.utils.MethodPattern;
 import org.phoenix.web.auth.AuthClass;
 import org.phoenix.web.dto.CaseDTO;
 import org.phoenix.web.model.User;
@@ -131,12 +132,14 @@ public class CaseController {
 		ScenarioBean scenBean = new ScenarioBean();
 		scenBean.setId(caseDTO.getScenId());
 		
+		String className = MethodPattern.result(caseDTO.getCodeContent(), "public\\sclass\\s(.*)extends\\sWebElementActionProxy").trim();
 		CaseBean caseBean = caseService.getCaseBean(caseDTO.getId());
 		caseBean.setCaseName(caseDTO.getCaseName());
 		caseBean.setCodeContent(caseDTO.getCodeContent());
 		caseBean.setRemark(caseDTO.getRemark());
 		caseBean.setStatus(caseDTO.getStatus());
 		caseBean.setScenarioBean(scenBean);
+		caseBean.setClassName(className);
 		
 		caseService.updateCase(caseBean);
 		

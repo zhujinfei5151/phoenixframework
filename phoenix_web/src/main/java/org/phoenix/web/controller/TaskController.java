@@ -26,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
+
 @Controller
 @RequestMapping("/task")
 public class TaskController {
@@ -59,9 +61,10 @@ public class TaskController {
 	}
 	
 	@RequestMapping(value="/add",method=RequestMethod.GET)
-	public String add(Model model){
+	public String add(Model model,HttpSession session){
+		User u = (User)session.getAttribute("loginUser");
 		model.addAttribute("types", EnumUtils.enumProp2NameMap(TaskType.class, "name"));
-		model.addAttribute("slaves", slaveService.getSlaveModelList());
+		model.addAttribute("slaves", slaveService.getSlaveModelList(u.getId()));
 		model.addAttribute(new TaskModelDTO());
 		return "task/add";
 	}
@@ -90,9 +93,10 @@ public class TaskController {
 		return "redirect:/task/list";
 	}
 	@RequestMapping(value="/update/{id}",method=RequestMethod.GET)
-	public String update(@PathVariable Integer id,Model model){
+	public String update(@PathVariable Integer id,Model model,HttpSession session){
+		User user = (User)session.getAttribute("loginUser");
 		model.addAttribute("types", EnumUtils.enumProp2NameMap(TaskType.class, "name"));
-		model.addAttribute("slaves", slaveService.getSlaveModelList());
+		model.addAttribute("slaves", slaveService.getSlaveModelList(user.getId()));
 		model.addAttribute("taskModel",taskService.getTaskModel(id));
 		model.addAttribute("taskModelDTO",new TaskModelDTO());
 		return "task/edit";
@@ -116,24 +120,19 @@ public class TaskController {
 		return "redirect:/task/list";
 	}
 	
-	@RequestMapping(value="/start/{id}",method=RequestMethod.POST)
-	public @ResponseBody AjaxObj start(@PathVariable Integer id){
+	@RequestMapping(value="/start/{id}",method=RequestMethod.POST,produces="text/plain;charset=UTF-8")
+	public @ResponseBody String start(@PathVariable Integer id){
 		TaskModel taskModel = taskService.getTaskModel(id);
 		String hostIP = taskModel.getSlaveModel().getSlaveIP();
 		int taskId = taskModel.getId();
 		
-		final String  url = "http://"+hostIP+"/phoenix_node/action.do?taskId="+taskId+"&taskType="+taskModel.getTaskType();
-
-			new Thread(){
-				public void run(){
-					try {
-						HttpRequestSender.getResponseByPost(url);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-			}.start();
-		return new AjaxObj(1);
+		String url = "http://"+hostIP+"/phoenix_node/action.do?taskId="+taskId+"&taskType="+taskModel.getTaskType();
+		try {
+			return HttpRequestSender.getResponseByPost(url);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JSON.toJSONString(new AjaxObj(0,"向执行机分配测试任务时发生异常，信息："+e.getMessage()));
+		}
 	}
 	
 	@SuppressWarnings("unchecked")

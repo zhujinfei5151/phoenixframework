@@ -11,7 +11,9 @@ public class SlaveModel {
 	
 	private int id;
 	private String slaveIP;
+	private String status;
 	private String remark;
+	private int uid;
 	@Id
 	@GeneratedValue
 	public int getId() {
@@ -31,5 +33,17 @@ public class SlaveModel {
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public int getUid() {
+		return uid;
+	}
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
 }

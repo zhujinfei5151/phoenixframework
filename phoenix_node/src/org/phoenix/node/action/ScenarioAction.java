@@ -3,6 +3,7 @@ package org.phoenix.node.action;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.phoenix.dao.BatchLogDao;
 import org.phoenix.dao.CaseDao;
 import org.phoenix.dao.IModelDao;
 import org.phoenix.model.CaseBean;
@@ -20,6 +21,8 @@ public class ScenarioAction implements RunAction{
 	@Override
 	public AjaxObj action(TaskDataDTO taskDataDTO) {
 		TaskDao taskDao = new TaskDao();
+		BatchLogDao batchLog = new BatchLogDao();
+		//ScenarioLogDao scenarioLogDao = new ScenarioLogDao();
 		TaskModel taskModel = taskDao.getTaskModel(taskDataDTO.getTaskId());
 		IModelDao<CaseBean> caseDao = new CaseDao();
 		ExecuteMethod executeMethod = new ExecuteMethod();

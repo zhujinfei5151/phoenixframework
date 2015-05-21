@@ -32,8 +32,8 @@ public class SlaveService implements ISlaveService{
      * @see org.phoenix.web.service.ISlaveService#getSlaveModelList()
      */
 	@Override
-	public List<SlaveModel> getSlaveModelList() {
-		return slaveDao.getSlaveModelList();
+	public List<SlaveModel> getSlaveModelList(int uid) {
+		return slaveDao.getSlaveModelList(uid);
 	}
 
 	/*
@@ -41,8 +41,8 @@ public class SlaveService implements ISlaveService{
 	 * @see org.phoenix.web.service.ISlaveService#getSlaveModelPager()
 	 */
 	@Override
-	public Pager<SlaveModel> getSlaveModelPager() {
-		return slaveDao.getSlaveModelPager();
+	public Pager<SlaveModel> getSlaveModelPager(int uid) {
+		return slaveDao.getSlaveModelPager(uid);
 	}
 	/*
 	 * (non-Javadoc)

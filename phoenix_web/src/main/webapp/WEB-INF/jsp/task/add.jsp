@@ -61,7 +61,7 @@
               <option value="${sl.id }">${sl.slaveIP } -- ${sl.remark }</option>
               </c:forEach>
            </sf:select>
-              &nbsp;&nbsp;列表为空，代表暂无可用执行机
+              &nbsp;&nbsp;若列表为空，代表暂无可用执行机
         </td>
     </tr>  
     <tr>
