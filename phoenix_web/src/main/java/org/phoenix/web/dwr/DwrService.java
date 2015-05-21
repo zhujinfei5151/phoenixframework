@@ -1,5 +1,7 @@
 package org.phoenix.web.dwr;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.directwebremoting.annotations.RemoteMethod;
@@ -22,8 +24,9 @@ public class DwrService implements IDwrService{
 
 	@Override
 	@RemoteMethod
-	public void addCaseBean(CaseBean caseBean) {
-		caseService.addCase(caseBean);
+	public List<CaseBean> listCase() {
+		List<CaseBean> cases = caseService.getCaseBeanListByUser(1);
+		return cases;
 	}
 
 }

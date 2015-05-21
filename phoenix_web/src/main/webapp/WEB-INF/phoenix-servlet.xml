@@ -23,6 +23,7 @@
 			<mvc:mapping path="/locator/**"/>
 			<mvc:mapping path="/task/**"/>
 			<mvc:mapping path="/log/**"/>
+			<mvc:mapping path="/chart/**"/>
 			<bean class="org.phoenix.web.filter.AuthInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
