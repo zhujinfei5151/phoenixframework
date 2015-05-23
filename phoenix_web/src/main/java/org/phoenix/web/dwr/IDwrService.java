@@ -2,11 +2,11 @@ package org.phoenix.web.dwr;
 
 import java.util.List;
 
-import org.phoenix.model.CaseBean;
+import org.phoenix.web.dto.StatisticsDTO;
 
 public interface IDwrService {
 
 	
-	List<CaseBean> listCase();
+	List<StatisticsDTO> listStatus(int id);
 	
 }

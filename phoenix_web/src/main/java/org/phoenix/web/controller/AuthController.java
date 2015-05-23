@@ -103,8 +103,8 @@ public class AuthController {
     	    	                    "},"+
     	    	                    "{"+
 		    	                        "\"id\": \"7\","+
-		    	                        "\"text\": \"统计图\","+
-		    	                        "\"href\": \"case/list\""+
+		    	                        "\"text\": \"用例统计图\","+
+		    	                        "\"href\": \"chart/WEB_CASE\""+
 	    	                        "}"+
     	    	                "]"+
     	    	            "}"+
@@ -187,8 +187,8 @@ public class AuthController {
     	    	                    "},"+
     	    	                    "{"+
 		    	                        "\"id\": \"7\","+
-		    	                        "\"text\": \"统计图\","+
-		    	                        "\"href\": \"case/list\""+
+		    	                        "\"text\": \"用例统计图\","+
+		    	                        "\"href\": \"chart/WEB_CASE\""+
 	    	                        "}"+
     	    	                "]"+
     	    	            "}"+

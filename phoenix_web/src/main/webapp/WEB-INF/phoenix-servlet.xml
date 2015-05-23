@@ -27,12 +27,15 @@
 			<bean class="org.phoenix.web.filter.AuthInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
-	
 	<context:component-scan base-package="org.phoenix.web.controller"/>
+	
+	<dwr:configuration>
+	    <dwr:convert class="org.phoenix.web.dto.StatisticsDTO" type="bean"/>
+	</dwr:configuration>
 	<dwr:controller id="dwrController" debug="false"/>
 	<dwr:annotation-config id="dwrAnnotationConfig" />
   	<dwr:annotation-scan base-package="org.phoenix.web.dwr" scanDataTransferObject="true"/>
-  	
+
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/"/>
 		<property name="suffix" value=".jsp"/>

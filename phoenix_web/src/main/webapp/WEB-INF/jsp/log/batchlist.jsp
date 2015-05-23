@@ -58,6 +58,7 @@
             <td>  
                   <a href="<%=request.getContextPath()%>/log/${bs.taskType}/${bs.id}">详细信息</a>&nbsp;&nbsp;
                   <a href="deletebatch/${bs.id}">删除批次</a>&nbsp;&nbsp;
+                  <a href="<%=request.getContextPath()%>/chart/${bs.taskType}/${bs.id}">统计图</a>&nbsp;&nbsp;
             </td>
         </tr>
         </c:forEach>

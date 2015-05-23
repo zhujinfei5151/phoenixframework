@@ -1,5 +1,7 @@
 package org.phoenix.web.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.phoenix.basic.paging.Pager;
@@ -38,6 +40,18 @@ public class BatchLogService implements IBatchLogService{
 	@Override
 	public Pager<BatchLogBean> getBatchLogPager(int uid) {
 		return batchLogDao.getBatchLogPager(uid);
+	}
+	@Override
+	public List<BatchLogBean> getBatchLogList(int uid) {
+		return batchLogDao.getBathLogList(uid);
+	}
+	/*
+	 * (non-Javadoc)
+	 * @see org.phoenix.web.service.IBatchLogService#getBatchLogBean(int)
+	 */
+	@Override
+	public BatchLogBean getBatchLogBean(int id) {
+		return batchLogDao.getBatchLogBean(id);
 	}
 
 }

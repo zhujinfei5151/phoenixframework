@@ -1,5 +1,7 @@
 package org.phoenix.web.service;
 
+import java.util.List;
+
 import org.phoenix.basic.paging.Pager;
 import org.phoenix.model.BatchLogBean;
 
@@ -20,4 +22,8 @@ public interface IBatchLogService {
 	 * @return
 	 */
 	Pager<BatchLogBean> getBatchLogPager(int uid);
+	
+	List<BatchLogBean> getBatchLogList(int uid);
+	
+	BatchLogBean getBatchLogBean(int id);
 }

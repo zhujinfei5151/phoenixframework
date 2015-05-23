@@ -35,7 +35,7 @@ public class ActionInvocationHandler implements InvocationHandler {
 				PhoenixLogger.info("步骤 [ "+method.getName()+" ]执行成功，参数值："+Arrays.toString(args)+",执行结果返回值："+result);
 			}
 		}catch(Exception e){
-			unitLog.add(new UnitLogBean("步骤 [ "+method.getName()+" ]执行失败，参数值："+Arrays.toString(args)+",异常信息："+e.getMessage(),method.getName(),"STEP","FAILURE","",caseLogBean));
+			unitLog.add(new UnitLogBean("步骤 [ "+method.getName()+" ]执行失败，参数值："+Arrays.toString(args)+",异常信息："+e.getMessage(),method.getName(),"STEP","FAIL","",caseLogBean));
 			PhoenixLogger.info("步骤 [ "+method.getName()+" ]执行失败，参数值："+Arrays.toString(args)+",异常信息："+e.getClass().getSimpleName()+","+e.getMessage());
 		}
 		return result;

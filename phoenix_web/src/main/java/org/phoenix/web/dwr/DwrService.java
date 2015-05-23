@@ -6,27 +6,26 @@ import javax.annotation.Resource;
 
 import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
-import org.phoenix.model.CaseBean;
-import org.phoenix.web.service.ICaseService;
+import org.phoenix.web.dto.StatisticsDTO;
+import org.phoenix.web.service.IStatService;
 
 @RemoteProxy(name="dwrService")
 public class DwrService implements IDwrService{
-	private ICaseService caseService;
-	
-	public ICaseService getCaseService() {
-		return caseService;
+	private IStatService statService;
+
+	public IStatService getStatService() {
+		return statService;
 	}
-	
 	@Resource
-	public void setCaseService(ICaseService caseService) {
-		this.caseService = caseService;
+	public void setStatService(IStatService statService) {
+		this.statService = statService;
 	}
 
 	@Override
 	@RemoteMethod
-	public List<CaseBean> listCase() {
-		List<CaseBean> cases = caseService.getCaseBeanListByUser(1);
-		return cases;
+	public List<StatisticsDTO> listStatus(int id) {
+		List<StatisticsDTO> statusList = statService.getStatusByCaseLogId(id);
+		return statusList;
 	}
 
 }

@@ -1,5 +1,7 @@
 package org.phoenix.web.dao;
 
+import java.util.List;
+
 import org.phoenix.basic.dao.IBaseDao;
 import org.phoenix.basic.paging.Pager;
 import org.phoenix.model.BatchLogBean;
@@ -21,4 +23,8 @@ public interface IBatchLogDao extends IBaseDao<BatchLogBean>{
 	 * @return
 	 */
 	Pager<BatchLogBean> getBatchLogPager(int uid);
+	
+	List<BatchLogBean> getBathLogList(int uid);
+	
+	BatchLogBean getBatchLogBean(int id);
 }
