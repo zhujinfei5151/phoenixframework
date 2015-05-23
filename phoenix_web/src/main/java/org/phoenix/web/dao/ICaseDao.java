@@ -12,7 +12,7 @@ import org.phoenix.model.CaseBean;
  *
  */
 public interface ICaseDao extends IBaseDao<CaseBean>{
-	/**
+	/*
 	 * 获取指定用户下的用例数据
 	 */
      List<CaseBean> getCaseBeanListByUser(int uid);

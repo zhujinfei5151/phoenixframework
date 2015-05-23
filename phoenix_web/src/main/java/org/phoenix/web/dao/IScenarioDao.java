@@ -13,17 +13,17 @@ import org.phoenix.model.ScenarioBean;
  */
 public interface IScenarioDao extends IBaseDao<ScenarioBean>{
        
-	/**
+	/*
 	 * 获取多批及分页信息
 	 */
 	Pager<ScenarioBean> getScenarioBeanPager(int uid);
 	
-	/**
+	/*
 	 * 获取当前用户下的所有
 	 */
 	List<ScenarioBean> getScenarioBeanList(int uid);
-	
-	/**
+
+	/*
 	 * 删除指定用户下的场景
 	 */
 	void deleteByUser(int uid);

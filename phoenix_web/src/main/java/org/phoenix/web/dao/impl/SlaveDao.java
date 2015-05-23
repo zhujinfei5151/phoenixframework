@@ -16,14 +16,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class SlaveDao extends BaseDao<SlaveModel> implements ISlaveDao{
 	
-	/**
+	/*
 	 * 获取分机信息列表，但不含分页信息
 	 */
 	public List<SlaveModel> getSlaveModelList(int uid){
 		return super.list("from SlaveModel where uid="+uid);
 	}
 	
-	/**
+	/*
 	 * 获取分机信息列表，包含分页数据
 	 */
 	public Pager<SlaveModel> getSlaveModelPager(int uid){

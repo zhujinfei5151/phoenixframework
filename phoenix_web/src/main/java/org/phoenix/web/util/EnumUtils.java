@@ -10,7 +10,7 @@ import org.apache.commons.beanutils.PropertyUtils;
 
 @SuppressWarnings("rawtypes")
 public class EnumUtils {
-	/**
+	/*
 	 * 将枚举中的值转换为一组序数列表
 	 */
 	public static List<Integer> enum2Ordinal(Class<? extends Enum> clz) {
@@ -22,7 +22,7 @@ public class EnumUtils {
 		}
 		return rels;
 	}
-	/**
+	/*
 	 * 将枚举中的值转换为相应的名称字符串列表
 	 */
 	public static List<String> enum2Name(Class<? extends Enum> clz) {
@@ -34,7 +34,7 @@ public class EnumUtils {
 		}
 		return rels;
 	}
-	/**
+	/*
 	 * 将枚举中的值转换为序号和名称的map
 	 */
 	public static Map<Integer,String> enum2BasicMap(Class<? extends Enum> clz) {
@@ -46,7 +46,7 @@ public class EnumUtils {
 		}
 		return rels;
 	}
-	/**
+	/*
 	 * 将枚举中的值的某个属性转换为字符串列表
 	 */
 	public static List<String> enumProp2List(Class<? extends Enum> clz,String propName) {
@@ -68,7 +68,7 @@ public class EnumUtils {
 		return null;
 	}
 	
-	/**
+	/*
 	 * 将枚举中的值的某个属性转换为序号和字符串列表
 	 */
 	public static Map<Integer,String> enumProp2OrdinalMap(Class<? extends Enum> clz,String propName) {
@@ -90,7 +90,7 @@ public class EnumUtils {
 		return null;
 	}
 	
-	/**
+	/*
 	 * 将枚举中的值的某个属性转换为名称和字符串map
 	 */
 	public static Map<String,String> enumProp2NameMap(Class<? extends Enum> clz,String propName) {
@@ -112,7 +112,7 @@ public class EnumUtils {
 		return null;
 	}
 	
-	/**
+	/*
 	 * 将枚举中的两个属性转换为map
 	 */
 	public static Map<String,String> enumProp2Map(Class<? extends Enum> clz,String keyProp,String valueProp) {

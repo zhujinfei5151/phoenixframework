@@ -16,15 +16,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class LocatorDao extends BaseDao<LocatorBean> implements ILocatorDao{
 
-	/**
-	 * 获取定位信息列表
+	/*
+	 * 获取定位信息列
 	 */
 	@Override
 	public List<LocatorBean> getLocatorBeanListByCase(int caseId) {
 		return super.list("from LocatorBean where caseBean.id="+caseId);
 	}
 
-	/**
+	/*
 	 * 获取定位信息列表及分页信息
 	 */
 	@Override

@@ -6,17 +6,17 @@ import org.phoenix.web.model.User;
 
 public interface IUserDao extends IBaseDao<User>{
 	
-	/**
+	/*
 	 * 根据用户名获取用户对象
 	 */
 	public User loadLoginUser(String username,String password);
 	
-	/**
+	/*
 	 * 根据用户名获取用户对象
 	 */
 	public User loadByUserName(String username);
 	
-	/**
+	/*
 	 * 获取用户的信息及分页信息
 	 */
 	public Pager<User> findUser();

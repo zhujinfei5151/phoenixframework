@@ -11,12 +11,12 @@ import org.phoenix.web.model.TaskModel;
  *
  */
 public interface ITaskDao extends IBaseDao<TaskModel>{
-	/**
+	/*
 	 * 获取当前用户下的任务
 	 */
      Pager<TaskModel> getTaskModelPagerByUser(int uid);
      
-     /**
+     /*
       * 根据任务类型筛选
       */
      Pager<TaskModel> getTaskModelPagerByStatus(TaskStatusType status);

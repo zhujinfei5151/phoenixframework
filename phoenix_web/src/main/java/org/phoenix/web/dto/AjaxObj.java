@@ -6,16 +6,16 @@ package org.phoenix.web.dto;
  *
  */
 public class AjaxObj {
-	/**
+	/*
 	 * 0表示失败
 	 * 1表示成功
 	 */
 	private int result;
-	/**
+	/*
 	 * 提示信息
 	 */
 	private String msg;
-	/**
+	/*
 	 * 附加对象，用来存储一些特定的返回信息
 	 */
 	private Object obj;

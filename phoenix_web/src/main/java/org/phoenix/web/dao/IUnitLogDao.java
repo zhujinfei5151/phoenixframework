@@ -11,17 +11,17 @@ import org.phoenix.model.UnitLogBean;
  */
 public interface IUnitLogDao extends IBaseDao<UnitLogBean>{
 	
-	/**
+	/*
 	 * 获取单步日志
 	 */
 	UnitLogBean getUnitLogBean(int id);
 	
-	/**
+	/*
 	 * 获取单步日志列表，包括分页信息
 	 */
 	Pager<UnitLogBean> getUnitLogBeanPager(int caseLogId);
 	
-	/**
+	/*
 	 * 删除一条记录
 	 */
 	void deleteUnitLog(int id);

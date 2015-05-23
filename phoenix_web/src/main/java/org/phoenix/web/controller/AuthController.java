@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/auth")
 public class AuthController {
 	
-	/**
+	/*
 	 * 权限管理的临时替代方案,不过此种方法较简单且易维护
 	 */
 	@AuthMethod

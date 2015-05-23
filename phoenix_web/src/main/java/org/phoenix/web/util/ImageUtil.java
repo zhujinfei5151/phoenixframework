@@ -26,7 +26,7 @@ public class ImageUtil {
 	public static ImageUtil getInstance() {
 		return iu;
 	}
-	/**
+	/*
 	 * 切割图片
 	 * os 切割后的输出流
 	 * is 输入流
@@ -63,9 +63,9 @@ public class ImageUtil {
 			}
 		}
 	}
-	
-/**
- * 切割图片
+
+/*
+ * 切割图
  * os 切割后的输出流
  * is 输入流
  *  type 文件的图片类型
@@ -85,7 +85,7 @@ public String cropImg(String oPath,InputStream is,int x,int y,int width,int heig
 	return null;
 }
 
-/**
+/*
  * 切割图片
  * oPath 输出文件
  * iPath 输入文件名
@@ -108,7 +108,7 @@ public String cropImg(String oPath,String iPath,int x,int y,int width,int height
 	return null;
 }
 
-/**
+/*
  * 切割图片自动根据输入的文件名转换为xxx_small.type
  *  iPath 输入文件名
  * type 文件的图片类型
@@ -136,14 +136,14 @@ private String generatorSmallFileName(String name) {
 	return name.replace(fn,fn+"_small");
 }
 	
-	/**
+	/*
 	 * 转换图片操作
 	 */
 	public void compressImg(OutputStream os,InputStream is,int width,int height,boolean proportion ) {
 		compressImg(os, is, width, height, proportion,false);
 	}
 	
-	/**
+	/*
 	 * 转换图片操作
 	 * os 要转换图片的输出流
 	 *  is 要转换图片的输入流
@@ -214,7 +214,7 @@ private String generatorSmallFileName(String name) {
 		}
 	}
 	
-	/**
+	/*
 	 * 转换图片操作
 	 * param outputFile 输出文件
 	 * param inputFile 输入文件
@@ -237,7 +237,7 @@ private String generatorSmallFileName(String name) {
 		return null;
 	}
 	
-	/**
+	/*
 	 * 转换图片操作
 	 * param outputFile 输出文件
 	 * param is 输入流
@@ -258,7 +258,7 @@ private String generatorSmallFileName(String name) {
 		return null;
 	}
 	
-	/**
+	/*
 	 * 转换图片操作
 	 * param oPath 输出路径
 	 * param is 输入流
@@ -278,7 +278,7 @@ private String generatorSmallFileName(String name) {
 		return oPath;
 	}
 	
-	/**
+	/*
 	 * 转换图片操作
 	 * param oPath 输出路径
 	 * param iPath 输入路径
@@ -365,7 +365,7 @@ private String generatorSmallFileName(String name) {
 		}
 		return 0;
 	}
-	/**
+	/*
 	 * 返回一个数组，第一个值是宽，第二个值是高
 	 * param is
 	 * return 返回一个数组，第一个值是宽，第二个值是高
@@ -376,7 +376,7 @@ private String generatorSmallFileName(String name) {
 		img = ImageIO.read(is);
 		return new int[]{img.getWidth(null),img.getHeight(null)};
 	}
-	/**
+	/*
 	 * 返回一个数组，第一个值是宽，第二个值是高
 	 * param is
 	 * return 返回一个数组，第一个值是宽，第二个值是高
@@ -394,7 +394,7 @@ private String generatorSmallFileName(String name) {
 		}
 		return null;
 	}
-	/**
+	/*
 	 * 返回一个数组，第一个值是宽，第二个值是高
 	 * param is
 	 * return 返回一个数组，第一个值是宽，第二个值是高

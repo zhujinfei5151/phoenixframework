@@ -21,8 +21,8 @@ public class ScenarioDao extends BaseDao<ScenarioBean> implements IScenarioDao{
 		return super.list("from ScenarioBean where userId="+uid);
 	}
 
-	/**
-	 * 删除指定用户下的场景数据
+	/*
+	 * 删除指定用户下的场数据
 	 */
 	@Override
 	public void deleteByUser(int uid) {

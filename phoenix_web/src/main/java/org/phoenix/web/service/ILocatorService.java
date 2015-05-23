@@ -11,28 +11,28 @@ import org.phoenix.model.LocatorBean;
  *
  */
 public interface ILocatorService {
-	/**
+	/*
 	 * 增加
 	 */
 	void addLocator(LocatorBean locatorBean);
 	
-	/**
+	/*
 	 * 删除
 	 */
 	void delLocator(int id);
 	void updateLocator(LocatorBean locatorBean);
 	
-	/**
+	/*
 	 * 获取一条记录
 	 */
 	LocatorBean getLocatorBean(int id);
 	
-	/**
+	/*
 	 * 获取记录列表，根据用例的id
 	 */
 	List<LocatorBean> getLocatorBeanList(int caseId);
 	
-	/**
+	/*
 	 * 获取记录的列表及分页信息，根据用例id
 	 */
 	Pager<LocatorBean> getLoatorBeanPager(int caseId);

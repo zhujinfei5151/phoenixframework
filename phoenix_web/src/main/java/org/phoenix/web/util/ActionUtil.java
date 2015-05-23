@@ -19,7 +19,7 @@ public class ActionUtil {
 		ActionContext.getContext().put("url", url);
 	}
 	
-	/**
+	/*
 	 * 获取用户可以访问的功能
 	 */
 	public static String[] getUserAuth() {
@@ -28,7 +28,7 @@ public class ActionUtil {
 		return user.split(",");
 	}
 	
-	/**
+	/*
 	 * 获取用户不能访问的功能
 	 */
 	public static String[] getUserNotAuth() {
