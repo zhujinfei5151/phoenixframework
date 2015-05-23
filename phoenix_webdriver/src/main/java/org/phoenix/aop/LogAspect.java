@@ -8,7 +8,7 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class LogAspect {
 	
-	/**
+	/*
 	 * 第一个*为任意返回值
 	 * 第二个*为这个包中的所有类
 	 * 第三个*为以add开头的所有方法

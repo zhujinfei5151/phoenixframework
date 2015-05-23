@@ -10,7 +10,7 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AuthClass {
-	/**
+	/*
 	 * 如果value为admin就表示这个类只能超级管理员访问
 	 * 如果value为login表示这个类中的方法，某些可能为相应的角色可以访问
 	 */

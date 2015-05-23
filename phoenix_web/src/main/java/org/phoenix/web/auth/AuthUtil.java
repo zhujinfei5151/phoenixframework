@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class AuthUtil {
-	/**
+	/*
 	 * 初始化系统的角色所访问的功能信息
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
