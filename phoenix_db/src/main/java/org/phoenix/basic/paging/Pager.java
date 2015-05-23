@@ -6,7 +6,6 @@ import java.util.List;
  * 分页对象
  * @author Administrator
  *
- * @param <T>
  */
 public class Pager<T> {
 	/**

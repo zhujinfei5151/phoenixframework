@@ -19,8 +19,6 @@ public class LoggerProxy implements InvocationHandler{
 	
 	/**
 	 * 3、创建一个方法来生成对象，这个方法的参数是要代理的对象,getInstance所返回的对象就是代理对象
-	 * @param o
-	 * @return
 	 */
 	public static Object getInstance(Object o){
 

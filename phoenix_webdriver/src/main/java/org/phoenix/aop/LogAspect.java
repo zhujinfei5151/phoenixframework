@@ -14,7 +14,6 @@ public class LogAspect {
 	 * 第三个*为以add开头的所有方法
 	 * (..)表示任意参数
 	 */
-	
     public void logStart(JoinPoint jp){
 		//System.out.println(jp.getTarget()); //获取执行类
 		System.out.println(jp.getSignature().getName()); //获取执行的方法

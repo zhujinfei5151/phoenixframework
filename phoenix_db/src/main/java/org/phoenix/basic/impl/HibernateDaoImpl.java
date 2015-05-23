@@ -12,7 +12,6 @@ import org.phoenix.basic.utils.HibernateUtil;
  * 通用的Dao方法
  * @author mengfeiyang
  *
- * @param <T>
  */
 @SuppressWarnings("unchecked")
 public class HibernateDaoImpl<T> implements IBaseDao<T>{

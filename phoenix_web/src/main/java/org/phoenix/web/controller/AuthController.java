@@ -16,8 +16,6 @@ public class AuthController {
 	
 	/**
 	 * 权限管理的临时替代方案,不过此种方法较简单且易维护
-	 * @param session
-	 * @return
 	 */
 	@AuthMethod
 	@RequestMapping(value="/menu",method=RequestMethod.POST,produces = "text/html;charset=UTF-8")

@@ -14,7 +14,6 @@ import java.util.Set;
 public class AuthUtil {
 	/**
 	 * 初始化系统的角色所访问的功能信息
-	 * @return
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Map<String,Set<String>> initAuth(String pname) {
@@ -97,8 +96,6 @@ public class AuthUtil {
 	}
 	/**
 	 * 根据包获取所有的类
-	 * @param pname
-	 * @return
 	 */
 	private static String[] getClassByPackage(String pname) {
 		String pr = pname.replace(".", "/");

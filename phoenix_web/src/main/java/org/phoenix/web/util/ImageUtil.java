@@ -28,13 +28,13 @@ public class ImageUtil {
 	}
 	/**
 	 * 切割图片
-	 * @param os 切割后的输出流
-	 * @param is 输入流
-	 * @param type 文件的图片类型
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param width 宽度
-	 * @param height 高度
+	 * os 切割后的输出流
+	 * is 输入流
+	 * type 文件的图片类型
+	 * x x坐标
+	 *  y y坐标
+	 * width 宽度
+	 * height 高度
 	 */
 	public void cropImg(OutputStream os,InputStream is,String type,int x,int y,int width,int height) {
 		Image img = null;
@@ -66,13 +66,13 @@ public class ImageUtil {
 	
 /**
  * 切割图片
- * @param os 切割后的输出流
- * @param is 输入流
- * @param type 文件的图片类型
- * @param x x坐标
- * @param y y坐标
- * @param width 宽度
- * @param height 高度
+ * os 切割后的输出流
+ * is 输入流
+ *  type 文件的图片类型
+ * x x坐标
+ *  y y坐标
+ *  width 宽度
+ * height 高度
  */
 public String cropImg(String oPath,InputStream is,int x,int y,int width,int height) {
 	String type = oPath.substring(oPath.lastIndexOf(".")+1);
@@ -87,13 +87,13 @@ public String cropImg(String oPath,InputStream is,int x,int y,int width,int heig
 
 /**
  * 切割图片
- * @param oPath 输出文件
- * @param iPath 输入文件名
- * @param type 文件的图片类型
- * @param x x坐标
- * @param y y坐标
- * @param width 宽度
- * @param height 高度
+ * oPath 输出文件
+ * iPath 输入文件名
+ * type 文件的图片类型
+ *  x x坐标
+ *  y y坐标
+ * width 宽度
+ *  height 高度
  */
 public String cropImg(String oPath,String iPath,int x,int y,int width,int height) {
 	String type = oPath.substring(oPath.lastIndexOf(".")+1);
@@ -110,12 +110,12 @@ public String cropImg(String oPath,String iPath,int x,int y,int width,int height
 
 /**
  * 切割图片自动根据输入的文件名转换为xxx_small.type
- * @param iPath 输入文件名
- * @param type 文件的图片类型
- * @param x x坐标
- * @param y y坐标
- * @param width 宽度
- * @param height 高度
+ *  iPath 输入文件名
+ * type 文件的图片类型
+ * x x坐标
+ * y y坐标
+ * width 宽度
+ * height 高度
  */
 public String cropImg(String iPath,int x,int y,int width,int height) {
 	String type = iPath.substring(iPath.lastIndexOf(".")+1);
@@ -138,12 +138,6 @@ private String generatorSmallFileName(String name) {
 	
 	/**
 	 * 转换图片操作
-	 * @param os 要转换图片的输出流
-	 * @param is 要转换图片的输入流
-	 * @param width 要压缩的宽度
-	 * @param height 要压缩的高度
-	 * @param proportion 是否进行等比例压缩
-	 * @throws IOException 
 	 */
 	public void compressImg(OutputStream os,InputStream is,int width,int height,boolean proportion ) {
 		compressImg(os, is, width, height, proportion,false);
@@ -151,13 +145,13 @@ private String generatorSmallFileName(String name) {
 	
 	/**
 	 * 转换图片操作
-	 * @param os 要转换图片的输出流
-	 * @param is 要转换图片的输入流
-	 * @param width 要压缩的宽度
-	 * @param height 要压缩的高度
-	 * @param proportion 是否进行等比例压缩
-	 * @param magnify 是否进行放大
-	 * @throws IOException 
+	 * os 要转换图片的输出流
+	 *  is 要转换图片的输入流
+	 * param width 要压缩的宽度
+	 * param height 要压缩的高度
+	 * param proportion 是否进行等比例压缩
+	 * param magnify 是否进行放大
+	 * throws IOException 
 	 */
 	public void compressImg(OutputStream os,InputStream is,int width,int height,boolean proportion,boolean magnify) {
 		BufferedImage img = null;
@@ -222,12 +216,12 @@ private String generatorSmallFileName(String name) {
 	
 	/**
 	 * 转换图片操作
-	 * @param outputFile 输出文件
-	 * @param inputFile 输入文件
-	 * @param width 要压缩的宽度
-	 * @param height 要压缩的高度
-	 * @param proportion 是否进行等比例压缩
-	 * @throws IOException 
+	 * param outputFile 输出文件
+	 * param inputFile 输入文件
+	 * param width 要压缩的宽度
+	 * param height 要压缩的高度
+	 * param proportion 是否进行等比例压缩
+	 * throws IOException 
 	 */
 	public String compressImg(File outputFile, File inputFile,int width,int height,boolean proportion ) {
 		InputStream is = null;
@@ -245,12 +239,12 @@ private String generatorSmallFileName(String name) {
 	
 	/**
 	 * 转换图片操作
-	 * @param outputFile 输出文件
-	 * @param is 输入流
-	 * @param width 要压缩的宽度
-	 * @param height 要压缩的高度
-	 * @param proportion 是否进行等比例压缩
-	 * @throws IOException 
+	 * param outputFile 输出文件
+	 * param is 输入流
+	 * param width 要压缩的宽度
+	 * param height 要压缩的高度
+	 * param proportion 是否进行等比例压缩
+	 * throws IOException 
 	 */
 	public String compressImg(File outputFile, InputStream is,int width,int height,boolean proportion ) {
 		OutputStream os = null;
@@ -266,12 +260,12 @@ private String generatorSmallFileName(String name) {
 	
 	/**
 	 * 转换图片操作
-	 * @param oPath 输出路径
-	 * @param is 输入流
-	 * @param width 要压缩的宽度
-	 * @param height 要压缩的高度
-	 * @param proportion 是否进行等比例压缩
-	 * @throws IOException 
+	 * param oPath 输出路径
+	 * param is 输入流
+	 * param width 要压缩的宽度
+	 * param height 要压缩的高度
+	 * param proportion 是否进行等比例压缩
+	 * throws IOException 
 	 */
 	public String compressImg(String oPath, InputStream is,int width,int height,boolean proportion ) {
 		OutputStream os = null;
@@ -286,12 +280,12 @@ private String generatorSmallFileName(String name) {
 	
 	/**
 	 * 转换图片操作
-	 * @param oPath 输出路径
-	 * @param iPath 输入路径
-	 * @param width 要压缩的宽度
-	 * @param height 要压缩的高度
-	 * @param proportion 是否进行等比例压缩
-	 * @throws IOException 
+	 * param oPath 输出路径
+	 * param iPath 输入路径
+	 * param width 要压缩的宽度
+	 * param height 要压缩的高度
+	 * param proportion 是否进行等比例压缩
+	 * throws IOException 
 	 */
 	public String compressImg(String oPath, String iPath,int width,int height,boolean proportion ) {
 		InputStream is = null;
@@ -373,9 +367,9 @@ private String generatorSmallFileName(String name) {
 	}
 	/**
 	 * 返回一个数组，第一个值是宽，第二个值是高
-	 * @param is
-	 * @return 返回一个数组，第一个值是宽，第二个值是高
-	 * @throws IOException
+	 * param is
+	 * return 返回一个数组，第一个值是宽，第二个值是高
+	 * throws IOException
 	 */
 	public int[] getWidthAndHeight(InputStream is) throws IOException {
 		Image img = null;
@@ -384,9 +378,9 @@ private String generatorSmallFileName(String name) {
 	}
 	/**
 	 * 返回一个数组，第一个值是宽，第二个值是高
-	 * @param is
-	 * @return 返回一个数组，第一个值是宽，第二个值是高
-	 * @throws IOException
+	 * param is
+	 * return 返回一个数组，第一个值是宽，第二个值是高
+	 * throws IOException
 	 */
 	public int[] getWidthAndHeight(String path) {
 		InputStream is = null;
@@ -402,9 +396,9 @@ private String generatorSmallFileName(String name) {
 	}
 	/**
 	 * 返回一个数组，第一个值是宽，第二个值是高
-	 * @param is
-	 * @return 返回一个数组，第一个值是宽，第二个值是高
-	 * @throws IOException
+	 * param is
+	 * return 返回一个数组，第一个值是宽，第二个值是高
+	 * throws IOException
 	 */
 	public int[] getWidthAndHeight(File file) {
 		InputStream is = null;

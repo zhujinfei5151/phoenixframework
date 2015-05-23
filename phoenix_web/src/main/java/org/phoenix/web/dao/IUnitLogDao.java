@@ -13,15 +13,11 @@ public interface IUnitLogDao extends IBaseDao<UnitLogBean>{
 	
 	/**
 	 * 获取单步日志
-	 * @param id
-	 * @return
 	 */
 	UnitLogBean getUnitLogBean(int id);
 	
 	/**
 	 * 获取单步日志列表，包括分页信息
-	 * @param caseLogId
-	 * @return
 	 */
 	Pager<UnitLogBean> getUnitLogBeanPager(int caseLogId);
 	

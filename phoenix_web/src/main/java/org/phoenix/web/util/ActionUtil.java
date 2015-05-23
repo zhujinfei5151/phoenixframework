@@ -21,7 +21,6 @@ public class ActionUtil {
 	
 	/**
 	 * 获取用户可以访问的功能
-	 * @return
 	 */
 	public static String[] getUserAuth() {
 		Properties prop = PropertiesUtil.getAuthProp();
@@ -31,7 +30,6 @@ public class ActionUtil {
 	
 	/**
 	 * 获取用户不能访问的功能
-	 * @return
 	 */
 	public static String[] getUserNotAuth() {
 		Properties prop = PropertiesUtil.getAuthProp();

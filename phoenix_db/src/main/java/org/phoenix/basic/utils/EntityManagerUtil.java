@@ -26,9 +26,8 @@ public class EntityManagerUtil {
 		ENTITY_MANAGER = ENTITY_MANAGER_FACTORY.createEntityManager();
 	}
 	
-	/**
+	/*
 	 * 获取EntityManager实例
-	 * @return
 	 */
 	public static synchronized EntityManager getEntityManagerInstance(){
 		return ENTITY_MANAGER == null ? ENTITY_MANAGER_FACTORY.createEntityManager() : ENTITY_MANAGER;

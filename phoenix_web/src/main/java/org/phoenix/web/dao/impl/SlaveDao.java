@@ -18,7 +18,6 @@ public class SlaveDao extends BaseDao<SlaveModel> implements ISlaveDao{
 	
 	/**
 	 * 获取分机信息列表，但不含分页信息
-	 * @return
 	 */
 	public List<SlaveModel> getSlaveModelList(int uid){
 		return super.list("from SlaveModel where uid="+uid);
@@ -26,7 +25,6 @@ public class SlaveDao extends BaseDao<SlaveModel> implements ISlaveDao{
 	
 	/**
 	 * 获取分机信息列表，包含分页数据
-	 * @return
 	 */
 	public Pager<SlaveModel> getSlaveModelPager(int uid){
 		return super.find("from SlaveModel where uid="+uid);

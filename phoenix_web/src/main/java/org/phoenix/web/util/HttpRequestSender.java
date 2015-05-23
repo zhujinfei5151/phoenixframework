@@ -27,12 +27,6 @@ public class HttpRequestSender {
 	 * 向另一个WEB工程地址模拟http请求，并接收返回的数据<br>
 	 * 返回的数据的格式为xml，需要解析需要的字符<br>
 	 * 设置参数时，参数名与参数值的分割符为“=>”
-	 * <em>编写日期：2013年12月20日 16:27</em>
-	 * @param url
-	 * @param parameter
-	 * @author mengfeiyang
-	 * @since JDK 1.7 及以上
-	 * @since Tomcat 3.0
 	 *
 	 */
 	public static String getResponseByPost(String url, List<String> parameter,String paramType) throws Exception{
@@ -57,12 +51,6 @@ public class HttpRequestSender {
 	 * 向另一个WEB工程地址模拟http请求，并接收返回的数据<br>
 	 * 返回的数据的格式为xml，需要解析需要的字符<br>
 	 * 设置参数时，参数名与参数值的分割符为“=>”
-	 * <em>编写日期：2013年12月20日 16:27</em>
-	 * @param url
-	 * @param parameter
-	 * @author mengfeiyang
-	 * @since JDK 1.7 及以上
-	 * @since Tomcat 3.0
 	 *
 	 */
 	public static String getResponseByGet(String url, List<String> parameter,String paraType) throws Exception{
@@ -87,12 +75,6 @@ public class HttpRequestSender {
 	 * 向另一个WEB工程地址模拟http请求，并接收返回的数据<br>
 	 * 返回的数据的格式为xml，需要解析需要的字符<br>
 	 * 设置参数时，参数名与参数值的分割符为“=>”
-	 * <em>编写日期：2013年12月20日 16:27</em>
-	 * @param url
-	 * @param parameter
-	 * @author mengfeiyang
-	 * @since JDK 1.7 及以上
-	 * @since Tomcat 3.0
 	 *
 	 */
 	public static WebResponse getResponseObjectByPost(String url, List<String> parameter,String paraType) throws Exception{
@@ -116,13 +98,6 @@ public class HttpRequestSender {
 	/**
 	 * 向另一个WEB工程地址模拟http请求，并接收返回的数据<br>
 	 * 返回的数据的格式为xml，需要解析需要的字符<br>
-	 * <em>编写日期：2013年12月20日 16:27</em>
-	 * @param url
-	 * @author mengfeiyang
-	 * @throws IOException 
-	 * @throws SAXException 
-	 * @since JDK 1.7 及以上
-	 * @since Tomcat 3.0
 	 *
 	 */
 	public static String getResponseByGet(String url) throws Exception {
@@ -137,13 +112,6 @@ public class HttpRequestSender {
 	/**
 	 * 向另一个WEB工程地址模拟http请求，并接收返回的数据<br>
 	 * 返回的数据的格式为xml，需要解析需要的字符<br>
-	 * <em>编写日期：2013年12月20日 16:27</em>
-	 * @param url
-	 * @author mengfeiyang
-	 * @throws IOException 
-	 * @throws SAXException 
-	 * @since JDK 1.7 及以上
-	 * @since Tomcat 3.0
 	 *
 	 */
 	public static String getResponseByGet(String url,int connTimeOut,int readTimeout) throws Exception {
@@ -160,9 +128,6 @@ public class HttpRequestSender {
 	
 	/**
 	 * get方式返回一个response对象，通过该对象可以获取响应的内容及状态码
-	 * @param url
-	 * @return
-	 * @throws Exception
 	 */
 	public static WebResponse getResponseObjectByGet(String url) throws Exception {
 		
@@ -174,9 +139,6 @@ public class HttpRequestSender {
 	}
 	/**
 	 * post方式返回一个response对象，通过该对象可以获取响应的内容及状态码
-	 * @param url
-	 * @return
-	 * @throws Exception
 	 */
 	public static WebResponse getResponseObjectByPost(String url) throws Exception {
 		
@@ -189,9 +151,6 @@ public class HttpRequestSender {
 	
 	/**
 	 * 以get方式获取响应码
-	 * @param url
-	 * @return
-	 * @throws Exception
 	 */
 	public static int getResponseCodeByGet(String url) throws Exception {
 		
@@ -204,9 +163,6 @@ public class HttpRequestSender {
 	
 	/**
 	 * 以post方式获取响应码
-	 * @param url
-	 * @return
-	 * @throws Exception
 	 */
 	public static int getResponseCodeByPost(String url) throws Exception {
 		
@@ -220,11 +176,6 @@ public class HttpRequestSender {
 	/**
 	 * 向另一个WEB工程地址模拟http请求，并接收返回的数据<br>
 	 * 返回的数据的格式为xml，需要解析需要的字符<br>
-	 * <em>编写日期：2013年12月20日 16:27</em>
-	 * @param url
-	 * @author mengfeiyang
-	 * @since JDK 1.7 及以上
-	 * @since Tomcat 3.0
 	 *
 	 */
 	public static String getResponseByPost(String url) throws Exception {

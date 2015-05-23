@@ -18,8 +18,6 @@ public interface IBatchLogService {
 	
 	/**
 	 * 获取日志批次列表，包含分页信息
-	 * @param uid
-	 * @return
 	 */
 	Pager<BatchLogBean> getBatchLogPager(int uid);
 	

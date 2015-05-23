@@ -48,9 +48,6 @@ public class LocatorDao extends HibernateDaoImpl<LocatorBean> implements IModelD
 	
 	/**
 	 * 根据用例id，和定位信息的名称加载一条定位信息的记录
-	 * @param locatorName
-	 * @param caseId
-	 * @return
 	 */
 	public LocatorBean loadModel(String locatorName,String caseId){
 		return super.load("from LocatorBean l where l.locatorDataName="+locatorName+" and l.caseBean.id="+caseId);

@@ -15,21 +15,16 @@ public interface IScenarioDao extends IBaseDao<ScenarioBean>{
        
 	/**
 	 * 获取多批及分页信息
-	 * @param uid
-	 * @return
 	 */
 	Pager<ScenarioBean> getScenarioBeanPager(int uid);
 	
 	/**
 	 * 获取当前用户下的所有
-	 * @param uid
-	 * @return
 	 */
 	List<ScenarioBean> getScenarioBeanList(int uid);
 	
 	/**
 	 * 删除指定用户下的场景
-	 * @param uid
 	 */
 	void deleteByUser(int uid);
 }

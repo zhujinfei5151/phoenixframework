@@ -64,11 +64,8 @@ public class CheckPoint implements ICheckPoint{
 		return r;
 	}
 	
-	/**
+	/*
 	 * 校验str2是否包含str1,若包含返回true，否则返回false
-	 * @param str1
-	 * @param str2
-	 * @return
 	 */
 	public String checkIsMatcher(String str1,String str2){
 		if(str2.contains(str1))return null;

@@ -25,7 +25,6 @@ import org.phoenix.basic.paging.SystemContext;
  * 数据库操作的基础类
  * @author mengfeiyang
  *
- * @param <T>
  */
 @SuppressWarnings("unchecked")
 public class BaseDao<T> implements IBaseDao<T> {
