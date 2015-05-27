@@ -8,7 +8,7 @@
   <packaging>pom</packaging>
 
   <name>phoenixframe</name>
-  <description>phoenixframe is a lightweight autotest framework,include webgui,interface,mobile and so on</description>
+  <description>phoenixframe is a lightweight automated testing framework,such as webgui/interface/mobile app automatic test and webgui/interface/mobile app automatic monitoring. </description>
   <url>http://www.cewan.la</url>
   
   <licenses>
@@ -22,6 +22,7 @@
       <developer>
           <name>mengfeiyang</name>
           <email>5156meng.feiyang@163.com</email>
+          <url>http://www.cewan.la</url>
       </developer>
   </developers>
   

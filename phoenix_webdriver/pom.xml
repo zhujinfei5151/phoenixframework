@@ -10,6 +10,8 @@
   </parent>
   
   <artifactId>phoenix_webdriver</artifactId>
+  <version>1.2.3</version>
+  <description>add screenshot point when catch exceptions or errors</description>
   <packaging>jar</packaging>
 
   <name>phoenix_webdriver</name>
@@ -27,6 +29,7 @@
     <dependency>
 		<groupId>${project.groupId}</groupId>
 		<artifactId>phoenix_db</artifactId>
+		<version>1.2.2</version>
 		<scope>compile</scope>
 	</dependency>
 	<dependency>
