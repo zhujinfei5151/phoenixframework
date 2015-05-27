@@ -68,7 +68,7 @@ public class LocatorBean {
 	public void setCaseBean(CaseBean caseBean) {
 		this.caseBean = caseBean;
 	}
-
+	@Column(unique=true,nullable=false)
 	public String getLocatorDataName() {
 		return locatorDataName;
 	}

@@ -67,7 +67,7 @@ public class ScenarioBean {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-
+	@Column(unique=true,nullable=false)
 	public String getScenarioName() {
 		return scenarioName;
 	}

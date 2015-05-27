@@ -2,6 +2,7 @@ package org.phoenix.web.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -65,6 +66,7 @@ public class TaskModel {
 		this.taskType = taskType;
 	}
 	@NotBlank(message="任务名称不能为空")
+	@Column(unique=true)
 	public String getTaskName() {
 		return taskName;
 	}

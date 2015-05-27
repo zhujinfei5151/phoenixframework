@@ -106,7 +106,7 @@ public class CaseBean {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-
+	@Column(unique=true,nullable=false)
 	public String getCaseName() {
 		return caseName;
 	}

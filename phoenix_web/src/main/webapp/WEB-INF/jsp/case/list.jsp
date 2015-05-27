@@ -73,7 +73,6 @@
                   <a href="update/${cs.id}">编辑脚本</a>&nbsp;&nbsp;
                   <a href="<%=request.getContextPath()%>/locator/case/${cs.id}">定位信息</a>&nbsp;&nbsp;
                   <a href="delete/${cs.id}">删除用例</a>&nbsp;&nbsp;
-                  <a href="execute/${cs.id}">执行用例</a>&nbsp;&nbsp;
             </td>
         </tr>
         </c:forEach>

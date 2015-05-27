@@ -8,12 +8,21 @@ import org.phoenix.model.BatchLogBean;
 import org.phoenix.web.dao.IBatchLogDao;
 import org.springframework.stereotype.Repository;
 
+/**
+ * 日志批次操作dao
+ * @author mengfeiyang
+ *
+ */
 @Repository
 public class BatchLogDao extends BaseDao<BatchLogBean> implements IBatchLogDao{
 
+	/*
+	 * (non-Javadoc)
+	 * @see org.phoenix.web.dao.IBatchLogDao#getBatchLogPager(int)
+	 */
 	@Override
 	public Pager<BatchLogBean> getBatchLogPager(int uid) {
-		return super.find("from BatchLogBean where uid="+uid);
+		return super.find("from BatchLogBean where uid="+uid+" order by id desc");
 	}
 
 	@Override
@@ -26,9 +35,13 @@ public class BatchLogDao extends BaseDao<BatchLogBean> implements IBatchLogDao{
 	 */
 	@Override
 	public List<BatchLogBean> getBathLogListByTaskType(String type,int uid) {
-		return super.list("from BatchLogBean where taskType like '%"+type+"' And uid="+uid);
+		return super.list("from BatchLogBean where taskType like '%"+type+"' And uid="+uid+" order by id desc");
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see org.phoenix.web.dao.IBatchLogDao#getBatchLogBean(int)
+	 */
 	@Override
 	public BatchLogBean getBatchLogBean(int id) {
 		return super.load(id);

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -89,7 +90,7 @@ public class User {
 	public void setRole(int role) {
 		this.role = role;
 	}
-
+	@Column(unique=true,nullable=false)
 	public String getRoleName() {
 		return roleName;
 	}
@@ -120,6 +121,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@Column(unique=true,nullable=false)
 	public String getNickname() {
 		return nickname;
 	}

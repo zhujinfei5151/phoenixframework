@@ -62,7 +62,6 @@
                   <a href="update/${ss.id}">编辑场景</a>&nbsp;&nbsp;
                   <!-- <a href="<%=request.getContextPath()%>/case/${ss.id}">用例查看</a>&nbsp;&nbsp; -->
                   <a href="delete/${ss.id}">删除场景</a>&nbsp;&nbsp;
-                  <a href="execute/${ss.id}">执行场景</a>&nbsp;&nbsp;
             </td>
         </tr>
         </c:forEach>
