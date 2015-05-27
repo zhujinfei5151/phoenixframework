@@ -31,9 +31,6 @@ public class DwrService implements IDwrService{
 	@RemoteMethod
 	public List<StatisticsDTO> listScenarioStatus(int id) {
 		List<StatisticsDTO> statusList = statService.getScenarioStatistics(id);
-		for(StatisticsDTO s : statusList){
-			System.out.println(s.getBatchId() +" "+s.getCasename() +"  "+s.getScenarioName()+" "+s.getType()+" "+s.getSuccess()+" "+s.getFail());
-		}
 		return statusList;
 	}
 

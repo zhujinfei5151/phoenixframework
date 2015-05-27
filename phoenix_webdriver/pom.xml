@@ -5,12 +5,11 @@
   <parent>
     <groupId>org.phoenixframe</groupId>
     <artifactId>phoenix_parent</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.3</version>
     <relativePath>../phoenix_parent/pom.xml</relativePath>
   </parent>
   
   <artifactId>phoenix_webdriver</artifactId>
-  <version>1.2.3</version>
   <description>add screenshot point when catch exceptions or errors</description>
   <packaging>jar</packaging>
 
@@ -29,7 +28,6 @@
     <dependency>
 		<groupId>${project.groupId}</groupId>
 		<artifactId>phoenix_db</artifactId>
-		<version>1.2.2</version>
 		<scope>compile</scope>
 	</dependency>
 	<dependency>
