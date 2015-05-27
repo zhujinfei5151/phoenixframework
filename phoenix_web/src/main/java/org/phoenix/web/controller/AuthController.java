@@ -102,7 +102,12 @@ public class AuthController {
     	    	                    "{"+
 		    	                        "\"id\": \"7\","+
 		    	                        "\"text\": \"用例统计图\","+
-		    	                        "\"href\": \"chart/WEB_CASE\""+
+		    	                        "\"href\": \"chart/CASE\""+
+	    	                        "},"+
+    	    	                    "{"+
+		    	                        "\"id\": \"8\","+
+		    	                        "\"text\": \"场景统计图\","+
+		    	                        "\"href\": \"chart/SCENARIO\""+
 	    	                        "}"+
     	    	                "]"+
     	    	            "}"+
@@ -186,7 +191,12 @@ public class AuthController {
     	    	                    "{"+
 		    	                        "\"id\": \"7\","+
 		    	                        "\"text\": \"用例统计图\","+
-		    	                        "\"href\": \"chart/WEB_CASE\""+
+		    	                        "\"href\": \"chart/CASE\""+
+	    	                        "},"+
+    	    	                    "{"+
+		    	                        "\"id\": \"8\","+
+		    	                        "\"text\": \"场景统计图\","+
+		    	                        "\"href\": \"chart/SCENARIO\""+
 	    	                        "}"+
     	    	                "]"+
     	    	            "}"+

@@ -22,7 +22,7 @@ public interface IBatchLogDao extends IBaseDao<BatchLogBean>{
 	 */
 	Pager<BatchLogBean> getBatchLogPager(int uid);
 	
-	List<BatchLogBean> getBathLogList(int uid);
+	List<BatchLogBean> getBathLogListByTaskType(String type,int uid);
 	
 	BatchLogBean getBatchLogBean(int id);
 }

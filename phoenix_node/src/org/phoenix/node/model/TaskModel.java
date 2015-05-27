@@ -14,8 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.phoenix.node.dto.TaskStatusType;
 import org.phoenix.node.dto.TaskType;
+import org.phoenix.utils.TaskStatusType;
 
 @Entity
 @Table(name="t_task")

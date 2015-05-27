@@ -29,6 +29,7 @@ public class Servlet extends HttpServlet {
 	private ExecutorService executorService;
 	private CompletionService<AjaxObj> threadPool;
 	private Future<AjaxObj> future;
+	private String contentPath;
     public Servlet() {
         super();
     }
@@ -37,6 +38,7 @@ public class Servlet extends HttpServlet {
 		executorService = Executors.newSingleThreadExecutor();		
 		threadPool = new ExecutorCompletionService<AjaxObj>(executorService);
 		future = threadPool.submit(new ActionHandler());
+		contentPath = config.getServletContext().getRealPath("");
 	}
 	
 	public void destroy() {
@@ -57,7 +59,7 @@ public class Servlet extends HttpServlet {
 		TaskType taskType = Enum.valueOf(TaskType.class, request.getParameter("taskType"));
 		taskDataDTO.setTaskId(Integer.parseInt(request.getParameter("taskId")));
 		taskDataDTO.setTaskType(taskType);
-		actionFactory.setTaskType(taskType);
+		taskDataDTO.setContentPath(contentPath);
 		actionFactory.setTaskDataDTO(taskDataDTO);
 		if(future.isDone()){
 			future = threadPool.submit(actionFactory);

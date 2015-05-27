@@ -42,8 +42,8 @@ public class BatchLogService implements IBatchLogService{
 		return batchLogDao.getBatchLogPager(uid);
 	}
 	@Override
-	public List<BatchLogBean> getBatchLogList(int uid) {
-		return batchLogDao.getBathLogList(uid);
+	public List<BatchLogBean> getBatchLogListByType(String type,int uid) {
+		return batchLogDao.getBathLogListByTaskType(type,uid);
 	}
 	/*
 	 * (non-Javadoc)

@@ -22,8 +22,12 @@ public class StatService implements IStatService{
 	}
 
 	@Override
-	public List<StatisticsDTO> getStatusByCaseLogId(int id) {
-		return statDao.getStatusByCaseLogId(id);
+	public List<StatisticsDTO> getCaseStatistics(int id) {
+		return statDao.getCaseStatusByBatchLogId(id);
+	}
+	@Override
+	public List<StatisticsDTO> getScenarioStatistics(int id) {
+		return statDao.getScenarioStatusByBatchLogId(id);
 	}
 	
 }

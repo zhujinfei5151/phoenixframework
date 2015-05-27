@@ -5,5 +5,6 @@ import java.util.List;
 import org.phoenix.web.dto.StatisticsDTO;
 
 public interface IStatService {
-	List<StatisticsDTO> getStatusByCaseLogId(int id);
+	List<StatisticsDTO> getCaseStatistics(int id);
+	List<StatisticsDTO> getScenarioStatistics(int id);
 }

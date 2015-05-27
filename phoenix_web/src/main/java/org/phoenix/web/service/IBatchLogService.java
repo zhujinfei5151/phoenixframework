@@ -21,7 +21,7 @@ public interface IBatchLogService {
 	 */
 	Pager<BatchLogBean> getBatchLogPager(int uid);
 	
-	List<BatchLogBean> getBatchLogList(int uid);
+	List<BatchLogBean> getBatchLogListByType(String type,int uid);
 	
 	BatchLogBean getBatchLogBean(int id);
 }

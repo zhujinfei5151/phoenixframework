@@ -7,6 +7,7 @@ import org.phoenix.web.dto.TaskType;
 import org.phoenix.web.model.User;
 import org.phoenix.web.service.IBatchLogService;
 import org.phoenix.web.service.ICaseLogService;
+import org.phoenix.web.service.IScenarioLogService;
 import org.phoenix.web.service.IUnitLogService;
 import org.phoenix.web.util.EnumUtils;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ public class LogController {
 	private IBatchLogService batchLogService;
 	private ICaseLogService caseLogService;
 	private IUnitLogService unitLogService;
+	private IScenarioLogService scenarioLogService;
 	
 	public IBatchLogService getBatchLogService() {
 		return batchLogService;
@@ -37,7 +39,6 @@ public class LogController {
 		this.caseLogService = caseLogService;
 	}
 
-
 	public IUnitLogService getUnitLogService() {
 		return unitLogService;
 	}
@@ -45,7 +46,14 @@ public class LogController {
 	public void setUnitLogService(IUnitLogService unitLogService) {
 		this.unitLogService = unitLogService;
 	}
-
+	
+	public IScenarioLogService getScenarioLogService() {
+		return scenarioLogService;
+	}
+	@Resource
+	public void setScenarioLogService(IScenarioLogService scenarioLogService) {
+		this.scenarioLogService = scenarioLogService;
+	}
 	@RequestMapping("/batchlist")
 	public String batchList(Model model,HttpSession session){
 		User u = (User) session.getAttribute("loginUser");
@@ -61,32 +69,33 @@ public class LogController {
 	
 	@RequestMapping("/WEB_CASE/{id}")
 	public String batchCaseList(@PathVariable Integer id,HttpSession session,Model model){
-		session.setAttribute("caseloguri", "WEB_CASE");
-		session.setAttribute("caselogid", id);
+		model.addAttribute("logId", id);
 		model.addAttribute("datas", caseLogService.getCaseLogPagerByBatchLog(id));
 		return "log/bcaselist";
 	}
-	@RequestMapping("/WEB_SCENARIO/{id}")
-	public String scenCaseList(@PathVariable Integer id,HttpSession session,Model model){
-		session.setAttribute("caseloguri", "WEB_SCENARIO");
-		session.setAttribute("caselogid", id);
+	
+	@RequestMapping("/scenCaseList/{id}")
+	public String scenCaseList(@PathVariable Integer id,Model model){
 		model.addAttribute("datas", caseLogService.getCaseLogPagerByScenarioLog(id));
 		return "log/scaselist";
 	}
-	@RequestMapping("/deletecaselog/{id}")
-	public String deleteCaseLog(@PathVariable Integer id,HttpSession session){
-		caseLogService.deleteCaseLog(id);
-		return "redirect:/log/"+session.getAttribute("caseloguri")+"/"+session.getAttribute("caselogid");
+	
+	@RequestMapping("/WEB_SCENARIO/{id}")
+	public String scenList(@PathVariable Integer id,Model model){
+		model.addAttribute("batchLogId", id);
+		model.addAttribute("datas", scenarioLogService.getLogPager(id));
+		return "log/scenlist";
 	}
+	
+	@RequestMapping("/deletecaselog/{sid}/{id}")
+	public String deleteScenCaseLog(@PathVariable Integer sid,@PathVariable Integer id){
+		caseLogService.deleteCaseLog(id);
+		return "redirect:/log/scenCaseList/"+sid;
+	}
+	
 	@RequestMapping("/unitLogList/{id}")
 	public String unitLogList(@PathVariable Integer id,Model model){
 		model.addAttribute("datas", unitLogService.getUnitLogPager(id));
 		return "log/unitlist";
-	}
-	
-	@RequestMapping("/deleteUnitLog/{caseid}/{unitlogId}")
-	public String deleteUnitLog(@PathVariable Integer caseid,@PathVariable Integer unitlogId,HttpSession session){
-		unitLogService.deleteUnitLog(unitlogId);
-		return "redirect:/log/unitLogList/"+caseid;
 	}
 }

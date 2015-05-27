@@ -13,6 +13,7 @@ public class SlaveModel {
 	
 	private int id;
 	private String slaveIP;
+	private String attachPath;
 	private String status;
 	private String remark;
 	private int uid;
@@ -30,6 +31,12 @@ public class SlaveModel {
 	}
 	public void setSlaveIP(String slaveIP) {
 		this.slaveIP = slaveIP;
+	}
+	public String getAttachPath() {
+		return attachPath;
+	}
+	public void setAttachPath(String attachPath) {
+		this.attachPath = attachPath;
 	}
 	public String getRemark() {
 		return remark;

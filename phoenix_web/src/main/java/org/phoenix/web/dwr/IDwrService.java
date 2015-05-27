@@ -7,6 +7,7 @@ import org.phoenix.web.dto.StatisticsDTO;
 public interface IDwrService {
 
 	
-	List<StatisticsDTO> listStatus(int id);
+	List<StatisticsDTO> listCaseStatus(int id);
+	List<StatisticsDTO> listScenarioStatus(int id);
 	
 }

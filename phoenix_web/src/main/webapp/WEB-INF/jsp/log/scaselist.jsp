@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>场景日志列表</title>
+    <title>用例日志列表</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/Css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/Css/bootstrap-responsive.css" />
@@ -36,15 +36,14 @@
 </head>
 <body>
 <form class="form-inline definewidth m20" action="" method="get">  
-    场景日志详细：
-    <hr>
+    用例日志详细：<hr>
 </form>
-<input type="hidden" id="scenarioId" value="${scenId }">
 <table class="table table-bordered table-hover definewidth m10" >
     <thead>
     <tr>
         <th>日志编号</th>
-        <th>场景Id</th>
+        <th>场景日志Id</th>
+        <th>用例名称</th>
         <th>客户端IP</th>
         <th>状态</th>
         <th>驱动类型</th>
@@ -55,14 +54,15 @@
        <c:forEach items="${datas.datas}" var="cs">
 	     <tr>
             <td>${cs.id }</td>
-            <td>${cs.scenarioLogBeanId }
+            <td>${cs.scenarioLogBeanId }</td>
+            <td>${cs.caseName }</td>
             <td>${cs.clientIP }</td>
             <td>${cs.status }</td>
-            <td>${cs.EngineType }</td>
+            <td>${cs.engineType }</td>
             <%-- <td><fmt:formatDate value="${cs.createDate }" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate></td> --%>
             <td>
                   <a href="<%=request.getContextPath()%>/log/unitLogList/${cs.id}">详细信息</a>&nbsp;&nbsp;
-                  <a href="<%=request.getContextPath()%>/log/deletecaselog/${cs.id}">删除日志</a>&nbsp;&nbsp;
+                  <a href="<%=request.getContextPath()%>/log/deletecaselog/${cs.scenarioLogBeanId}/${cs.id }">删除日志</a>&nbsp;&nbsp;
             </td>
         </tr>
         </c:forEach>

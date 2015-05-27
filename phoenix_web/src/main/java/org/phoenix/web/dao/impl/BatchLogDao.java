@@ -20,10 +20,13 @@ public class BatchLogDao extends BaseDao<BatchLogBean> implements IBatchLogDao{
 	public void deleteBatchLog(int id) {
 		super.delete(id);
 	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see org.phoenix.web.dao.IBatchLogDao#getBathLogListByTaskType(String, int)
+	 */
 	@Override
-	public List<BatchLogBean> getBathLogList(int uid) {
-		return super.list("from BatchLogBean where uid="+uid);
+	public List<BatchLogBean> getBathLogListByTaskType(String type,int uid) {
+		return super.list("from BatchLogBean where taskType like '%"+type+"' And uid="+uid);
 	}
 
 	@Override

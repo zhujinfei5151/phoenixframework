@@ -27,6 +27,7 @@ public class CaseLogBean {
 	private String duration;
 	private String status;
 	private String caseName;
+	private String attachPath;
 	private int scenarioLogBeanId;
 	private BatchLogBean batchLogBean;
 	private Set<UnitLogBean> unitLogBeans;
@@ -99,7 +100,15 @@ public class CaseLogBean {
 		this.status = status;
 	}
 
-    public int getScenarioLogBeanId() {
+    public String getAttachPath() {
+		return attachPath;
+	}
+
+	public void setAttachPath(String attachPath) {
+		this.attachPath = attachPath;
+	}
+
+	public int getScenarioLogBeanId() {
 		return scenarioLogBeanId;
 	}
 

@@ -23,8 +23,17 @@ public class DwrService implements IDwrService{
 
 	@Override
 	@RemoteMethod
-	public List<StatisticsDTO> listStatus(int id) {
-		List<StatisticsDTO> statusList = statService.getStatusByCaseLogId(id);
+	public List<StatisticsDTO> listCaseStatus(int id) {
+		List<StatisticsDTO> statusList = statService.getCaseStatistics(id);
+		return statusList;
+	}
+	@Override
+	@RemoteMethod
+	public List<StatisticsDTO> listScenarioStatus(int id) {
+		List<StatisticsDTO> statusList = statService.getScenarioStatistics(id);
+		for(StatisticsDTO s : statusList){
+			System.out.println(s.getBatchId() +" "+s.getCasename() +"  "+s.getScenarioName()+" "+s.getType()+" "+s.getSuccess()+" "+s.getFail());
+		}
 		return statusList;
 	}
 

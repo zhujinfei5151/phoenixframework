@@ -38,7 +38,6 @@
 <form class="form-inline definewidth m20" action="" method="get">  
     用例日志详细：<hr>
 </form>
-<input type="hidden" id="scenarioId" value="${scenId }">
 <table class="table table-bordered table-hover definewidth m10" >
     <thead>
     <tr>
@@ -63,7 +62,7 @@
             <%-- <td><fmt:formatDate value="${cs.createDate }" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate></td> --%>
             <td>
                   <a href="<%=request.getContextPath()%>/log/unitLogList/${cs.id}">详细信息</a>&nbsp;&nbsp;
-                  <a href="<%=request.getContextPath()%>/log/deletecaselog/${cs.id}">删除日志</a>&nbsp;&nbsp;
+                  <a href="<%=request.getContextPath()%>/log/deletebatch/${logId}">删除日志</a>&nbsp;&nbsp;
             </td>
         </tr>
         </c:forEach>

@@ -50,7 +50,7 @@
     
     function showChart() {
         var caseLogId = $(".chosen-select").val();
-        dwrService.listStatus(parseInt(caseLogId),function(statusList){
+        dwrService.listCaseStatus(parseInt(caseLogId),function(statusList){
     		for(var i=0;i<statusList.length;i++){
     			if(statusList[i].type == 'STEP'){
     				ss = statusList[i].success;
@@ -119,22 +119,22 @@
 <body>
 <form class="form-inline definewidth m20" action="index.jsp" method="get">  
        批次值：
-    <select data-placeholder="请选择一个批次" id="chosen-select" class="chosen-select" style="width:210px;" tabindex="2">
+    <select data-placeholder="请选择一个批次" id="chosen-select" class="chosen-select" style="width:310px;" tabindex="2">
       	<option value=""></option>
       	<c:forEach items="${blist }" var="bl">
       	   <c:choose>
       	      <c:when test="${not empty lbean }">
       	      	<c:choose>
       	   		   <c:when test="${lbean.id eq bl.id }">
-      	   		   		<option selected="selected" value="${bl.id }">${bl.id } - ${bl.batchId }</option>
+      	   		   		<option selected="selected" value="${bl.id }">${bl.id } - ${bl.batchId } ${bl.taskType }</option>
       	   		   </c:when>
       	   		   <c:otherwise>
-      	   		  	 	<option value="${bl.id }">${bl.id } - ${bl.batchId }</option>
+      	   		  	 	<option value="${bl.id }">${bl.id } - ${bl.batchId } ${bl.taskType }</option>
       	   		   </c:otherwise>
       	   		</c:choose>
       	      </c:when>
       	      <c:otherwise>
-      	      	<option value="${bl.id }">${bl.id } - ${bl.batchId }</option>
+      	      	<option value="${bl.id }">${bl.id } - ${bl.batchId } ${bl.taskType }</option>
       	      </c:otherwise>
       	   </c:choose>
 			

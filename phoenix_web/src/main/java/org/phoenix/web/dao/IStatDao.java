@@ -6,5 +6,6 @@ import org.phoenix.basic.dao.IBaseDao;
 import org.phoenix.web.dto.StatisticsDTO;
 
 public interface IStatDao extends IBaseDao<StatisticsDTO>{
-	List<StatisticsDTO> getStatusByCaseLogId(int id);
+	List<StatisticsDTO> getCaseStatusByBatchLogId(int id);
+	List<StatisticsDTO> getScenarioStatusByBatchLogId(int id);
 }

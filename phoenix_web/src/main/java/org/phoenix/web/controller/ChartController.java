@@ -26,25 +26,33 @@ public class ChartController {
 		this.batchLogService = batchLogService;
 	}
 
-	@RequestMapping(value="/WEB_CASE",method=RequestMethod.GET)
+	@RequestMapping(value="/CASE",method=RequestMethod.GET)
 	public String getCaseStatistics(Model model,HttpSession session){
 		User u = (User)session.getAttribute("loginUser");
-		model.addAttribute("blist", batchLogService.getBatchLogList(u.getId()));
+		model.addAttribute("blist", batchLogService.getBatchLogListByType("CASE",u.getId()));
 		return "chart/sta_case";
 	}
 	
-	@RequestMapping(value="/WEB_CASE/{id}",method=RequestMethod.GET)
+	@RequestMapping(value="/CASE/{id}",method=RequestMethod.GET)
 	public String getCaseStatistics(@PathVariable Integer id,Model model,HttpSession session){
 		User u = (User)session.getAttribute("loginUser");
 		model.addAttribute("lbean", batchLogService.getBatchLogBean(id));
-		model.addAttribute("blist", batchLogService.getBatchLogList(u.getId()));
+		model.addAttribute("blist", batchLogService.getBatchLogListByType("CASE",u.getId()));
 		return "chart/sta_case";
 	}
 	
-	@RequestMapping(value="/scenario",method=RequestMethod.GET)
+	@RequestMapping(value="/SCENARIO",method=RequestMethod.GET)
 	public String getScenarioStatistics(Model model,HttpSession session){
 		User u = (User)session.getAttribute("loginUser");
-		model.addAttribute("blist", batchLogService.getBatchLogList(u.getId()));
+		model.addAttribute("blist", batchLogService.getBatchLogListByType("SCENARIO",u.getId()));
+		return "chart/sta_scenario";
+	}
+	
+	@RequestMapping(value="/SCENARIO/{id}",method=RequestMethod.GET)
+	public String getScenarioStatistics(@PathVariable Integer id,Model model,HttpSession session){
+		User u = (User)session.getAttribute("loginUser");
+		model.addAttribute("lbean", batchLogService.getBatchLogBean(id));
+		model.addAttribute("blist", batchLogService.getBatchLogListByType("SCENARIO",u.getId()));
 		return "chart/sta_scenario";
 	}
 }

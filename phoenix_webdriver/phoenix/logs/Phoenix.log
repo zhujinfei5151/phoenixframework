@@ -8,3 +8,4 @@
 2015-05-15 11:18:23 [ main:31 ] - [ INFO ] HHH000043: Configuring from resource: /hibernate.cfg.xml
 2015-05-15 11:18:23 [ main:31 ] - [ INFO ] HHH000040: Configuration resource: /hibernate.cfg.xml
 2015-05-15 11:18:23 [ main:187 ] - [ INFO ] HHH000041: Configured SessionFactory: null
+2015-05-26 16:36:09 [ main:0 ] - [ ERROR ] 截图失败,系统找不到指定的路径。

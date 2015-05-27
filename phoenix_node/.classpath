@@ -42,8 +42,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/log4j-1.2.16.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.17-bin.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/phoenix_db-0.0.1-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/phoenix_webdriver-0.0.1-SNAPSHOT-sources.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/phoenix_webdriver-0.0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/platform-3.4.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/quartz.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/selenide-2.15-sources.jar"/>

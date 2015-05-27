@@ -44,10 +44,11 @@
 <table class="table table-bordered table-hover definewidth m10" >
     <thead>
     <tr>
-        <th>节点编号</th>
-        <th>节点IP</th>
-        <th>节点说明</th>
-        <th>管理操作</th>
+        <th width="8%">节点编号</th>
+        <th width="15%">节点IP</th>
+        <th width="22%">节点说明</th>
+        <th width="40%">附件路径（自动产生）</th>
+        <th width="15%">管理操作</th>
     </tr>
     </thead>
     <tbody>
@@ -56,6 +57,7 @@
             <td>${ss.id }</td>
             <td>${ss.slaveIP }
             <td>${ss.remark }</td>
+            <td>${ss.attachPath }</td>
             <td>
                   <a href="update/${ss.id}">编辑节点</a>&nbsp;&nbsp;
                   <a href="delete/${ss.id}">删除节点</a>&nbsp;&nbsp;

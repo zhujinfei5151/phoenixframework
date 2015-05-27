@@ -63,7 +63,6 @@
             <td>${us.caseLogBean.id }</td>
             <td>${us.screenShot }</td>
             <td>
-                <a href="<%=request.getContextPath()%>/log/deleteUnitLog/${us.caseLogBean.id}/${us.id}">删除</a>&nbsp;&nbsp;
                 <a href="execute/${cs.id}">详细</a>&nbsp;&nbsp;
             </td>
         </tr>
