@@ -14,6 +14,8 @@ import org.phoenix.web.filter.InitServlet;
 import org.phoenix.web.model.SlaveModel;
 import org.phoenix.web.model.TaskModel;
 import org.phoenix.web.model.User;
+import org.phoenix.web.service.ICaseService;
+import org.phoenix.web.service.IScenarioService;
 import org.phoenix.web.service.ISlaveService;
 import org.phoenix.web.service.ITaskService;
 import org.phoenix.web.util.EnumUtils;
@@ -33,7 +35,23 @@ import com.alibaba.fastjson.JSON;
 public class TaskController {
 	private ITaskService taskService;
 	private ISlaveService slaveService;
+	private ICaseService caseService;
+	private IScenarioService scenarioService;
 	
+	public IScenarioService getScenarioService() {
+		return scenarioService;
+	}
+	@Resource
+	public void setScenarioService(IScenarioService scenarioService) {
+		this.scenarioService = scenarioService;
+	}
+	public ICaseService getCaseService() {
+		return caseService;
+	}
+	@Resource
+	public void setCaseService(ICaseService caseService) {
+		this.caseService = caseService;
+	}
 	public ITaskService getTaskService() {
 		return taskService;
 	}
@@ -69,8 +87,10 @@ public class TaskController {
 		return "task/add";
 	}
 	@RequestMapping(value="/add",method=RequestMethod.POST)
-	public String add(@Valid TaskModelDTO taskModelDTO,BindingResult br,HttpSession httpSession){
+	public String add(@Valid TaskModelDTO taskModelDTO,BindingResult br,HttpSession httpSession,Model model){
 		if(br.hasErrors()){
+			User u = (User)httpSession.getAttribute("loginUser");
+			model.addAttribute("slaves", slaveService.getSlaveModelList(u.getId()));
 			return "task/add";
 		}
 		SlaveModel slaveModel = new SlaveModel();
@@ -83,7 +103,8 @@ public class TaskController {
 		taskModel.setTaskParameter(taskModelDTO.getTaskParameter());
 		taskModel.setTaskStatusType(TaskStatusType.NOT_RUNNING);
 		taskModel.setTaskType(taskModelDTO.getTaskType());
-		taskModel.setTaskData(taskModelDTO.getTaskData());
+		taskModel.setTaskData(taskModelDTO.getTaskData().split("_")[0]);
+		taskModel.setBeanName(taskModelDTO.getTaskData().split("_")[1]);
 		taskService.add(taskModel);
 		return "redirect:/task/list";
 	}
@@ -95,15 +116,22 @@ public class TaskController {
 	@RequestMapping(value="/update/{id}",method=RequestMethod.GET)
 	public String update(@PathVariable Integer id,Model model,HttpSession session){
 		User user = (User)session.getAttribute("loginUser");
+		TaskModel taskModel = taskService.getTaskModel(id);
+		TaskType taskType = taskModel.getTaskType();
 		model.addAttribute("types", EnumUtils.enumProp2NameMap(TaskType.class, "name"));
 		model.addAttribute("slaves", slaveService.getSlaveModelList(user.getId()));
-		model.addAttribute("taskModel",taskService.getTaskModel(id));
+		model.addAttribute("taskModel",taskModel);
 		model.addAttribute("taskModelDTO",new TaskModelDTO());
+		if("WEB_CASE".equals(taskType.getName()))model.addAttribute("beanList", caseService.getCaseBeanListByUser(user.getId()));
+		if("WEB_SCENARIO".equals(taskType.getName()))model.addAttribute("beanList", scenarioService.getScenarioBeanList(user.getId()));
+
 		return "task/edit";
 	}
 	@RequestMapping(value="/update/{id}",method=RequestMethod.POST)
-	public String update(@PathVariable Integer id,@Valid TaskModelDTO taskModelDTO,BindingResult br,Model model){
+	public String update(@PathVariable Integer id,@Valid TaskModelDTO taskModelDTO,BindingResult br,Model model,HttpSession session){
 		if(br.hasErrors()){
+			User u = (User)session.getAttribute("loginUser");
+			model.addAttribute("slaves", slaveService.getSlaveModelList(u.getId()));
 			return "task/edit";
 		}
 		SlaveModel slaveModel = new SlaveModel();
@@ -115,7 +143,8 @@ public class TaskController {
 		taskModelSrc.setTaskStatusType(taskModelDTO.getTaskStatusType());
 		taskModelSrc.setTaskType(taskModelDTO.getTaskType());
 		taskModelSrc.setTaskStatusType(TaskStatusType.NOT_RUNNING);
-		taskModelSrc.setTaskData(taskModelDTO.getTaskData());
+		taskModelSrc.setTaskData(taskModelDTO.getTaskData().split("_")[0]);
+		taskModelSrc.setBeanName(taskModelDTO.getTaskData().split("_")[1]);
 		taskService.update(taskModelSrc);
 		return "redirect:/task/list";
 	}

@@ -7,11 +7,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.phoenix.aop.CheckPointInvocationHandler;
 import org.phoenix.aop.PhoenixLogger;
+import org.phoenix.dao.DataDao;
+import org.phoenix.dao.LocatorDao;
 import org.phoenix.model.CaseLogBean;
+import org.phoenix.model.DataBean;
 import org.phoenix.model.LocatorBean;
 import org.phoenix.model.UnitLogBean;
 
@@ -30,26 +32,38 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 	private LocatorBean locatorBean;
 	private LinkedList<UnitLogBean> unitLog;
 	private ElementAction webProxy;
+	private LocatorDao locatorDao = new LocatorDao();
+	private DataDao dataDao = new DataDao();
 	private HashMap<String,LocatorBean> locators = new HashMap<String,LocatorBean>();
+	private HashMap<String,String> datas = new HashMap<String,String>();
 	private CaseLogBean caseLogBean;
+
 	public WebElementAction(LinkedList<UnitLogBean> unitLog) {
 		new PhoenixLogger();
 		this.unitLog = unitLog;
 	}
 	
-	public void addLocators(int caseId,CaseLogBean caseLogBean){
+	public void addLocatorAndDatas(int caseId,CaseLogBean caseLogBean){
 		setCaseLogBean(caseLogBean);
-		List<LocatorBean> list = getModelList(caseId);
-		for(LocatorBean locatorBean : list){
+		List<LocatorBean> llist = locatorDao.getModelList(caseId);
+		List<DataBean> dlist = dataDao.getModelList(caseId);
+		for(LocatorBean locatorBean : llist){
 			locators.put(locatorBean.getLocatorDataName(), locatorBean);
+		}
+		for(DataBean dataBean : dlist){
+			datas.put(dataBean.getDataName(), dataBean.getDataContent());
 		}
 	}
 	
-	public void addLocators(String caseName,CaseLogBean caseLogBean){
+	public void addLocatorAndDatas(String caseName,CaseLogBean caseLogBean){
 		setCaseLogBean(caseLogBean);
-		List<LocatorBean> list = getModelList(caseName);
+		List<LocatorBean> list = locatorDao.getModelList(caseName);
+		List<DataBean> dlist = dataDao.getModelList(caseName);
 		for(LocatorBean locatorBean : list){
 			locators.put(locatorBean.getLocatorDataName(), locatorBean);
+		}
+		for(DataBean dataBean : dlist){
+			datas.put(dataBean.getDataName(), dataBean.getDataContent());
 		}
 	}
 	
@@ -82,7 +96,10 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 		ICheckPoint checkPoint = (ICheckPoint)new CheckPointInvocationHandler(new CheckPoint(),unitLog,caseLogBean).getProxy();
 		return checkPoint;
 	}
-	
+	@Override
+	public String getData(String dataName){
+		return datas.get(dataName);
+	}
 	//WebElementAction.class.getResource("/").getPath().replace("%20", " ")
 	@Override
 	public void openNewWindowByIE(String url){
@@ -138,7 +155,7 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 		return WebElement(locatorBean.getLocatorData(),locatorBean.getLocatorType()).exists();
 	}
 
-	@Override
+/*	@Override
 	public SelenideElement $(String cssSelector) {
 		return WebElement(locatorBean.getLocatorData(),locatorBean.getLocatorType()).$(cssSelector);
 	}
@@ -161,11 +178,15 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 	@Override
 	public ElementsCollection $$(String cssSelector) {
 		return WebElement(locatorBean.getLocatorData(),locatorBean.getLocatorType()).$$(cssSelector);
-	}
+	}*/
 
+	/*
+	 * 根据定位信息获取对象列表
+	 * @see org.phoenix.action.ElementAction#getElements()
+	 */
 	@Override
-	public ElementsCollection $$(By selector) {
-		return WebElement(locatorBean.getLocatorData(),locatorBean.getLocatorType()).$$(selector);
+	public ElementsCollection getElements() {
+		return WebElements(locatorBean.getLocatorData(),locatorBean.getLocatorType());
 	}
 
 	@Override
@@ -383,13 +404,13 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 	}
 
 	@Override
-	public SelenideElement selectRadio(By by,String value) {
-		return Selenide.selectRadio(by, value);
+	public SelenideElement selectRadio(String value) {
+		return Selenide.selectRadio(by(locatorBean.getLocatorData(),locatorBean.getLocatorType()), value);
 	}
 
 	@Override
-	public SelenideElement getSelectedRadio(By by) {
-		return Selenide.getSelectedRadio(by);
+	public SelenideElement getSelectedRadio() {
+		return Selenide.getSelectedRadio(by(locatorBean.getLocatorData(),locatorBean.getLocatorType()));
 	}
 
 	@Override

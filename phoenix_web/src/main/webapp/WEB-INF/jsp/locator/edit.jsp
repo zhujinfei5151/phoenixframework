@@ -38,7 +38,7 @@
 <table class="table table-bordered table-hover definewidth m10">
     <tr>
         <td width="10%" class="tableleft">所属用例</td>
-        <td><sf:input path="caseId" id="caseId" value="${locatorBean.caseBean.id}"/><sf:errors path="caseId"/></td>
+        <td><sf:input path="caseId" id="caseId" type="hidden" value="${locatorBean.caseBean.id}"/>${locatorBean.caseBean.caseName }</td>
     </tr>
     <tr>
         <td width="10%" class="tableleft">数据ID</td>

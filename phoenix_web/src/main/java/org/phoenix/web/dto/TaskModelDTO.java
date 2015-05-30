@@ -16,6 +16,7 @@ public class TaskModelDTO {
 		private TaskType taskType;
 		private String taskName;
 		private String taskData;
+		private String beanName;
 		private int slaveId;
 		private String taskParameter;
 		private String message;
@@ -104,5 +105,13 @@ public class TaskModelDTO {
 		}
 		public void setUser(User user) {
 			this.user = user;
+		}
+
+		public String getBeanName() {
+			return beanName;
+		}
+
+		public void setBeanName(String beanName) {
+			this.beanName = beanName;
 		}
 }

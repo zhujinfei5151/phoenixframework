@@ -2,7 +2,6 @@ package org.phoenix.cases;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -11,11 +10,10 @@ import org.junit.Test;
 import org.phoenix.action.LocatorType;
 import org.phoenix.dao.LocatorDao;
 import org.phoenix.model.CaseBean;
-import org.phoenix.model.DataBean;
 import org.phoenix.model.LocatorBean;
 import org.phoenix.model.ScenarioBean;
 import org.phoenix.model.SuperDataBean;
-import org.phoenix.model.TestCode;
+import org.phoenix.model.TestDataBean;
 import org.phoenix.powertools.HibernateUtil;
 import org.phoenix.powertools.Obj2Stream;
 
@@ -152,8 +150,8 @@ public class TestCase {
 	
 	@Test
 	public void test03() throws IOException{
-		SuperDataBean u = new DataBean("1","张三","");
-		SuperDataBean u2 = new DataBean("2","李四","");
+		SuperDataBean u = new TestDataBean("1","张三","");
+		SuperDataBean u2 = new TestDataBean("2","李四","");
 		List<SuperDataBean> list = new ArrayList<SuperDataBean>();
 		list.add(u);
 		list.add(u2);
@@ -177,8 +175,8 @@ public class TestCase {
 			session = HibernateUtil.openSession();
 			Query query = session.createQuery("from DataBean where locatorType=?")
 					.setParameter(0, "css");
-			List<DataBean> list = query.list();
-			for(DataBean lb : list){
+			List<TestDataBean> list = query.list();
+			for(TestDataBean lb : list){
 				System.out.println(lb.getLocatorName());
 			}
 		} catch (Exception e) {

@@ -52,7 +52,7 @@ public class LocatorController {
 
 	@RequestMapping(value="/add/{id}",method=RequestMethod.GET)
 	public String add(@PathVariable Integer id,Model model){
-		model.addAttribute("caseId", id);
+		model.addAttribute("caseBean", caseService.getCaseBean(id));
 		model.addAttribute("types", EnumUtils.enumProp2NameMap(LocatorType.class, "name"));
 		model.addAttribute("locatorDTO", new LocatorDTO());
 		return "locator/add";

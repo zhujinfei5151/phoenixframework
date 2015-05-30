@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="t_data")
-public class DataBean implements SuperDataBean{
+public class TestDataBean implements SuperDataBean{
 	
 	private static final long serialVersionUID = 1L;
 	private int id;
@@ -15,10 +15,10 @@ public class DataBean implements SuperDataBean{
 	private String locatorData;
 	private String locatorType;
 	
-	public DataBean() {
+	public TestDataBean() {
 	}	
 
-	public DataBean(String locatorName, String locatorData,
+	public TestDataBean(String locatorName, String locatorData,
 			String locatorType) {
 		super();
 		this.locatorName = locatorName;

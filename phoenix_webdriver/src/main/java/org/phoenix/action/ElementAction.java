@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.logging.Level;
 
-import org.openqa.selenium.By;
 import org.phoenix.model.CaseLogBean;
 
 import com.codeborne.selenide.Condition;
@@ -20,11 +19,12 @@ import com.codeborne.selenide.SelenideElement;
  */
 public interface ElementAction {
 	
-	void addLocators(int caseId,CaseLogBean caseLogBean);
-	void addLocators(String caseName,CaseLogBean caseLogBean);
+	void addLocatorAndDatas(int caseId,CaseLogBean caseLogBean);
+	void addLocatorAndDatas(String caseName,CaseLogBean caseLogBean);
 	ElementAction webElement();
 	ElementAction webElement(String name);
 	ICheckPoint checkPoint();
+	String getData(String dataName);
 	void setWebProxy(ElementAction webProxy);
 	
 	/*
@@ -114,35 +114,13 @@ public interface ElementAction {
 	 */
 	void waitUntil(Condition condition, long timeoutMilliseconds);
 	
-	/**
-	 * 在指定元素后定位另一元素，根据css值，
-	 */
-	SelenideElement $(String cssSelector);
-	
-	/**
-	 * 在指定元素后定位另一元素，根据css值，若元素有多个，则可以根据index顺序指定
-	 */
+
+/*	SelenideElement $(String cssSelector);
 	SelenideElement $(String cssSelector, int index);
-	
-	/**
-	 * 根据指定的By对象定位
-	 */
 	SelenideElement $(By selector);
-	
-	/**
-	 * 根据指定的By对象定位，指定index定位指定顺序的对象
-	 */
 	SelenideElement $(By selector, int index);
-	
-	/**
-	 * 获取一个对象列表，根据css值
-	 */
-	ElementsCollection $$(String cssSelector);
-	
-	/**
-	 * 获取对象列表，根据By对象
-	 */
-	ElementsCollection $$(By selector);
+	ElementsCollection $$(String cssSelector);*/
+	ElementsCollection getElements();
 	
 	/**
 	 * 上传一个文件
@@ -227,9 +205,9 @@ public interface ElementAction {
 	
 	void confirm(String expectedDialogText);
 	
-	SelenideElement selectRadio(By by,String value);
+	SelenideElement selectRadio(String value);
 	
-	SelenideElement getSelectedRadio(By by);
+	SelenideElement getSelectedRadio();
 	
 	void dismiss(String expectedDialogText);
 	

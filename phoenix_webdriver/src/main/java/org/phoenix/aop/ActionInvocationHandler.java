@@ -32,7 +32,7 @@ public class ActionInvocationHandler implements InvocationHandler {
 		Object result = null;
 		try{
 			result = method.invoke(this.target, args);
-			if(!method.getName().equals("checkPoint") && !method.getName().equals("webElement") && !method.getName().equals("toString")){
+			if(!method.getName().equals("checkPoint") && !method.getName().equals("webElement") && !method.getName().equals("toString") && !method.getName().equals("getData")){
 				unitLog.add(new UnitLogBean("步骤 [ "+method.getName()+" ]执行成功，参数值："+Arrays.toString(args)+",执行结果返回值："+result,method.getName(),"STEP","SUCCESS","",caseLogBean));
 				PhoenixLogger.info("步骤 [ "+method.getName()+" ]执行成功，参数值："+Arrays.toString(args)+",执行结果返回值："+result);
 			}
@@ -40,8 +40,8 @@ public class ActionInvocationHandler implements InvocationHandler {
 			long picName = new Date().getTime();
 			String picPath = ScreenShot.TakeScreenshot(caseLogBean.getAttachPath()+"/screenshot/"+picName+".jpg");
 			String picWebPath = "<a href='http://"+caseLogBean.getClientIP()+"/phoenix_node/screenshot/"+picName+".jpg' target='_blank'>点击查看</a>";
-			unitLog.add(new UnitLogBean("步骤 [ "+method.getName()+" ]执行失败，参数值："+Arrays.toString(args)+",异常信息："+e.getClass().getName()+","+e.getMessage(),method.getName(),"STEP","FAIL",picWebPath,caseLogBean));
-			PhoenixLogger.info("步骤 [ "+method.getName()+" ]执行失败，参数值："+Arrays.toString(args)+",异常信息："+e.getClass().getSimpleName()+","+e.getMessage()+",截图路径："+picPath);
+			unitLog.add(new UnitLogBean("步骤 [ "+method.getName()+" ]执行失败，参数值："+Arrays.toString(args)+",异常信息："+e.getClass().getSimpleName()+",msg:"+e.getMessage()+",caused by:"+e.getCause().toString(),method.getName(),"STEP","FAIL",picWebPath,caseLogBean));
+			PhoenixLogger.info("步骤 [ "+method.getName()+" ]执行失败，参数值："+Arrays.toString(args)+",异常信息："+e.getClass().getSimpleName()+",msg:"+e.getMessage()+",caused by:"+e.getCause().toString()+",截图路径："+picPath);
 		}
 		return result;
 	}

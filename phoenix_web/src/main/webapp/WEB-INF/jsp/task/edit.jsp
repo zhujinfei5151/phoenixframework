@@ -9,14 +9,16 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/Css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/Css/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/Css/style.css" />
-    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/Js/jquery-1.7.2.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/xheditor/xheditor-1.2.1.min.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/xheditor/xheditor_lang/zh-cn.js"></script>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/Css/chosen.css" />
     <script type="text/javascript" src="<%=request.getContextPath()%>/resources/Js/jquery.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/resources/Js/jquery.sorted.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/resources/Js/bootstrap.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/resources/Js/ckform.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/resources/Js/common.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/Js/chosen.jquery.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/dwr/engine.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/dwr/interface/dwrService.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/Js/typechoose.js"></script>
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -34,6 +36,14 @@
             }
         }
     </style>
+        <script type="text/javascript">
+    	function getSelect(data){
+    		$("#taskData").empty();
+    		typeSelect(data);
+            $(".chosen-select").chosen();
+    	}
+    	
+    </script>
 </head>
 <sf:form method="post" action="${taskModel.id }" modelAttribute="taskModelDTO">
 <table class="table table-bordered table-hover definewidth m10">
@@ -44,7 +54,7 @@
     <tr>
         <td width="10%" class="tableleft">任务类型</td>
         <td>
-           <sf:select path="taskType">
+           <sf:select path="taskType" onchange="getSelect(this.value)">
               <c:forEach items="${types }" var="ts">
                 <c:choose>
                   <c:when test="${ts.key eq taskModel.taskType }">
@@ -60,7 +70,29 @@
     </tr>
     <tr>
         <td class="tableleft">任务数据Id</td>  
-        <td><sf:input path="taskData" value="${taskModel.taskData }"/><sf:errors path="taskData"/></td>
+        <td><%-- <sf:input path="taskData" value="${taskModel.taskData }"/> --%>
+            <sf:select data-placeholder="请选择一个任务" class="chosen-select" style="width:260px;" tabindex="2" path="taskData">
+				<c:choose>
+					<c:when test="${'WEB_CASE' eq taskModel.taskType }">
+					  <c:forEach items="${beanList }" var="bl">
+					  	<c:choose>
+					  		<c:when test="${bl.id eq taskModel.taskData }"><sf:option value="${bl.id }" selected="selected">${bl.id } - ${bl.caseName }</sf:option></c:when>
+					  		<c:otherwise><sf:option value="${bl.id }_${bl.caseName }">${bl.id } - ${bl.caseName }</sf:option></c:otherwise>
+					  	</c:choose>
+					  </c:forEach>
+					</c:when>
+					<c:when test="${'WEB_SCENARIO' eq taskModel.taskType }">
+					  <c:forEach items="${beanList }" var="bl">
+					  	<c:choose>
+					  		<c:when test="${bl.id eq taskModel.taskData }"><sf:option value="${bl.id }" selected="selected">${bl.id } - ${bl.scenarioName }</sf:option></c:when>
+					  		<c:otherwise><sf:option value="${bl.id }_${bl.scenarioName }">${bl.id } - ${bl.scenarioName }</sf:option></c:otherwise>
+					  	</c:choose>
+					  </c:forEach>
+					</c:when> 
+				</c:choose>
+	        </sf:select>
+        	<sf:errors path="taskData"/>
+        </td>
     </tr> 
     <tr>
         <td class="tableleft">选择执行机</td>   
@@ -96,6 +128,9 @@
     </tr>
 </table>
 </sf:form>
+<script type="text/javascript">
+	$(".chosen-select").chosen();
+</script>
 <script type="text/javascript">
     $(function () {       
 		$('#backid').click(function(){

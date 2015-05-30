@@ -28,6 +28,7 @@
 		<mapping class="org.phoenix.model.LocatorBean"/>
 		<mapping class="org.phoenix.model.ScenarioBean"/>
 		<mapping class="org.phoenix.model.CaseBean"/>
+		<mapping class="org.phoenix.model.DataBean"/>
 		<mapping class="org.phoenix.model.BatchLogBean"/>
 		<mapping class="org.phoenix.model.CaseLogBean"/>
 		<mapping class="org.phoenix.model.UnitLogBean"/>

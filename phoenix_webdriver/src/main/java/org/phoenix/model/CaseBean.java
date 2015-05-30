@@ -36,6 +36,7 @@ public class CaseBean {
 	private ScenarioBean scenarioBean;
 	private int userId;
 	private Set<LocatorBean> locatorBeans;
+	private Set<DataBean> dataBeans;
 	
 	public CaseBean() {
 		// TODO Auto-generated constructor stub
@@ -97,6 +98,16 @@ public class CaseBean {
 
 	public void setLocatorBeans(Set<LocatorBean> locatorBeans) {
 		this.locatorBeans = locatorBeans;
+	}
+	@OneToMany(mappedBy="caseBean",targetEntity=DataBean.class)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @Fetch(FetchMode.SUBSELECT)
+	public Set<DataBean> getDataBeans() {
+		return dataBeans;
+	}
+
+	public void setDataBeans(Set<DataBean> dataBeans) {
+		this.dataBeans = dataBeans;
 	}
 
 	public int getStatus() {

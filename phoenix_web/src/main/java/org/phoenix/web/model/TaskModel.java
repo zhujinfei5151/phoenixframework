@@ -27,6 +27,7 @@ public class TaskModel {
 	private TaskType taskType;
 	private String taskName;
 	private String taskData;
+	private String beanName;
 	private SlaveModel slaveModel;
 	private String taskParameter;
 	private String message;
@@ -70,6 +71,15 @@ public class TaskModel {
 	public String getTaskName() {
 		return taskName;
 	}
+	
+	public String getBeanName() {
+		return beanName;
+	}
+
+	public void setBeanName(String beanName) {
+		this.beanName = beanName;
+	}
+
 	public void setTaskName(String taskName) {
 		this.taskName = taskName;
 	}

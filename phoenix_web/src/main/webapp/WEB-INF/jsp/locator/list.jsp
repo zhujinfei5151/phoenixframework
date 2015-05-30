@@ -36,7 +36,7 @@
 </head>
 <body>
 <form class="form-inline definewidth m20" action="index.jsp" method="get">  
-    当前用例名称：${caseBean.caseName} &nbsp;&nbsp; caseId：${caseBean.id } &nbsp;&nbsp;<button type="button" class="btn btn-success" id="addnew">新增定位信息</button>
+    当前用例名称：${caseBean.caseName} &nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增定位信息</button>
 </form>
 <input type="hidden" id="caseId" value="${caseBean.id}">
 <table class="table table-bordered table-hover definewidth m10" >

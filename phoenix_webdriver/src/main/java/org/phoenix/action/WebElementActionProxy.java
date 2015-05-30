@@ -25,13 +25,13 @@ public abstract class WebElementActionProxy {
 	
 	public void init(int caseId,CaseLogBean caseLogBean){
 		webProxy = (ElementAction)new ActionInvocationHandler(new WebElementAction(unitLog),unitLog,caseLogBean).getProxy();
-		webProxy.addLocators(caseId, caseLogBean);
+		webProxy.addLocatorAndDatas(caseId, caseLogBean);
 		webProxy.setWebProxy(webProxy);
 	}
 	
 	public void init(String caseName,CaseLogBean caseLogBean){
 		webProxy = (ElementAction)new ActionInvocationHandler(new WebElementAction(unitLog),unitLog,caseLogBean).getProxy();
-		webProxy.addLocators(caseName, caseLogBean);
+		webProxy.addLocatorAndDatas(caseName, caseLogBean);
 		webProxy.setWebProxy(webProxy);
 	}
 }

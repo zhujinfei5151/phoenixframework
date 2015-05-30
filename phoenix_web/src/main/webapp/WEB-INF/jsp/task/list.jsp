@@ -93,16 +93,16 @@
             <td>${ts.taskName }
             <td>${ts.taskType }</td>
 			<td>${ts.slaveModel.slaveIP }</td>
-			<td>${ts.taskData }</td>
+			<td>${ts.taskData }(${ts.beanName })</td>
 			<td>${ts.taskStatusType }</td>
 			<td>${ts.taskParameter }</td>
             <td><fmt:formatDate value="${ts.startTime }" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate></td>
             <td><fmt:formatDate value="${ts.endTime }" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate></td>
             <td>
-                  <a href="update/${ts.id}">编辑任务</a>&nbsp;&nbsp;
-                  <a href="delete/${ts.id}">删除任务</a>&nbsp;&nbsp;
-                  <a href="javascript:start('${ts.id }');">启动任务</a>&nbsp;&nbsp;
-                  <a href="stop/${ts.id}">停止任务</a>&nbsp;&nbsp;
+                  <a href="update/${ts.id}">编辑</a>&nbsp;&nbsp;
+                  <a href="delete/${ts.id}">删除</a>&nbsp;&nbsp;
+                  <a href="javascript:start('${ts.id }');">启动</a>&nbsp;&nbsp;
+                  <a href="stop/${ts.id}">停止</a>&nbsp;&nbsp;
             </td>
         </tr>
         </c:forEach>

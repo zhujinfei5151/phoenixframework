@@ -18,6 +18,7 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 	<!-- 加入实体类的映射文件 -->	
 		<mapping class="org.phoenix.model.LocatorBean"/>
+		<mapping class="org.phoenix.model.DataBean"/>
 		<mapping class="org.phoenix.model.ScenarioBean"/>
 		<mapping class="org.phoenix.model.CaseBean"/>
 		<mapping class="org.phoenix.model.BatchLogBean"/>

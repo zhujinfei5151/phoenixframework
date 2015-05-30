@@ -34,11 +34,11 @@
         }
     </style>
 </head>
-<sf:form method="post" action="${caseId}" modelAttribute="locatorDTO" id="addForm">
+<sf:form method="post" action="${caseBean.id}" modelAttribute="locatorDTO" id="addForm">
 <table class="table table-bordered table-hover definewidth m10">
     <tr>
         <td width="10%" class="tableleft">所属用例</td>
-        <td><sf:input path="caseId" id="caseId" value="${caseId }"/><sf:errors path="caseId"/></td>
+        <td><sf:input path="caseId" id="caseId" type="hidden" value="${caseBean.id }"/>${caseBean.caseName }</td>
     </tr>
     <tr>
         <td width="10%" class="tableleft">数据标识</td>

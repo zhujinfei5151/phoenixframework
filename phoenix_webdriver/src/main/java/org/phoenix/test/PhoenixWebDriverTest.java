@@ -6,6 +6,9 @@ import org.phoenix.action.WebElementActionProxy;
 import org.phoenix.model.CaseLogBean;
 import org.phoenix.model.UnitLogBean;
 
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
+
 public class PhoenixWebDriverTest extends WebElementActionProxy {
 	public static int caseName=1;
 	public PhoenixWebDriverTest() {
@@ -18,6 +21,10 @@ public class PhoenixWebDriverTest extends WebElementActionProxy {
 		webProxy.webElement("set").setText("123");
 		String s = webProxy.webElement("click").getAttrValue("value");
 		System.out.println(s);
+		ElementsCollection el = webProxy.webElement("").getElements();
+		for(SelenideElement se : el){
+			se.val();
+		}
 		webProxy.webElement("click").click();
 		webProxy.checkPoint().checkIsEqual("百度一下", s);
 		webProxy.sleep(1000);
