@@ -25,6 +25,7 @@
 			<mvc:mapping path="/log/**"/>
 			<mvc:mapping path="/chart/**"/>
 			<mvc:mapping path="/data/**"/>
+			<mvc:mapping path="/attach/**"/>
 			<bean class="org.phoenix.web.filter.AuthInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>

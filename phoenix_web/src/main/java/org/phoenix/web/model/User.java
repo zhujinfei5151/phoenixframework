@@ -34,6 +34,7 @@ public class User {
 	private String email;
 	private Date createDate;
 	private Set<TaskModel> taskModels;
+	private Set<AttachModel> attachModels;
 	
 	public User() {
 	}
@@ -74,6 +75,16 @@ public class User {
 	public void setTaskModels(Set<TaskModel> taskModels) {
 		this.taskModels = taskModels;
 	}
+	@OneToMany(mappedBy="user",targetEntity=AttachModel.class)
+    @LazyCollection(LazyCollectionOption.EXTRA)
+    @Fetch(FetchMode.SUBSELECT)
+	public Set<AttachModel> getAttachModels() {
+		return attachModels;
+	}
+
+	public void setAttachModels(Set<AttachModel> attachModels) {
+		this.attachModels = attachModels;
+	}
 
 	public Date getCreateDate() {
 		return createDate;
@@ -108,6 +119,7 @@ public class User {
 		this.id = id;
 	}
 	@NotEmpty(message="用户名不能为空")
+	@Column(unique=true,nullable=false)
 	public String getUsername() {
 		return username;
 	}

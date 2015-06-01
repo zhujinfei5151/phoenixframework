@@ -110,7 +110,17 @@ public class AuthController {
 		    	                        "\"href\": \"chart/SCENARIO\""+
 	    	                        "}"+
     	    	                "]"+
-    	    	            "}"+
+    	    	            "},"+
+    	    	            "{"+
+		    	               "\"text\": \"附件管理\","+
+		    	               "\"items\": ["+
+		    	                      "{"+
+		    	                        "\"id\": \"9\","+
+		    	                        "\"text\": \"我的附件\","+
+		    	                        "\"href\": \"attach/list\""+
+		    	                      "}"+
+		    	                   "]"+
+	    	                "}"+
     	    	        "]"+
     	    	    "}"+
     	    	"]";
@@ -199,7 +209,17 @@ public class AuthController {
 		    	                        "\"href\": \"chart/SCENARIO\""+
 	    	                        "}"+
     	    	                "]"+
-    	    	            "}"+
+    	    	            "},"+
+    	    	            "{"+
+		    	               "\"text\": \"附件管理\","+
+		    	               "\"items\": ["+
+		    	                      "{"+
+		    	                        "\"id\": \"9\","+
+		    	                        "\"text\": \"我的附件\","+
+		    	                        "\"href\": \"attach/list\""+
+		    	                      "}"+
+		    	                   "]"+
+	    	                "}"+
     	    	        "]"+
     	    	    "}"+
     	    	"]";
