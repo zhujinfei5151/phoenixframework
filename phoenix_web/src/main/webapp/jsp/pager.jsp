@@ -27,7 +27,7 @@
 			[ ${pageNumber } ]
 		</c:if>
 		<c:if test="${curPage != pageNumber }">
-			<a href="${pageUrl }" class="pager_link">${pageNumber }</a>
+			<a href="${pageUrl }" class="pager_link">[ ${pageNumber } ]</a>
 		</c:if>
 	</pg:pages>
 	<pg:next>
@@ -36,5 +36,5 @@
 	<pg:last>
 		<a href="${pageUrl }" class="pager_link">尾页</a>
 	</pg:last>
+		</span>
 	</pg:pager>
-	</span>

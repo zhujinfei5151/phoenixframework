@@ -13,4 +13,9 @@ public class AttachDao extends BaseDao<AttachModel> implements IAttachDao{
 		return super.find("from AttachModel where user.id="+id);
 	}
 
+	@Override
+	public Pager<AttachModel> getAttachPagerByKeyWord(int uid, String keyWord) {
+		return super.find("from AttachModel where user.id="+uid+" And attachName like '%"+keyWord+"%'");
+	}
+
 }

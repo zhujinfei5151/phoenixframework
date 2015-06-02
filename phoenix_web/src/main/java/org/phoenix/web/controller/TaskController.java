@@ -74,7 +74,20 @@ public class TaskController {
 	@RequestMapping("/list")
 	public String list(Model model,HttpSession httpSession){
 		User u = (User)httpSession.getAttribute("loginUser");
+		model.addAttribute("types", EnumUtils.enumProp2NameMap(TaskType.class, "name"));
+		model.addAttribute("status", EnumUtils.enumProp2NameMap(TaskStatusType.class, "name"));
 		model.addAttribute("datas",taskService.getTaskModelPagerByUser(u.getId()));
+		
+		return "task/list";
+	}
+	@RequestMapping(value="/select",method=RequestMethod.POST)
+	public String select(String type,String tstatus,Model model,HttpSession session){
+		User u = (User)session.getAttribute("loginUser");
+		model.addAttribute("types", EnumUtils.enumProp2NameMap(TaskType.class, "name"));
+		model.addAttribute("status", EnumUtils.enumProp2NameMap(TaskStatusType.class, "name"));
+		model.addAttribute("tstatus", tstatus);
+		model.addAttribute("type", type);
+		model.addAttribute("datas", taskService.getTaskModelPagerBySelect(u.getId(), tstatus, type));
 		return "task/list";
 	}
 	

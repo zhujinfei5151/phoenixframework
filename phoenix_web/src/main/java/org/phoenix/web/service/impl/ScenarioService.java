@@ -58,4 +58,9 @@ public class ScenarioService implements IScenarioService{
 		scenarioDao.deleteByUser(uid);
 	}
 
+	@Override
+	public Pager<ScenarioBean> getScenarioBeanPager(int uid, String keyWord) {
+		return scenarioDao.getSceanrioBeanPagerBykeyWord(uid, keyWord);
+	}
+
 }

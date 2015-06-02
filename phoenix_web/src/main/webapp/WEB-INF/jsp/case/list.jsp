@@ -35,9 +35,9 @@
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="index.jsp" method="get">  
+<form class="form-inline definewidth m20" action="select" method="post">  
     用例名称：
-    <input type="text" name="rolename" id="rolename"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;  
+    <input type="text" name="keyWord" id="keyWord" class="abc input-default" placeholder="支持模糊查询..." value="${keyWord }"/>&nbsp;&nbsp;  
     <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增用例</button>
 </form>
 <input type="hidden" id="scenarioId" value="${scenId }">

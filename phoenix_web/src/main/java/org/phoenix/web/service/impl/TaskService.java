@@ -55,5 +55,10 @@ public class TaskService implements ITaskService{
 	public Pager<TaskModel> getTaskModelPagerByStatus(TaskStatusType taskStatusType) {
 		return taskDao.getTaskModelPagerByStatus(taskStatusType);
 	}
+	@Override
+	public Pager<TaskModel> getTaskModelPagerBySelect(int uid, String status,
+			String taskType) {
+		return taskDao.getTaskModelPagerBySelect(uid, status, taskType);
+	}
 
 }

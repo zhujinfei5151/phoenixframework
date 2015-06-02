@@ -18,6 +18,8 @@ public interface IScenarioDao extends IBaseDao<ScenarioBean>{
 	 */
 	Pager<ScenarioBean> getScenarioBeanPager(int uid);
 	
+	Pager<ScenarioBean> getSceanrioBeanPagerBykeyWord(int uid,String keyWord);
+	
 	/*
 	 * 获取当前用户下的所有
 	 */

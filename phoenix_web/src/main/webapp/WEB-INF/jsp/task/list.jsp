@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -55,20 +56,44 @@
 			    method:"POST", 
 			    success:function(d){
 			    	obj = JSON.parse(d);//字符串转为json对象
-			    	if(obj.result == 1){
-			    		myDialog.content(obj.msg);
-			    	} else {
-			    		myDialog.content(obj.msg);
-			    	}
+			    	myDialog.content(obj.msg);
 			    },
 			});
       }
    </script>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="index.jsp" method="get">  
-    任务名称：
-    <input type="text" name="rolename" id="rolename"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;  
+<form class="form-inline definewidth m20" action="select" method="post">  
+    任务类型：
+        <select name="type">
+           <option value="">显示全部</option>
+           <c:forEach items="${types }" var="t">
+                <c:choose>
+                	<c:when test="${t.key eq type }">
+                		<option value="${t.key }" selected="selected">${t.value }</option>
+                	</c:when>
+                	<c:otherwise>
+                		<option value="${t.key }">${t.value }</option>
+                	</c:otherwise>
+                </c:choose>
+           </c:forEach>
+        </select>
+    &nbsp;&nbsp;  
+  任务状态：
+        <select name="tstatus">
+           <option value="">显示全部</option>
+           <c:forEach items="${status }" var="s">
+           		<c:choose>
+                	<c:when test="${s.key eq tstatus }">
+                		<option value="${s.key }" selected="selected">${s.value }</option>
+                	</c:when>
+                	<c:otherwise>
+                		<option value="${s.key }">${s.value }</option>
+                	</c:otherwise>
+                </c:choose>
+           </c:forEach>
+        </select>
+     &nbsp;&nbsp;
     <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">添加任务</button>
 </form>
 <table class="table table-bordered table-hover definewidth m10" >

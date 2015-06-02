@@ -46,6 +46,13 @@ public class ScenarioController {
 		model.addAttribute("datas", scenarioService.getScenarioBeanPager(u.getId()));
 		return "scenario/list";
 	}
+	@RequestMapping(value="/select",method=RequestMethod.POST)
+	public String select(String keyWord,Model model,HttpSession httpSession){
+		User u = (User)httpSession.getAttribute("loginUser");
+		model.addAttribute("keyWord",keyWord);
+		model.addAttribute("datas", scenarioService.getScenarioBeanPager(u.getId(), keyWord));
+		return "scenario/list";
+	}
 	@RequestMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id){
 		scenarioService.delete(id);

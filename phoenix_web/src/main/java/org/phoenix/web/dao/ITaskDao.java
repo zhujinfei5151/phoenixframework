@@ -20,4 +20,5 @@ public interface ITaskDao extends IBaseDao<TaskModel>{
       * 根据任务类型筛选
       */
      Pager<TaskModel> getTaskModelPagerByStatus(TaskStatusType status);
+     Pager<TaskModel> getTaskModelPagerBySelect(int uid,String status,String taskType);
 }

@@ -29,4 +29,10 @@ public class ScenarioDao extends BaseDao<ScenarioBean> implements IScenarioDao{
         super.updateByHql("delete ScenarioBean sc where sc.userId=?", uid);		
 	}
 
+	@Override
+	public Pager<ScenarioBean> getSceanrioBeanPagerBykeyWord(int uid,
+			String keyWord) {
+		return super.find("from ScenarioBean where userId="+uid+" And scenarioName like '%"+keyWord+"%'");
+	}
+
 }

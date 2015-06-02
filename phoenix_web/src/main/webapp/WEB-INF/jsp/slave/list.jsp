@@ -36,9 +36,7 @@
 </head>
 <body>
 <form class="form-inline definewidth m20" action="index.jsp" method="get">  
-    节点名称：
-    <input type="text" name="rolename" id="rolename"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;  
-    <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增节点</button>
+<button type="button" class="btn btn-success" id="addnew">新增节点</button>
 </form>
 <input type="hidden" id="scenarioId" value="${scenId }">
 <table class="table table-bordered table-hover definewidth m10" >

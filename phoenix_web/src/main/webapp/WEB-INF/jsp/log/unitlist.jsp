@@ -72,12 +72,10 @@
 <div class="inline pull-right page">
 		<jsp:include page="/jsp/pager.jsp">
 			<jsp:param value="${datas.total }" name="totalRecord"/>
-			<jsp:param value="list" name="url"/>
+			<jsp:param value="${us.id }" name="url"/>
 		</jsp:include>
- </div>       
-</body>
-</html>
-<script>
+ </div>  
+ <script>
     $(function () {
 		$('#addnew').click(function(){
 			var scenarioId = $("#scenarioId").val();
@@ -98,4 +96,6 @@
 		}
 	
 	}
-</script>
+</script>     
+</body>
+</html>

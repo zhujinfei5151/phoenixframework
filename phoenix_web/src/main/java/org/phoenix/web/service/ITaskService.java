@@ -37,5 +37,7 @@ public interface ITaskService {
 	 * 根据任务状态加载，并加载分页信息
 	 */
 	Pager<TaskModel> getTaskModelPagerByStatus(TaskStatusType taskStatusType);
+	
+	Pager<TaskModel> getTaskModelPagerBySelect(int uid, String status,String taskType);
 
 }

@@ -32,5 +32,13 @@ public class AttachService implements IAttachService{
 	public AttachModel add(AttachModel attachModel) {
 		return attachDao.add(attachModel);
 	}
+	@Override
+	public AttachModel getAttachModel(int id) {
+		return attachDao.load(id);
+	}
+	@Override
+	public Pager<AttachModel> getAttachPagerByKeyWord(int uid, String keyWord) {
+		return attachDao.getAttachPagerByKeyWord(uid, keyWord);
+	}
 
 }

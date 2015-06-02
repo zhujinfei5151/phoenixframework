@@ -33,7 +33,7 @@
         }
     </style>
 </head>
-<form method="post" action="add" id="addForm">
+<form method="post" action="add" id="addForm" enctype="multipart/form-data">
 <table class="table table-bordered table-hover definewidth m10">
     <tr>
         <td width="10%" class="tableleft"></td>
@@ -44,11 +44,11 @@
     <tr>
         <td width="10%" class="tableleft">添加附件</td>
         <td>
-        	<input type="file" id="attachs" name="attachs"/><br/>
-        	<input type="file" id="attachs" name="attachs"/><br/>
-        	<input type="file" id="attachs" name="attachs"/><br/>
-        	<input type="file" id="attachs" name="attachs"/><br/>
-        	<input type="file" id="attachs" name="attachs"/><br/>
+        	<input type="file" name="attachs"/><br/>
+        	<input type="file" name="attachs"/><br/>
+        	<input type="file" name="attachs"/><br/>
+        	<input type="file" name="attachs"/><br/>
+        	<input type="file" name="attachs"/><br/>
         </td>
     </tr>
     <tr>

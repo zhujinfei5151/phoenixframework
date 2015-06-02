@@ -72,6 +72,13 @@ public class CaseController {
 		model.addAttribute("datas",caseService.getCaseBeanPagerByUser(u.getId()));
 		return "case/list";
 	}
+	@RequestMapping(value="/select",method=RequestMethod.POST)
+	public String select(String keyWord,Model model,HttpSession session){
+		User u = (User)session.getAttribute("loginUser");
+		model.addAttribute("keyWord", keyWord);
+		model.addAttribute("datas", caseService.getCaseBeanPagerByKeyWord(u.getId(), keyWord));
+		return "case/list";
+	}
 	
 	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
 	public String delCase(@PathVariable int id){

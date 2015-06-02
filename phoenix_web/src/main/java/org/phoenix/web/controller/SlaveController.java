@@ -98,7 +98,7 @@ public class SlaveController {
     			  AjaxObj ajaxObj = JSON.toJavaObject(JSONObject.parseObject(webResponse.getText()), AjaxObj.class);
     			  s.setStatus(webResponse.getResponseCode()+","+ajaxObj.getMsg());
 				} catch (Exception e) {
-					s.setStatus(webResponse.getResponseCode()+",状态异常："+e.getMessage());
+					s.setStatus("状态异常："+e.getMessage());
 				}
     	 }
     	  model.addAttribute("datas", slaveList);

@@ -38,6 +38,7 @@ public interface IScenarioService {
     * 加载多个，并且获取分页信息，根据用户的uid
     */
    Pager<ScenarioBean> getScenarioBeanPager(int uid);
+   Pager<ScenarioBean> getScenarioBeanPager(int uid,String keyWord);
    /*
     * 获取当前用户下的场景列表
     */

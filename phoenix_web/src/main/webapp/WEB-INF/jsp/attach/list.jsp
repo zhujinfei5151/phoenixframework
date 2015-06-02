@@ -35,9 +35,9 @@
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="index.jsp" method="get">  
+<form class="form-inline definewidth m20" action="select" method="post">  
     附件名称：
-    <input type="text" name="rolename" id="rolename"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;  
+    <input type="text" name="keyWord" id="keyWord" class="abc input-default" placeholder="支持模糊查询..." value="${keyWord }"/>&nbsp;&nbsp;  
     <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">添加附件</button>
 </form>
 <table class="table table-bordered table-hover definewidth m10" >
@@ -57,7 +57,7 @@
             <td>${cs.id }</td>
             <td>${cs.attachName }
             <td>${cs.attachType }</td>
-            <td>${cs.attachPath }</td>
+            <td><a href="${cs.attachPath }" target="_blank" title="点击查看附件">${cs.attachPath }</a></td>
             <td><fmt:formatDate value="${cs.createDate }" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate></td>
             <td>
                   <a href="delete/${cs.id}">删除附件</a>&nbsp;&nbsp;
