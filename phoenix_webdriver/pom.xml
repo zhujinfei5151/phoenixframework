@@ -10,7 +10,7 @@
   </parent>
   
   <artifactId>phoenix_webdriver</artifactId>
-  <description>add screenshot point when catch exceptions or errors</description>
+  <description>add msgpool support for send email</description>
   <packaging>jar</packaging>
 
   <name>phoenix_webdriver</name>

@@ -11,6 +11,7 @@
   
   <artifactId>phoenix_web</artifactId>
   <packaging>war</packaging>
+  <description>add email send , quartz task, attach upload function. </description>
   <name>phoenix_web Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
