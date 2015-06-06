@@ -1,10 +1,12 @@
 package org.phoenix.web.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.phoenix.basic.paging.Pager;
+import org.phoenix.enums.TaskStatusType;
 import org.phoenix.web.dao.ITaskDao;
-import org.phoenix.web.dto.TaskStatusType;
 import org.phoenix.web.model.TaskModel;
 import org.phoenix.web.service.ITaskService;
 import org.springframework.stereotype.Service;
@@ -27,8 +29,8 @@ public class TaskService implements ITaskService{
 	}
 
 	@Override
-	public void add(TaskModel taskModel) {
-		taskDao.add(taskModel);
+	public TaskModel add(TaskModel taskModel) {
+		return taskDao.add(taskModel);
 	}
 
 	@Override
@@ -59,6 +61,10 @@ public class TaskService implements ITaskService{
 	public Pager<TaskModel> getTaskModelPagerBySelect(int uid, String status,
 			String taskType) {
 		return taskDao.getTaskModelPagerBySelect(uid, status, taskType);
+	}
+	@Override
+	public List<TaskModel> getTaskModelListForJob() {
+		return taskDao.getTaskModelListByJob();
 	}
 
 }

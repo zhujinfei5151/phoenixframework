@@ -64,7 +64,10 @@
     $(function () {       
 		$('#backid').click(function(){
 			var caseId = $("#caseId").val();
-				window.location.href="list/"+caseId;
+			var localObj = window.location;
+			var contextPath = localObj.pathname.split("/")[1];
+			var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
+			window.location.href=basePath+"/data/list/"+${caseBean.id };
 		 });
 
     });

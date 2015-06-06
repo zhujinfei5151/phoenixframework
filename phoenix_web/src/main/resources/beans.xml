@@ -15,23 +15,42 @@
          http://www.springframework.org/schema/tx 
          http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
          
-	<!-- 打开Spring的Annotation支持 -->
 	<context:annotation-config />
-	<!-- 设定Spring 去哪些包中找Annotation -->
 	<context:component-scan base-package="org.phoenix.web" />
 	<tx:annotation-driven transaction-manager="transactionManager" /> 
 	<mvc:resources location="/resources/" mapping="/resources/**"/>
 	
-	<!-- 整合Spring第一步创建JavaMailSenderImpl对象 -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	 <property name="host" value="smtp.163.com" />    
+     <property name="port" value="25" />
+     <property name="defaultEncoding" value="UTF-8"/>    
+     <property name="username" value="5156meng.feiyang" />    
+     <property name="password" value="xxxx" /> 
 	  <property name="javaMailProperties">
 	  	<props>
 	  		<prop key="mail.smtp.auth">true</prop>
+	  		<prop key="mail.setFrom">5156meng.feiyang@163.com</prop>
 	  	</props>
 	  </property>
 	</bean>
-	<!-- 正常的情况如果要发送邮件，需要异步发送，否则会把大量的时间浪费发送邮件上面
-	此时可能会造成用户重复刷新，使用Spring的ThreadPoolTaskExecutor可以方便实现多线程的程序 -->
+	
+	<bean id="InitMsg" class="org.phoenix.web.quartz.InitMsg"></bean>
+	<bean id="initMsgJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="InitMsg"/>
+		<property name="targetMethod" value="init"/>
+	</bean>
+	<bean id="initMsgTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="initMsgJob" />
+		<property name="cronExpression" value="0/5 * * * * ?" />
+	</bean>
+	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="initMsgTrigger" />
+			</list>
+		</property>
+	</bean>
+	
 	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
 	  <property name="corePoolSize" value="5" />
 	  <property name="maxPoolSize" value="10" />
@@ -47,7 +66,6 @@
 	     </map>
 	   </property>
 	</bean>
-		
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -75,7 +93,6 @@
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<!-- 注入数据源 -->
 		<property name="dataSource" ref="dataSource" />
-		<!-- 设置Spring取那个包中查找相应的实体类 -->
 		<property name="packagesToScan">
 		   <list>
 			  <value>org.phoenix.web.model</value>

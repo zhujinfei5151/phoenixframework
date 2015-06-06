@@ -20,6 +20,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.phoenix.enums.MsgSendType;
 
 @Entity
 @Table(name="t_web_case")
@@ -30,7 +31,10 @@ public class CaseBean {
 	private String caseName;
 	private String codeContent;
 	private String className;
+	private MsgSendType msgSendType;
+	private boolean isDeleteMsg;
 	private String remark;
+
 	private int status = 1;
 	private Date createDate;
 	private ScenarioBean scenarioBean;
@@ -163,6 +167,22 @@ public class CaseBean {
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public MsgSendType getMsgSendType() {
+		return msgSendType;
+	}
+
+	public void setMsgSendType(MsgSendType msgSendType) {
+		this.msgSendType = msgSendType;
+	}
+
+	public boolean isDeleteMsg() {
+		return isDeleteMsg;
+	}
+
+	public void setDeleteMsg(boolean isDeleteMsg) {
+		this.isDeleteMsg = isDeleteMsg;
 	}
 	
 }

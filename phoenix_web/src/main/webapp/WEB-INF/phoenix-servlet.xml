@@ -26,6 +26,7 @@
 			<mvc:mapping path="/chart/**"/>
 			<mvc:mapping path="/data/**"/>
 			<mvc:mapping path="/attach/**"/>
+			<mvc:mapping path="/msg/**"/>
 			<bean class="org.phoenix.web.filter.AuthInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
@@ -34,7 +35,8 @@
 	<dwr:configuration>
 	    <dwr:convert class="org.phoenix.web.dto.StatisticsDTO" type="bean"/>
 	    <dwr:convert class="org.phoenix.model.*" type="bean"/>
-	    <dwr:convert class="org.phoenix.action.LocatorType" type="enum"/>
+	    <dwr:convert class="org.phoenix.enums.LocatorType" type="enum"/>
+	    <dwr:convert class="org.phoenix.enums.MsgSendType" type="enum"/>
 	</dwr:configuration>
 	<dwr:controller id="dwrController" debug="false"/>
 	<dwr:annotation-config id="dwrAnnotationConfig" />

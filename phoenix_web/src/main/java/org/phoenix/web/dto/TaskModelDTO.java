@@ -8,6 +8,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.phoenix.enums.TaskStatusType;
+import org.phoenix.web.enums.JobStatus;
+import org.phoenix.web.enums.TaskType;
 import org.phoenix.web.model.User;
 
 public class TaskModelDTO {
@@ -20,6 +23,7 @@ public class TaskModelDTO {
 		private int slaveId;
 		private String taskParameter;
 		private String message;
+		private JobStatus jobStatus;
 		private TaskStatusType taskStatusType;
 		private Date startTime;
 		private Date endTime;
@@ -52,6 +56,14 @@ public class TaskModelDTO {
 			return taskData;
 		}
 		
+		public JobStatus getJobStatus() {
+			return jobStatus;
+		}
+
+		public void setJobStatus(JobStatus jobStatus) {
+			this.jobStatus = jobStatus;
+		}
+
 		public String getMessage() {
 			return message;
 		}

@@ -7,6 +7,7 @@ import org.phoenix.dao.BatchLogDao;
 import org.phoenix.dao.CaseDao;
 import org.phoenix.dao.ScenarioDao;
 import org.phoenix.dao.ScenarioLogDao;
+import org.phoenix.enums.TaskStatusType;
 import org.phoenix.model.BatchLogBean;
 import org.phoenix.model.CaseBean;
 import org.phoenix.model.ScenarioBean;
@@ -19,7 +20,6 @@ import org.phoenix.node.dto.TaskType;
 import org.phoenix.node.model.SlaveModel;
 import org.phoenix.node.model.TaskModel;
 import org.phoenix.node.util.GetNow;
-import org.phoenix.utils.TaskStatusType;
 
 /**
  * action工厂

@@ -1,8 +1,10 @@
 package org.phoenix.web.dao;
 
+import java.util.List;
+
 import org.phoenix.basic.dao.IBaseDao;
 import org.phoenix.basic.paging.Pager;
-import org.phoenix.web.dto.TaskStatusType;
+import org.phoenix.enums.TaskStatusType;
 import org.phoenix.web.model.TaskModel;
 
 /**
@@ -21,4 +23,5 @@ public interface ITaskDao extends IBaseDao<TaskModel>{
       */
      Pager<TaskModel> getTaskModelPagerByStatus(TaskStatusType status);
      Pager<TaskModel> getTaskModelPagerBySelect(int uid,String status,String taskType);
+     List<TaskModel> getTaskModelListByJob();
 }

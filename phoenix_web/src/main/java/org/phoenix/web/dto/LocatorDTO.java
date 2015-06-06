@@ -4,7 +4,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.phoenix.action.LocatorType;
+import org.phoenix.enums.LocatorType;
 
 public class LocatorDTO {
 	private int id;

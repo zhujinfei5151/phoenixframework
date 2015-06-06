@@ -13,7 +13,7 @@ public class TestUnit {
 		for(TestEnum te : t){
 			System.out.println(te.name());
 		}
-		
+		System.out.println("1."+TestEnum.values()[1]);
 		System.out.println(TestEnum.Test1.getName());
 		
 		System.out.println(TestEnum.Test1 == TestEnum.Test2);

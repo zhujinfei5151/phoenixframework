@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import org.phoenix.dao.CaseLogDao;
 import org.phoenix.dao.UnitLogDao;
+import org.phoenix.enums.TaskStatusType;
 import org.phoenix.model.BatchLogBean;
 import org.phoenix.model.CaseBean;
 import org.phoenix.model.CaseLogBean;
@@ -11,7 +12,6 @@ import org.phoenix.model.ScenarioLogBean;
 import org.phoenix.model.UnitLogBean;
 import org.phoenix.node.dto.AjaxObj;
 import org.phoenix.node.model.TaskModel;
-import org.phoenix.utils.TaskStatusType;
 
 public class CaseAction implements RunAction{
 	private CaseBean caseBean;
@@ -30,6 +30,7 @@ public class CaseAction implements RunAction{
 	@Override
 	public AjaxObj action(BatchLogBean batchLogBean){
 		AjaxObj ajaxObj = new AjaxObj();
+		MsgSenderAction msgSenderAction = new MsgSenderAction();
 		CaseLogDao caseLogDao = new CaseLogDao();
 		UnitLogDao unitLogDao = new UnitLogDao();
 		CaseLogBean caseLogBean = new CaseLogBean();
@@ -68,9 +69,10 @@ public class CaseAction implements RunAction{
 				scenarioLogBean.setTaskStatusType(TaskStatusType.FAIL);
 				scenarioLogBean.setMessage("至少有一个用例执行失败！");
 			}
-		}
+		}		
 		unitLogDao.addBatchData(unitLogs);
 		caseLogDao.update(caseLogBean);
+		msgSenderAction.sendEmail(taskModel, caseBean, unitLogs);
 		return ajaxObj;
 	}
 }

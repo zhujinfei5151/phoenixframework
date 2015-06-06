@@ -3,7 +3,7 @@ package org.phoenix.web.controller;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
-import org.phoenix.action.LocatorType;
+import org.phoenix.enums.LocatorType;
 import org.phoenix.model.CaseBean;
 import org.phoenix.model.LocatorBean;
 import org.phoenix.web.auth.AuthClass;

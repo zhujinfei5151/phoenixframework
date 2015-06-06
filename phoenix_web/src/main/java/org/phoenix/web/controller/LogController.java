@@ -3,7 +3,7 @@ package org.phoenix.web.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import org.phoenix.web.dto.TaskType;
+import org.phoenix.web.enums.TaskType;
 import org.phoenix.web.model.User;
 import org.phoenix.web.service.IBatchLogService;
 import org.phoenix.web.service.ICaseLogService;

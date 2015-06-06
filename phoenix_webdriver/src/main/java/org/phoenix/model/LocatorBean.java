@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
-import org.phoenix.action.LocatorType;
+import org.phoenix.enums.LocatorType;
 
 @Entity
 @Table(name="t_web_unit")

@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.phoenix.enums.MsgSendType;
 import org.phoenix.model.CaseBean;
 import org.phoenix.model.ScenarioBean;
 import org.phoenix.utils.MethodPattern;
@@ -14,6 +15,7 @@ import org.phoenix.web.dto.CaseDTO;
 import org.phoenix.web.model.User;
 import org.phoenix.web.service.ICaseService;
 import org.phoenix.web.service.IScenarioService;
+import org.phoenix.web.util.EnumUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -97,6 +99,7 @@ public class CaseController {
 	@RequestMapping(value="/add",method=RequestMethod.GET)
 	public String add(Integer scenId,Model model,HttpSession session){
 		User u = (User) session.getAttribute("loginUser");
+		model.addAttribute("msgSendTypes",EnumUtils.enumProp2NameMap(MsgSendType.class, "name"));
 		model.addAttribute("sceanList", scenarioService.getScenarioBeanList(u.getId()));
 		model.addAttribute("caseDTO", new CaseDTO());
 		return "case/add";
@@ -117,6 +120,8 @@ public class CaseController {
 		caseBean.setCaseName(caseDTO.getCaseName());
 		caseBean.setRemark(caseDTO.getRemark());
 		caseBean.setStatus(caseDTO.getStatus());
+		caseBean.setDeleteMsg(caseDTO.isDeleteMsg());
+		caseBean.setMsgSendType(caseDTO.getMsgSendType());
 		
 		caseService.addCase(caseBean);
 		return "redirect:/case/list";
@@ -125,6 +130,7 @@ public class CaseController {
 	@RequestMapping(value="/update/{id}",method=RequestMethod.GET)
 	public String update(@PathVariable Integer id,Model model,HttpSession session){
 		User u = (User) session.getAttribute("loginUser");
+		model.addAttribute("msgSendTypes",EnumUtils.enumProp2NameMap(MsgSendType.class, "name"));
 		model.addAttribute(caseService.getCaseBean(id));
 		model.addAttribute("scenList", scenarioService.getScenarioBeanList(u.getId()));
 		model.addAttribute(new CaseDTO());
@@ -138,8 +144,10 @@ public class CaseController {
 		}
 		ScenarioBean scenBean = new ScenarioBean();
 		scenBean.setId(caseDTO.getScenId());
-		
-		String className = MethodPattern.result(caseDTO.getCodeContent(), "public\\sclass\\s(.*)extends\\sWebElementActionProxy").trim();
+		String className = "";
+		try{
+			className = MethodPattern.result(caseDTO.getCodeContent(), "public\\sclass\\s(.*)extends\\sWebElementActionProxy").trim();
+		}catch(NullPointerException e){}
 		CaseBean caseBean = caseService.getCaseBean(caseDTO.getId());
 		caseBean.setCaseName(caseDTO.getCaseName());
 		caseBean.setCodeContent(caseDTO.getCodeContent());
@@ -147,6 +155,8 @@ public class CaseController {
 		caseBean.setStatus(caseDTO.getStatus());
 		caseBean.setScenarioBean(scenBean);
 		caseBean.setClassName(className);
+		caseBean.setDeleteMsg(caseDTO.isDeleteMsg());
+		caseBean.setMsgSendType(caseDTO.getMsgSendType());
 		
 		caseService.updateCase(caseBean);
 		

@@ -67,7 +67,7 @@
 <div class="inline pull-right page">
 		<jsp:include page="/jsp/pager.jsp">
 			<jsp:param value="${datas.total }" name="totalRecord"/>
-			<jsp:param value="list" name="url"/>
+			<jsp:param value="${ls.id }" name="url"/>
 		</jsp:include>
  </div>   
  <script>

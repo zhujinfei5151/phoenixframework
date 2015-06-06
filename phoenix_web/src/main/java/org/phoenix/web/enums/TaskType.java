@@ -1,4 +1,4 @@
-package org.phoenix.web.dto;
+package org.phoenix.web.enums;
 
 public enum TaskType {
 	WEB_CASE("WEB_CASE"),

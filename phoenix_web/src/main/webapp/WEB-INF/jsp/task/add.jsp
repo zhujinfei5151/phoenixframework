@@ -84,7 +84,7 @@
         <td class="tableleft">执行参数</td>   
         <td>
             <sf:input path="taskParameter"/>
-              &nbsp;&nbsp;若不输入，则默认仅执行一次
+              &nbsp;&nbsp;若不输入，则默认仅执行一次或仅需要手动启动
         </td>
     </tr> 
     <tr>

@@ -106,6 +106,7 @@
         <th>任务数据Id</th>
         <th>任务状态</th>
         <th>执行参数</th>
+        <th>定时器状态</th>
         <th>开始时间</th>
         <th>结束时间</th>
         <th>管理操作</th>
@@ -121,13 +122,15 @@
 			<td>${ts.taskData } - ${ts.beanName }</td>
 			<td>${ts.taskStatusType }</td>
 			<td>${ts.taskParameter }</td>
+			<td>${ts.jobStatus }<br><fmt:formatDate value="${ts.lastTime }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
             <td><fmt:formatDate value="${ts.startTime }" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate></td>
             <td><fmt:formatDate value="${ts.endTime }" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate></td>
             <td>
                   <a href="update/${ts.id}">编辑</a>&nbsp;&nbsp;
                   <a href="delete/${ts.id}">删除</a>&nbsp;&nbsp;
-                  <a href="javascript:start('${ts.id }');">启动</a>&nbsp;&nbsp;
-                  <a href="stop/${ts.id}">停止</a>&nbsp;&nbsp;
+                  <a href="javascript:start('${ts.id }');">启动</a><br>
+                   <a href="startJob/${ts.id}">StartJob</a>&nbsp;&nbsp;
+                  <a href="stopJob/${ts.id}">StopJob</a>&nbsp;&nbsp;
             </td>
         </tr>
         </c:forEach>

@@ -6,14 +6,17 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.phoenix.enums.TaskStatusType;
 import org.phoenix.web.dto.AjaxObj;
 import org.phoenix.web.dto.TaskModelDTO;
-import org.phoenix.web.dto.TaskStatusType;
-import org.phoenix.web.dto.TaskType;
+import org.phoenix.web.enums.JobStatus;
+import org.phoenix.web.enums.TaskType;
 import org.phoenix.web.filter.InitServlet;
 import org.phoenix.web.model.SlaveModel;
 import org.phoenix.web.model.TaskModel;
 import org.phoenix.web.model.User;
+import org.phoenix.web.quartz.JobFactory;
+import org.phoenix.web.quartz.TaskHandler;
 import org.phoenix.web.service.ICaseService;
 import org.phoenix.web.service.IScenarioService;
 import org.phoenix.web.service.ISlaveService;
@@ -118,11 +121,54 @@ public class TaskController {
 		taskModel.setTaskType(taskModelDTO.getTaskType());
 		taskModel.setTaskData(taskModelDTO.getTaskData().split("_")[0]);
 		taskModel.setBeanName(taskModelDTO.getTaskData().split("_")[1]);
-		taskService.add(taskModel);
+		TaskModel newTask = taskService.add(taskModel);
+		if(taskModelDTO.getTaskParameter().trim().equals("")){
+			taskModel.setJobStatus(JobStatus.NOT_JOB);
+		} else {
+			String r = JobFactory.addJob(TaskHandler.class, newTask);
+			if(r.equals("success")){
+				taskModel.setJobStatus(JobStatus.RUNNING);
+			}else{
+				taskModel.setJobStatus(JobStatus.ERROR);
+				taskModel.setMessage(r);
+			}
+		}
+		taskService.update(newTask);
 		return "redirect:/task/list";
 	}
+	
+	@RequestMapping("/startJob/{id}")
+	public String startJob(@PathVariable Integer id){
+		TaskModel taskModel = taskService.getTaskModel(id);
+		String r = JobFactory.resumeJob(taskModel);
+		if(r.equals("success")){
+			taskModel.setJobStatus(JobStatus.RUNNING);
+		} else {
+			taskModel.setJobStatus(JobStatus.ERROR);
+			taskModel.setMessage(r);
+		}
+		taskService.update(taskModel);
+		
+		return "redirect:/task/list";
+	}
+	
+	@RequestMapping("/stopJob/{id}")
+	public String stopJob(@PathVariable Integer id){
+		TaskModel taskModel = taskService.getTaskModel(id);
+		String r = JobFactory.stopJob(taskModel);
+		if(r.equals("success")){
+			taskModel.setJobStatus(JobStatus.STOP);
+		} else {
+			taskModel.setJobStatus(JobStatus.ERROR);
+			taskModel.setMessage(r);
+		}
+		taskService.update(taskModel);
+		return "redirect:/task/list";
+	}
+	
 	@RequestMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id){
+		JobFactory.deleteJob(taskService.getTaskModel(id));
 		taskService.delete(id);
 		return "redirect:/task/list";
 	}
@@ -155,9 +201,21 @@ public class TaskController {
 		taskModelSrc.setTaskParameter(taskModelDTO.getTaskParameter());
 		taskModelSrc.setTaskStatusType(taskModelDTO.getTaskStatusType());
 		taskModelSrc.setTaskType(taskModelDTO.getTaskType());
+		taskModelSrc.setJobStatus(JobStatus.WAITING);
 		taskModelSrc.setTaskStatusType(TaskStatusType.NOT_RUNNING);
 		taskModelSrc.setTaskData(taskModelDTO.getTaskData().split("_")[0]);
 		taskModelSrc.setBeanName(taskModelDTO.getTaskData().split("_")[1]);
+		if(taskModelDTO.getTaskParameter().trim().equals("")){
+			taskModelSrc.setJobStatus(JobStatus.NOT_JOB);
+		} else {
+			String r = JobFactory.updateJob(taskModelSrc);
+			if(r.equals("success")){
+				taskModelSrc.setJobStatus(JobStatus.RUNNING);
+			}else{
+				taskModelSrc.setJobStatus(JobStatus.ERROR);
+				taskModelSrc.setMessage(r);
+			}
+		}
 		taskService.update(taskModelSrc);
 		return "redirect:/task/list";
 	}

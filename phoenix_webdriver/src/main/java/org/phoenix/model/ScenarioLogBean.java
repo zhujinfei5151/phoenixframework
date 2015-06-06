@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.phoenix.utils.TaskStatusType;
+import org.phoenix.enums.TaskStatusType;
 
 @Entity
 @Table(name="l_web_scenario")

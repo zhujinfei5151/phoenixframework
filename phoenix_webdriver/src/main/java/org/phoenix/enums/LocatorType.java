@@ -1,4 +1,4 @@
-package org.phoenix.action;
+package org.phoenix.enums;
 
 public enum LocatorType {
 	CSS("CSS"),

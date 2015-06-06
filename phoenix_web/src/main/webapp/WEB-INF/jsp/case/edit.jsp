@@ -81,6 +81,33 @@
         </td>
     </tr>
     <tr>
+    	<td class="tableleft">消息发送类型</td>
+    	<td>
+    		<sf:select path="msgSendType">
+    			<c:forEach items="${msgSendTypes }" var="ms">
+    				<c:choose>
+    					<c:when test="${ms.key eq  caseBean.msgSendType}">
+    						<sf:option value="${caseBean.msgSendType }" selected="selected">${caseBean.msgSendType }</sf:option>
+    					</c:when>
+    					<c:otherwise>
+    						<sf:option value="${ms.key }">${ms.value }</sf:option>
+    					</c:otherwise>
+    				</c:choose>
+    			</c:forEach>
+    		</sf:select>
+    		&nbsp;&nbsp;
+    		<c:choose>
+    			<c:when test="${caseBean.deleteMsg eq true }">
+    				<input type="checkbox" name="deleteMsg" checked="checked"/>
+    			</c:when>
+    			<c:otherwise>
+    				<input type="checkbox" name="deleteMsg">
+    			</c:otherwise>
+    		</c:choose>
+    		发送成功后删除消息
+    	</td>
+    </tr>
+    <tr>
         <td class="tableleft">脚本内容</td>
         <td>
             <!-- cssClass="xheditor-simple" -->

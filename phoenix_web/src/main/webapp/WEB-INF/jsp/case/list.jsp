@@ -48,6 +48,8 @@
         <th>场景名称</th>
         <th>用例名称</th>
         <th>状态</th>
+        <th>消息类型</th>
+        <th>是否删除</th>
         <th>功能说明</th>
         <th>创建时间</th>
         <th>管理操作</th>
@@ -67,6 +69,12 @@
 	               <td>已禁用</td>
 	               </c:otherwise>
             </c:choose>
+            <td>
+            	${cs.msgSendType }
+            </td>
+            <td>
+            	${cs.deleteMsg }
+            </td>
             <td>${cs.remark }</td>
             <td><fmt:formatDate value="${cs.createDate }" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate></td>
             <td>

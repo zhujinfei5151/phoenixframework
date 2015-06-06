@@ -76,7 +76,7 @@
 					<c:when test="${'WEB_CASE' eq taskModel.taskType }">
 					  <c:forEach items="${beanList }" var="bl">
 					  	<c:choose>
-					  		<c:when test="${bl.id eq taskModel.taskData }"><sf:option value="${bl.id }" selected="selected">${bl.id } - ${bl.caseName }</sf:option></c:when>
+					  		<c:when test="${bl.id eq taskModel.taskData }"><sf:option value="${bl.id }_${bl.caseName }" selected="selected">${bl.id } - ${bl.caseName }</sf:option></c:when>
 					  		<c:otherwise><sf:option value="${bl.id }_${bl.caseName }">${bl.id } - ${bl.caseName }</sf:option></c:otherwise>
 					  	</c:choose>
 					  </c:forEach>
@@ -84,7 +84,7 @@
 					<c:when test="${'WEB_SCENARIO' eq taskModel.taskType }">
 					  <c:forEach items="${beanList }" var="bl">
 					  	<c:choose>
-					  		<c:when test="${bl.id eq taskModel.taskData }"><sf:option value="${bl.id }" selected="selected">${bl.id } - ${bl.scenarioName }</sf:option></c:when>
+					  		<c:when test="${bl.id eq taskModel.taskData }"><sf:option value="${bl.id }_${bl.caseName }" selected="selected">${bl.id } - ${bl.scenarioName }</sf:option></c:when>
 					  		<c:otherwise><sf:option value="${bl.id }_${bl.scenarioName }">${bl.id } - ${bl.scenarioName }</sf:option></c:otherwise>
 					  	</c:choose>
 					  </c:forEach>
@@ -116,7 +116,7 @@
             <td class="tableleft">执行参数</td>   
         <td>
             <sf:input path="taskParameter" value="${taskModel.taskParameter}"/>
-              &nbsp;&nbsp;若为空，则代表仅执行一次
+              &nbsp;&nbsp;若为空，则代表仅执行一次或仅需要手动启动
         </td>
     </tr> 
 

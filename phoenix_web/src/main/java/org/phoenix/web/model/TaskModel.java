@@ -16,8 +16,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.phoenix.web.dto.TaskStatusType;
-import org.phoenix.web.dto.TaskType;
+import org.phoenix.enums.TaskStatusType;
+import org.phoenix.web.enums.JobStatus;
+import org.phoenix.web.enums.TaskType;
 
 @Entity
 @Table(name="t_task")
@@ -28,12 +29,14 @@ public class TaskModel {
 	private String taskName;
 	private String taskData;
 	private String beanName;
+	private JobStatus jobStatus;
 	private SlaveModel slaveModel;
 	private String taskParameter;
 	private String message;
 	private TaskStatusType taskStatusType;
 	private Date startTime;
 	private Date endTime;
+	private Date lastTime;
 	private User user;
 	public TaskModel() {
 	}
@@ -71,7 +74,23 @@ public class TaskModel {
 	public String getTaskName() {
 		return taskName;
 	}
-	
+	@Enumerated(EnumType.STRING)
+	public JobStatus getJobStatus() {
+		return jobStatus;
+	}
+
+	public void setJobStatus(JobStatus jobStatus) {
+		this.jobStatus = jobStatus;
+	}
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getLastTime() {
+		return lastTime;
+	}
+
+	public void setLastTime(Date lastTime) {
+		this.lastTime = lastTime;
+	}
+
 	public String getBeanName() {
 		return beanName;
 	}

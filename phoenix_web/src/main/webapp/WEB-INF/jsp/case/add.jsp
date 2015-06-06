@@ -65,6 +65,16 @@
         </td>
     </tr>
     <tr>
+    	<td class="tableleft">消息发送类型</td>
+    	<td>
+    		<sf:select path="msgSendType">
+    			<sf:options items="${msgSendTypes }"/>
+    		</sf:select>
+    		&nbsp;&nbsp;
+    		<sf:checkbox path="deleteMsg" checked="checked"/>发送成功后删除消息
+    	</td>
+    </tr>
+    <tr>
         <td class="tableleft"></td>
         <td>
             <button type="submit" class="btn btn-primary">提交</button>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>

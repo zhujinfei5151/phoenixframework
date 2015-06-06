@@ -14,8 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.phoenix.enums.TaskStatusType;
 import org.phoenix.node.dto.TaskType;
-import org.phoenix.utils.TaskStatusType;
 
 @Entity
 @Table(name="t_task")
@@ -25,6 +25,7 @@ public class TaskModel {
 	private TaskType taskType;
 	private String taskName;
 	private String taskData;
+	private String beanName;
 	private SlaveModel slaveModel;
 	private String taskParameter;
 	private String message;
@@ -126,5 +127,13 @@ public class TaskModel {
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+	public String getBeanName() {
+		return beanName;
+	}
+
+	public void setBeanName(String beanName) {
+		this.beanName = beanName;
 	}
 }

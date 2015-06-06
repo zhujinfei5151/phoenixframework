@@ -1,7 +1,9 @@
 package org.phoenix.web.service;
 
+import java.util.List;
+
 import org.phoenix.basic.paging.Pager;
-import org.phoenix.web.dto.TaskStatusType;
+import org.phoenix.enums.TaskStatusType;
 import org.phoenix.web.model.TaskModel;
 
 /**
@@ -14,7 +16,7 @@ public interface ITaskService {
 	/*
 	 * 任务添加
 	 */
-	void add(TaskModel taskModel);
+	TaskModel add(TaskModel taskModel);
 	/*
 	 * 任务删除
 	 */
@@ -39,5 +41,7 @@ public interface ITaskService {
 	Pager<TaskModel> getTaskModelPagerByStatus(TaskStatusType taskStatusType);
 	
 	Pager<TaskModel> getTaskModelPagerBySelect(int uid, String status,String taskType);
+	
+	List<TaskModel> getTaskModelListForJob();
 
 }

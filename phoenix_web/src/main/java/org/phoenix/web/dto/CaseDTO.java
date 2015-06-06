@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.phoenix.enums.MsgSendType;
 import org.phoenix.model.ScenarioBean;
 
 public class CaseDTO {
@@ -13,6 +14,8 @@ public class CaseDTO {
 	private String caseName;
 	private String codeContent;
 	private String className;
+	private MsgSendType msgSendType;
+	private boolean isDeleteMsg;
 	private String remark;
 	private int status = 1;
 	private Date createDate;
@@ -87,5 +90,21 @@ public class CaseDTO {
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+	public MsgSendType getMsgSendType() {
+		return msgSendType;
+	}
+
+	public void setMsgSendType(MsgSendType msgSendType) {
+		this.msgSendType = msgSendType;
+	}
+
+	public boolean isDeleteMsg() {
+		return isDeleteMsg;
+	}
+
+	public void setDeleteMsg(boolean isDeleteMsg) {
+		this.isDeleteMsg = isDeleteMsg;
 	}
 }
