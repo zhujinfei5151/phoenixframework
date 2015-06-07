@@ -39,8 +39,8 @@
 	<classpathentry kind="lib" path="lib/selenium-support-2.44.0.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="lib/testng-6.8.13.jar"/>
+	<classpathentry kind="lib" path="lib/phoenix_db-1.2.5.jar"/>
+	<classpathentry kind="lib" path="lib/phoenix_webdriver-1.2.5.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="D:/Program Files/Java/maven/org/phoenixframe/phoenix_webdriver/1.2.3/phoenix_webdriver-1.2.3.jar"/>
-	<classpathentry kind="lib" path="lib/phoenix_db-1.2.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

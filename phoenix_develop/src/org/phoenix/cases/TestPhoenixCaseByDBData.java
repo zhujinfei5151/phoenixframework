@@ -5,7 +5,11 @@ import java.util.LinkedList;
 import org.phoenix.action.WebElementActionProxy;
 import org.phoenix.model.CaseLogBean;
 import org.phoenix.model.UnitLogBean;
-
+/**
+ * 使用数据库中的数据进行参数化
+ * @author mengfeiyang
+ *
+ */
 public class TestPhoenixCaseByDBData extends WebElementActionProxy{
 	private static int caseName = 2;
 	

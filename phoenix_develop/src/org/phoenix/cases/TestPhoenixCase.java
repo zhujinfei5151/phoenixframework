@@ -6,8 +6,13 @@ import org.phoenix.action.WebElementActionProxy;
 import org.phoenix.model.CaseLogBean;
 import org.phoenix.model.UnitLogBean;
 
+/**
+ * 使用本地数据作参数化
+ * @author mengfeiyang
+ *
+ */
 public class TestPhoenixCase extends WebElementActionProxy{
-	private static int caseName = 2;
+	private static int caseName = 5;
 	
 	public TestPhoenixCase() {
 		
