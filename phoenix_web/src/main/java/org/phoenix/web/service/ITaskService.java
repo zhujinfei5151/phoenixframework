@@ -40,7 +40,7 @@ public interface ITaskService {
 	 */
 	Pager<TaskModel> getTaskModelPagerByStatus(TaskStatusType taskStatusType);
 	
-	Pager<TaskModel> getTaskModelPagerBySelect(int uid, String status,String taskType);
+	Pager<TaskModel> getTaskModelPagerBySelect(int uid, String status,String taskType,String jobStatus);
 	
 	List<TaskModel> getTaskModelListForJob();
 

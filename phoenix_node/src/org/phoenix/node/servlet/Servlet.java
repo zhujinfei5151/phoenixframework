@@ -66,12 +66,12 @@ public class Servlet extends HttpServlet {
 			try {
 				WriteResponse.writeXml(response, JSON.toJSONString(future.get(500, TimeUnit.MILLISECONDS)));
 			} catch (TimeoutException e1) {
-				WriteResponse.writeXml(response, JSON.toJSONString(new AjaxObj(1,"任务发布成功")));
+				WriteResponse.writeXml(response, JSON.toJSONString(new AjaxObj(2,"任务发布成功")));
 			} catch (Exception e) {
-				WriteResponse.writeXml(response, JSON.toJSONString(new AjaxObj(1,e.getMessage()==null?"任务执行失败":e.getMessage())));
+				WriteResponse.writeXml(response, JSON.toJSONString(new AjaxObj(0,e.getMessage()==null?"任务执行失败":e.getMessage())));
 			} 
 		} else {
-			WriteResponse.writeXml(response, JSON.toJSONString(new AjaxObj(0,"该分机当前正在执行测试任务，请选择其他执行机！")));
+			WriteResponse.writeXml(response, JSON.toJSONString(new AjaxObj(1,"该分机当前正在执行测试任务，请选择其他执行机！")));
 		}
 	}
 }

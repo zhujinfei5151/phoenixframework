@@ -94,12 +94,27 @@
            </c:forEach>
         </select>
      &nbsp;&nbsp;
+       定时任务状态：
+        <select name="jobStatus">
+           <option value="">显示全部</option>
+           <c:forEach items="${jobs }" var="j">
+           		<c:choose>
+                	<c:when test="${j.key eq jobStatus }">
+                		<option value="${j.key }" selected="selected">${j.value }</option>
+                	</c:when>
+                	<c:otherwise>
+                		<option value="${j.key }">${j.value }</option>
+                	</c:otherwise>
+                </c:choose>
+           </c:forEach>
+        </select>
+     &nbsp;&nbsp;
     <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">添加任务</button>
 </form>
 <table class="table table-bordered table-hover definewidth m10" >
     <thead>
     <tr>
-        <th>任务编号</th>
+        <th>ID</th>
         <th>任务名称</th>
         <th>任务类型</th>
         <th>SlaveIP</th>
@@ -128,9 +143,12 @@
             <td>
                   <a href="update/${ts.id}">编辑</a>&nbsp;&nbsp;
                   <a href="delete/${ts.id}">删除</a>&nbsp;&nbsp;
-                  <a href="javascript:start('${ts.id }');">启动</a><br>
-                   <a href="startJob/${ts.id}">StartJob</a>&nbsp;&nbsp;
-                  <a href="stopJob/${ts.id}">StopJob</a>&nbsp;&nbsp;
+                  <a href="javascript:start('${ts.id }');">启动</a>
+                  <c:if test="${not empty ts.taskParameter }">
+                  	  <br>
+	                  <c:if test="${ts.jobStatus eq 'STOP' }"><a href="startJob/${ts.id}">StartJob</a>&nbsp;&nbsp;</c:if>
+	                  <c:if test="${ts.jobStatus eq 'RUNNING' }"><a href="stopJob/${ts.id}">StopJob</a>&nbsp;&nbsp;</c:if>
+                  </c:if>
             </td>
         </tr>
         </c:forEach>

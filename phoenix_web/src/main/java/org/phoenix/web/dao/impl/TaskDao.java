@@ -23,8 +23,8 @@ public class TaskDao extends BaseDao<TaskModel> implements ITaskDao{
 	}
 
 	@Override
-	public Pager<TaskModel> getTaskModelPagerBySelect(int uid, String status,String taskType) {
-		return super.find("from TaskModel where taskStatusType like '%"+status+"%' And taskType like '%"+taskType+"%' And user.id="+uid);
+	public Pager<TaskModel> getTaskModelPagerBySelect(int uid, String status,String taskType,String jobStatus) {
+		return super.find("from TaskModel where taskStatusType like '%"+status+"%' And taskType like '%"+taskType+"%' And jobStatus like '%"+jobStatus+"%' And user.id="+uid);
 	}
 
 	@Override

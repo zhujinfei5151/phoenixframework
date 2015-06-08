@@ -79,18 +79,21 @@ public class TaskController {
 		User u = (User)httpSession.getAttribute("loginUser");
 		model.addAttribute("types", EnumUtils.enumProp2NameMap(TaskType.class, "name"));
 		model.addAttribute("status", EnumUtils.enumProp2NameMap(TaskStatusType.class, "name"));
+		model.addAttribute("jobs", EnumUtils.enumProp2NameMap(JobStatus.class, "name"));
 		model.addAttribute("datas",taskService.getTaskModelPagerByUser(u.getId()));
 		
 		return "task/list";
 	}
 	@RequestMapping(value="/select",method=RequestMethod.POST)
-	public String select(String type,String tstatus,Model model,HttpSession session){
+	public String select(String type,String tstatus,String jobStatus,Model model,HttpSession session){
 		User u = (User)session.getAttribute("loginUser");
 		model.addAttribute("types", EnumUtils.enumProp2NameMap(TaskType.class, "name"));
 		model.addAttribute("status", EnumUtils.enumProp2NameMap(TaskStatusType.class, "name"));
+		model.addAttribute("jobs", EnumUtils.enumProp2NameMap(JobStatus.class, "name"));
 		model.addAttribute("tstatus", tstatus);
 		model.addAttribute("type", type);
-		model.addAttribute("datas", taskService.getTaskModelPagerBySelect(u.getId(), tstatus, type));
+		model.addAttribute("jobStatus", jobStatus);
+		model.addAttribute("datas", taskService.getTaskModelPagerBySelect(u.getId(), tstatus, type,jobStatus));
 		return "task/list";
 	}
 	
@@ -140,7 +143,7 @@ public class TaskController {
 	@RequestMapping("/startJob/{id}")
 	public String startJob(@PathVariable Integer id){
 		TaskModel taskModel = taskService.getTaskModel(id);
-		String r = JobFactory.resumeJob(taskModel);
+		String r = JobFactory.addJob(TaskHandler.class, taskModel);
 		if(r.equals("success")){
 			taskModel.setJobStatus(JobStatus.RUNNING);
 		} else {
@@ -155,7 +158,7 @@ public class TaskController {
 	@RequestMapping("/stopJob/{id}")
 	public String stopJob(@PathVariable Integer id){
 		TaskModel taskModel = taskService.getTaskModel(id);
-		String r = JobFactory.stopJob(taskModel);
+		String r = JobFactory.deleteJob(taskModel);
 		if(r.equals("success")){
 			taskModel.setJobStatus(JobStatus.STOP);
 		} else {
