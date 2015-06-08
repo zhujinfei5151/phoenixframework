@@ -91,7 +91,6 @@
 	<!-- 如果使用的是Annotation的方式，不能使用LocalSessionFactoryBean,而应该使用 org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<!-- 注入数据源 -->
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan">
 		   <list>
@@ -115,13 +114,11 @@
     <bean name="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
           <property name="sessionFactory" ref="sessionFactory"></property>
      </bean>
+
 <!-- 配置AOP，Spring是通过AOP来进行事务管理的 -->
 	<aop:config>
-	<!-- 设置pointCut表示哪些方法要加入事务处理 -->
-	<!-- 以下的事务是声明在DAO中，但是通常都会在Service来处理多个业务对象逻辑的关系，注入删除，更新等，此时如果在执行了一个步骤之后抛出异常
-		就会导致数据不完整，所以事务不应该在DAO层处理，而应该在service，这也就是Spring所提供的一个非常方便的工具，声明式事务 -->
-		<aop:pointcut id="allMethods"
-			expression="execution(* org.phoenix.web.service.*.*(..))" />
+		<!-- 设置pointCut表示哪些方法要加入事务处理 -->
+		<aop:pointcut id="allMethods" expression="execution(* org.phoenix.web.service.*.*(..))" />
 		<!-- 通过advisor来确定具体要加入事务控制的方法 -->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="allMethods" />
 	</aop:config>

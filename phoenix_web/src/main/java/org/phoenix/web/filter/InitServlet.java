@@ -7,6 +7,7 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
+import org.phoenix.web.aop.PhoenixLogger;
 import org.phoenix.web.auth.AuthUtil;
 import org.phoenix.web.quartz.InitTask;
 import org.springframework.web.context.WebApplicationContext;
@@ -19,6 +20,7 @@ public class InitServlet extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
+		new PhoenixLogger();
 		wc = WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
 		Map<String,Set<String>> auths = AuthUtil.initAuth("org.phoenix.web.controller");
 		this.getServletContext().setAttribute("allAuths", auths);

@@ -4,6 +4,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="
 	    http://www.springframework.org/schema/beans 
 	    http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -11,6 +12,8 @@
 		http://www.springframework.org/schema/context/spring-context-3.1.xsd
 		http://www.springframework.org/schema/mvc 
 		http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
 		http://www.directwebremoting.org/schema/spring-dwr 
 		http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
 	
@@ -41,6 +44,14 @@
 	<dwr:controller id="dwrController" debug="false"/>
 	<dwr:annotation-config id="dwrAnnotationConfig" />
   	<dwr:annotation-scan base-package="org.phoenix.web.dwr" scanDataTransferObject="true"/>
+	<aop:config>
+	    <aop:aspect id="myLogAspect" ref="logAspect">
+	    <!-- 在哪些位置加入, expression="execution(* org.mfy.dao.*.*(..))",表示所有方法都加-->
+	        <aop:pointcut id="logPointCut" expression="execution(* org.phoenix.web.controller.*.*(..))"/>
+	        <aop:before method="logStart" pointcut-ref="logPointCut"/>
+	        <aop:after method="logEnd" pointcut-ref="logPointCut"/>
+	    </aop:aspect>
+	</aop:config>
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/"/>
