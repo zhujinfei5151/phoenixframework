@@ -29,7 +29,7 @@ public class PhoenixLogger {
 	public PhoenixLogger() {
 		Properties properties = new Properties();
 		try {
-			properties.load(new FileInputStream(PhoenixLogger.class.getResource("/").getPath().replace("%20", " ")+"log4j.properties"));
+			properties.load(new FileInputStream(PhoenixLogger.class.getResource("/").getPath().replace("%20", " ")+"logger.properties"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

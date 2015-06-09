@@ -9,13 +9,11 @@ import org.springframework.stereotype.Component;
 @Component("logAspect")
 public class LogAspect {
     public void logStart(JoinPoint jp){
-    	
     	PhoenixLogger.info("request:Class:"+jp.getTarget().getClass().getName()+", method:"+jp.getSignature().getName()+" , parameter:"+Arrays.toString(jp.getArgs()));
-		PhoenixLogger.info("调用前加入日志");
     }
 	
     public void logEnd(JoinPoint jp){
-    	PhoenixLogger.info("结束后加入日志");
+    	
     }
 	
     public void logAround(ProceedingJoinPoint pj) throws Throwable{
