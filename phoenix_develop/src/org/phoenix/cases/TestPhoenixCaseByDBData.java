@@ -11,7 +11,7 @@ import org.phoenix.model.UnitLogBean;
  *
  */
 public class TestPhoenixCaseByDBData extends WebElementActionProxy{
-	private static int caseName = 2;
+	private static int caseName = 5;
 	
 	public TestPhoenixCaseByDBData() {
 		

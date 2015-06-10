@@ -66,6 +66,7 @@ public class UserController {
 		if(br.hasErrors()) {
 			return "user/add";
 		}
+		System.out.println(user.getRole());
 		user.setRoleName(user.getRole()==0?"管理员":"普通用户");
 		user.setCreateDate(new Date());
 		userService.add(user);

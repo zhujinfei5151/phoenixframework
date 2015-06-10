@@ -40,7 +40,6 @@ public class JobFactory {
           
          scheduler.scheduleJob(jobDetail, trigger);
 		}catch(SchedulerException e){
-			e.printStackTrace();
 			return e.getCause().toString();
 		}
 		return "success";
@@ -83,7 +82,6 @@ public class JobFactory {
             scheduler.pauseJob(jobKey);
             return "success";
         } catch (SchedulerException e) {
-            e.printStackTrace();
             return e.getCause().toString();
         }
 	}
@@ -95,7 +93,6 @@ public class JobFactory {
             scheduler.resumeJob(jobKey);
             return "success";
         } catch (SchedulerException e) {
-            e.printStackTrace();
             return e.getCause().toString();
         }
 	}
@@ -109,7 +106,6 @@ public class JobFactory {
             scheduler.deleteJob(jobKey);
             return "success";
         } catch (SchedulerException e) {
-            e.printStackTrace();
             return e.getCause().toString();
         }
 	}

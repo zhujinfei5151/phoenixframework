@@ -23,6 +23,7 @@ public class WebElementLocator {
 			case XPATH: return $(By.xpath(locator));
 			case LINKTEXT:return $(By.linkText(locator));
 			case TAGNAME:return $(By.tagName(locator));
+			case PARTIALLINKTEXT:return $(By.partialLinkText(locator));
 		default:;
 	    }
 		return null;
@@ -35,6 +36,7 @@ public class WebElementLocator {
 			case XPATH: return By.xpath(locator);
 			case LINKTEXT:return By.linkText(locator);
 			case TAGNAME:return By.tagName(locator);
+			case PARTIALLINKTEXT:By.partialLinkText(locator);
 		default:;
     }
 		return null;
@@ -47,6 +49,7 @@ public class WebElementLocator {
 			case XPATH: return $$(By.xpath(locator));
 			case LINKTEXT:return $$(By.linkText(locator));
 			case TAGNAME:return $$(By.tagName(locator));
+			case PARTIALLINKTEXT:return $$(By.partialLinkText(locator));
 		default:;
 	    }
 		return null;

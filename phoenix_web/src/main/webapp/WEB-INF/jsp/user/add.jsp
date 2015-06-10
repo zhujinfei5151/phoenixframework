@@ -51,8 +51,8 @@
     <tr>
        <td class="tableleft">账户类型</td>
         <td>
-            <sf:radiobutton path="roleName" value="0"/>管理员
-            <sf:radiobutton path="roleName" value="1"/>普通账户
+            <sf:radiobutton path="role" value="0"/>管理员
+            <sf:radiobutton path="role" value="1"/>普通账户
         </td>
     </tr>
     <tr>

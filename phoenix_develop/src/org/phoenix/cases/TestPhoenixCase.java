@@ -21,7 +21,6 @@ public class TestPhoenixCase extends WebElementActionProxy{
 	@Override
 	public LinkedList<UnitLogBean> run(CaseLogBean caseLogBean) {
 		init(caseName,caseLogBean);
-		
 		webProxy.openNewWindowByIE("http://www.baidu.com");
 		webProxy.webElement("set").setText("1");
 		String s = webProxy.webElement("click").getAttrValue("value");

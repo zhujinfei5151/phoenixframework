@@ -33,18 +33,18 @@ public class Servlet extends HttpServlet {
     public Servlet() {
         super();
     }
-    
+    @Override
 	public void init(ServletConfig config) throws ServletException {
 		executorService = Executors.newSingleThreadExecutor();		
 		threadPool = new ExecutorCompletionService<AjaxObj>(executorService);
 		future = threadPool.submit(new ActionHandler());
 		contentPath = config.getServletContext().getRealPath("");
 	}
-	
+	@Override
 	public void destroy() {
 		executorService.shutdownNow();
 	}
-    
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String status = request.getParameter("requestType")==null?"getStatus":request.getParameter("requestType");
 		if(status.equals("getStatus")){
@@ -52,7 +52,7 @@ public class Servlet extends HttpServlet {
 			else WriteResponse.writeXml(response, JSON.toJSONString(new AjaxObj(0,"该分机当前正在执行测试任务，请选择其他执行机！")));
 		}
 	}
-
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ActionFactory actionFactory = new ActionFactory();
 		TaskDataDTO taskDataDTO = new TaskDataDTO();

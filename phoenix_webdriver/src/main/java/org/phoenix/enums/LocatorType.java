@@ -5,7 +5,8 @@ public enum LocatorType {
 	NAME("NAME"),
 	TAGNAME("TAGNAME"),
 	LINKTEXT("LINKTEXT"),
-	XPATH("XPATH");
+	XPATH("XPATH"),
+	PARTIALLINKTEXT("PARTIALLINKTEXT");
 	
 	private String name;
 	private LocatorType(String name) {
