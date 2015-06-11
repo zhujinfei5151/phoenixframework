@@ -3845,3 +3845,129 @@ Caused by: NoSuchElementException: Unable to find element with css selector == #
 2015-06-07 09:09:06 [ main:18265 ] - [ WARN ] 检查点 [checkIsFalse] 校验失败，相关参数：[true],校验结果：info:null
 2015-06-07 09:09:06 [ main:18366 ] - [ INFO ] 步骤 [ sleep ]执行成功，参数值：[100],执行结果返回值：null
 2015-06-07 09:09:08 [ main:19616 ] - [ INFO ] 步骤 [ closeWindow ]执行成功，参数值：null,执行结果返回值：null
+2015-06-11 14:47:04 [ main:0 ] - [ INFO ] HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+2015-06-11 14:47:04 [ main:16 ] - [ INFO ] HHH000412: Hibernate Core {4.1.7.Final}
+2015-06-11 14:47:04 [ main:16 ] - [ INFO ] HHH000206: hibernate.properties not found
+2015-06-11 14:47:04 [ main:16 ] - [ INFO ] HHH000021: Bytecode provider name : javassist
+2015-06-11 14:47:04 [ main:47 ] - [ INFO ] HHH000043: Configuring from resource: /hibernate.cfg.xml
+2015-06-11 14:47:04 [ main:47 ] - [ INFO ] HHH000040: Configuration resource: /hibernate.cfg.xml
+2015-06-11 14:47:04 [ main:141 ] - [ INFO ] HHH000041: Configured SessionFactory: null
+2015-06-11 14:47:05 [ main:532 ] - [ INFO ] HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2015-06-11 14:47:05 [ main:532 ] - [ INFO ] HHH000115: Hibernate connection pool size: 20
+2015-06-11 14:47:05 [ main:532 ] - [ INFO ] HHH000006: Autocommit mode: false
+2015-06-11 14:47:05 [ main:532 ] - [ INFO ] HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/phoenix_gui]
+2015-06-11 14:47:05 [ main:532 ] - [ INFO ] HHH000046: Connection properties: {user=root, password=****}
+2015-06-11 14:47:05 [ main:861 ] - [ INFO ] HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2015-06-11 14:47:05 [ main:876 ] - [ INFO ] HHH000399: Using default transaction strategy (direct JDBC transactions)
+2015-06-11 14:47:05 [ main:876 ] - [ INFO ] HHH000397: Using ASTQueryTranslatorFactory
+2015-06-11 14:47:05 [ main:1236 ] - [ INFO ] HHH000228: Running hbm2ddl schema update
+2015-06-11 14:47:05 [ main:1251 ] - [ INFO ] HHH000102: Fetching database metadata
+2015-06-11 14:47:05 [ main:1251 ] - [ INFO ] HHH000396: Updating schema
+2015-06-11 14:47:05 [ main:1330 ] - [ INFO ] HHH000261: Table found: phoenix_gui.l_web_batch
+2015-06-11 14:47:05 [ main:1330 ] - [ INFO ] HHH000037: Columns: [uid, tasktype, createdate, id, batchid]
+2015-06-11 14:47:05 [ main:1330 ] - [ INFO ] HHH000108: Foreign keys: []
+2015-06-11 14:47:05 [ main:1330 ] - [ INFO ] HHH000126: Indexes: [primary]
+2015-06-11 14:47:05 [ main:1376 ] - [ INFO ] HHH000261: Table found: phoenix_gui.l_web_case
+2015-06-11 14:47:05 [ main:1376 ] - [ INFO ] HHH000037: Columns: [actor, duration, attachpath, clientip, endtime, scenariologbeanid, id, casename, starttime, enginetype, status, batchlogid]
+2015-06-11 14:47:05 [ main:1376 ] - [ INFO ] HHH000108: Foreign keys: [fke98647aeda1e53ad]
+2015-06-11 14:47:05 [ main:1376 ] - [ INFO ] HHH000126: Indexes: [fke98647aeda1e53ad, primary]
+2015-06-11 14:47:05 [ main:1408 ] - [ INFO ] HHH000261: Table found: phoenix_gui.l_web_scenario
+2015-06-11 14:47:05 [ main:1408 ] - [ INFO ] HHH000037: Columns: [uid, id, message, taskstatustype, scenarioname, batchlogid]
+2015-06-11 14:47:05 [ main:1408 ] - [ INFO ] HHH000108: Foreign keys: [fk7946d10eda1e53ad]
+2015-06-11 14:47:05 [ main:1408 ] - [ INFO ] HHH000126: Indexes: [fk7946d10eda1e53ad, primary]
+2015-06-11 14:47:06 [ main:1423 ] - [ INFO ] HHH000261: Table found: phoenix_gui.l_web_unit
+2015-06-11 14:47:06 [ main:1423 ] - [ INFO ] HHH000037: Columns: [steptype, stepname, id, screenshot, caselogid, content, status]
+2015-06-11 14:47:06 [ main:1423 ] - [ INFO ] HHH000108: Foreign keys: [fke98ea602411c9d65]
+2015-06-11 14:47:06 [ main:1423 ] - [ INFO ] HHH000126: Indexes: [fke98ea602411c9d65, primary]
+2015-06-11 14:47:06 [ main:1455 ] - [ INFO ] HHH000261: Table found: phoenix_gui.t_web_case
+2015-06-11 14:47:06 [ main:1455 ] - [ INFO ] HHH000037: Columns: [classname, deletemsg, remark, id, casename, create_date, msgsendtype, userid, scenarioid, codecontent, status]
+2015-06-11 14:47:06 [ main:1455 ] - [ INFO ] HHH000108: Foreign keys: [fk8bd1d0a6140b62d9]
+2015-06-11 14:47:06 [ main:1455 ] - [ INFO ] HHH000126: Indexes: [casename, primary, fk8bd1d0a6140b62d9]
+2015-06-11 14:47:06 [ main:1470 ] - [ INFO ] HHH000261: Table found: phoenix_gui.t_web_data
+2015-06-11 14:47:06 [ main:1470 ] - [ INFO ] HHH000037: Columns: [caseid, datacontent, id, dataname]
+2015-06-11 14:47:06 [ main:1470 ] - [ INFO ] HHH000108: Foreign keys: [fk8bd245201b32d119]
+2015-06-11 14:47:06 [ main:1470 ] - [ INFO ] HHH000126: Indexes: [dataname, primary, fk8bd245201b32d119]
+2015-06-11 14:47:06 [ main:1486 ] - [ INFO ] HHH000261: Table found: phoenix_gui.t_web_scenario
+2015-06-11 14:47:06 [ main:1486 ] - [ INFO ] HHH000037: Columns: [remark, id, create_date, userid, scenarioname]
+2015-06-11 14:47:06 [ main:1486 ] - [ INFO ] HHH000108: Foreign keys: []
+2015-06-11 14:47:06 [ main:1486 ] - [ INFO ] HHH000126: Indexes: [primary, scenarioname]
+2015-06-11 14:47:06 [ main:1517 ] - [ INFO ] HHH000261: Table found: phoenix_gui.t_web_unit
+2015-06-11 14:47:06 [ main:1517 ] - [ INFO ] HHH000037: Columns: [locatortype, caseid, id, locatordataname, locatordata]
+2015-06-11 14:47:06 [ main:1517 ] - [ INFO ] HHH000108: Foreign keys: [fk8bda2efa1b32d119]
+2015-06-11 14:47:06 [ main:1517 ] - [ INFO ] HHH000126: Indexes: [fk8bda2efa1b32d119, locatordataname, primary]
+2015-06-11 14:47:06 [ main:1517 ] - [ INFO ] HHH000232: Schema update complete
+2015-06-11 14:47:06 [ main:1855 ] - [ INFO ] 步骤 [ addLocatorAndDatas ]执行成功，参数值：[5, org.phoenix.model.CaseLogBean@ca30bc1],执行结果返回值：null
+2015-06-11 14:47:06 [ main:1855 ] - [ INFO ] 步骤 [ setWebProxy ]执行成功，参数值：[org.phoenix.action.WebElementAction@1046d517],执行结果返回值：null
+2015-06-11 14:47:11 [ main:6857 ] - [ INFO ] 步骤 [ openNewWindowByIE ]执行成功，参数值：[http://www.baidu.com],执行结果返回值：null
+2015-06-11 14:47:17 [ main:12500 ] - [ INFO ] 步骤 [ setText ]执行成功，参数值：[1],执行结果返回值：null
+2015-06-11 14:47:17 [ main:12704 ] - [ INFO ] 步骤 [ getAttrValue ]执行成功，参数值：[value],执行结果返回值：百度一下
+2015-06-11 14:47:17 [ main:12735 ] - [ INFO ] 检查点 [checkIsEqual] 执行通过，相关参数：[百度一下, 百度一下]
+2015-06-11 14:47:17 [ main:13239 ] - [ INFO ] 步骤 [ click ]执行成功，参数值：null,执行结果返回值：null
+2015-06-11 14:47:19 [ main:14776 ] - [ WARN ] 检查点 [checkIsFalse] 校验失败，相关参数：[true],校验结果：info:null
+2015-06-11 14:47:19 [ main:14877 ] - [ INFO ] 步骤 [ sleep ]执行成功，参数值：[100],执行结果返回值：null
+2015-06-11 14:47:20 [ main:16028 ] - [ INFO ] 步骤 [ closeWindow ]执行成功，参数值：null,执行结果返回值：null
+2015-06-11 14:49:57 [ main:0 ] - [ INFO ] HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+2015-06-11 14:49:57 [ main:16 ] - [ INFO ] HHH000412: Hibernate Core {4.1.7.Final}
+2015-06-11 14:49:57 [ main:16 ] - [ INFO ] HHH000206: hibernate.properties not found
+2015-06-11 14:49:57 [ main:16 ] - [ INFO ] HHH000021: Bytecode provider name : javassist
+2015-06-11 14:49:57 [ main:31 ] - [ INFO ] HHH000043: Configuring from resource: /hibernate.cfg.xml
+2015-06-11 14:49:57 [ main:31 ] - [ INFO ] HHH000040: Configuration resource: /hibernate.cfg.xml
+2015-06-11 14:49:58 [ main:125 ] - [ INFO ] HHH000041: Configured SessionFactory: null
+2015-06-11 14:49:58 [ main:375 ] - [ INFO ] HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2015-06-11 14:49:58 [ main:375 ] - [ INFO ] HHH000115: Hibernate connection pool size: 20
+2015-06-11 14:49:58 [ main:375 ] - [ INFO ] HHH000006: Autocommit mode: false
+2015-06-11 14:49:58 [ main:375 ] - [ INFO ] HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/phoenix_gui]
+2015-06-11 14:49:58 [ main:375 ] - [ INFO ] HHH000046: Connection properties: {user=root, password=****}
+2015-06-11 14:49:58 [ main:656 ] - [ INFO ] HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2015-06-11 14:49:58 [ main:673 ] - [ INFO ] HHH000399: Using default transaction strategy (direct JDBC transactions)
+2015-06-11 14:49:58 [ main:673 ] - [ INFO ] HHH000397: Using ASTQueryTranslatorFactory
+2015-06-11 14:49:58 [ main:1032 ] - [ INFO ] HHH000228: Running hbm2ddl schema update
+2015-06-11 14:49:58 [ main:1032 ] - [ INFO ] HHH000102: Fetching database metadata
+2015-06-11 14:49:58 [ main:1032 ] - [ INFO ] HHH000396: Updating schema
+2015-06-11 14:49:59 [ main:1064 ] - [ INFO ] HHH000261: Table found: phoenix_gui.l_web_batch
+2015-06-11 14:49:59 [ main:1064 ] - [ INFO ] HHH000037: Columns: [uid, tasktype, createdate, id, batchid]
+2015-06-11 14:49:59 [ main:1064 ] - [ INFO ] HHH000108: Foreign keys: []
+2015-06-11 14:49:59 [ main:1064 ] - [ INFO ] HHH000126: Indexes: [primary]
+2015-06-11 14:49:59 [ main:1110 ] - [ INFO ] HHH000261: Table found: phoenix_gui.l_web_case
+2015-06-11 14:49:59 [ main:1110 ] - [ INFO ] HHH000037: Columns: [actor, duration, attachpath, clientip, endtime, scenariologbeanid, id, casename, starttime, enginetype, status, batchlogid]
+2015-06-11 14:49:59 [ main:1110 ] - [ INFO ] HHH000108: Foreign keys: [fke98647aeda1e53ad]
+2015-06-11 14:49:59 [ main:1110 ] - [ INFO ] HHH000126: Indexes: [fke98647aeda1e53ad, primary]
+2015-06-11 14:49:59 [ main:1126 ] - [ INFO ] HHH000261: Table found: phoenix_gui.l_web_scenario
+2015-06-11 14:49:59 [ main:1126 ] - [ INFO ] HHH000037: Columns: [uid, id, message, taskstatustype, scenarioname, batchlogid]
+2015-06-11 14:49:59 [ main:1126 ] - [ INFO ] HHH000108: Foreign keys: [fk7946d10eda1e53ad]
+2015-06-11 14:49:59 [ main:1126 ] - [ INFO ] HHH000126: Indexes: [fk7946d10eda1e53ad, primary]
+2015-06-11 14:49:59 [ main:1142 ] - [ INFO ] HHH000261: Table found: phoenix_gui.l_web_unit
+2015-06-11 14:49:59 [ main:1142 ] - [ INFO ] HHH000037: Columns: [steptype, stepname, id, screenshot, caselogid, content, status]
+2015-06-11 14:49:59 [ main:1142 ] - [ INFO ] HHH000108: Foreign keys: [fke98ea602411c9d65]
+2015-06-11 14:49:59 [ main:1142 ] - [ INFO ] HHH000126: Indexes: [fke98ea602411c9d65, primary]
+2015-06-11 14:49:59 [ main:1157 ] - [ INFO ] HHH000261: Table found: phoenix_gui.t_web_case
+2015-06-11 14:49:59 [ main:1157 ] - [ INFO ] HHH000037: Columns: [classname, deletemsg, remark, id, casename, create_date, msgsendtype, userid, scenarioid, codecontent, status]
+2015-06-11 14:49:59 [ main:1157 ] - [ INFO ] HHH000108: Foreign keys: [fk8bd1d0a6140b62d9]
+2015-06-11 14:49:59 [ main:1157 ] - [ INFO ] HHH000126: Indexes: [casename, primary, fk8bd1d0a6140b62d9]
+2015-06-11 14:49:59 [ main:1157 ] - [ INFO ] HHH000261: Table found: phoenix_gui.t_web_data
+2015-06-11 14:49:59 [ main:1157 ] - [ INFO ] HHH000037: Columns: [caseid, datacontent, id, dataname]
+2015-06-11 14:49:59 [ main:1157 ] - [ INFO ] HHH000108: Foreign keys: [fk8bd245201b32d119]
+2015-06-11 14:49:59 [ main:1157 ] - [ INFO ] HHH000126: Indexes: [dataname, primary, fk8bd245201b32d119]
+2015-06-11 14:49:59 [ main:1173 ] - [ INFO ] HHH000261: Table found: phoenix_gui.t_web_scenario
+2015-06-11 14:49:59 [ main:1173 ] - [ INFO ] HHH000037: Columns: [remark, id, create_date, userid, scenarioname]
+2015-06-11 14:49:59 [ main:1173 ] - [ INFO ] HHH000108: Foreign keys: []
+2015-06-11 14:49:59 [ main:1173 ] - [ INFO ] HHH000126: Indexes: [primary, scenarioname]
+2015-06-11 14:49:59 [ main:1189 ] - [ INFO ] HHH000261: Table found: phoenix_gui.t_web_unit
+2015-06-11 14:49:59 [ main:1189 ] - [ INFO ] HHH000037: Columns: [locatortype, caseid, id, locatordataname, locatordata]
+2015-06-11 14:49:59 [ main:1189 ] - [ INFO ] HHH000108: Foreign keys: [fk8bda2efa1b32d119]
+2015-06-11 14:49:59 [ main:1189 ] - [ INFO ] HHH000126: Indexes: [fk8bda2efa1b32d119, locatordataname, primary]
+2015-06-11 14:49:59 [ main:1189 ] - [ INFO ] HHH000232: Schema update complete
+2015-06-11 14:49:59 [ main:1567 ] - [ INFO ] 步骤 [ addLocatorAndDatas ]执行成功，参数值：[5, org.phoenix.model.CaseLogBean@ca30bc1],执行结果返回值：null
+2015-06-11 14:49:59 [ main:1567 ] - [ INFO ] 步骤 [ setWebProxy ]执行成功，参数值：[org.phoenix.action.WebElementAction@1046d517],执行结果返回值：null
+2015-06-11 14:50:03 [ main:5303 ] - [ INFO ] 步骤 [ openNewWindowByIE ]执行成功，参数值：[http://www.baidu.com],执行结果返回值：null
+2015-06-11 14:50:08 [ main:10924 ] - [ INFO ] 步骤 [ setText ]执行成功，参数值：[1],执行结果返回值：null
+2015-06-11 14:50:09 [ main:11145 ] - [ INFO ] 步骤 [ getAttrValue ]执行成功，参数值：[value],执行结果返回值：百度一下
+2015-06-11 14:50:09 [ main:11145 ] - [ INFO ] 检查点 [checkIsEqual] 执行通过，相关参数：[百度一下, 百度一下]
+2015-06-11 14:50:14 [ main:16147 ] - [ INFO ] 步骤 [ click ]执行失败，参数值：null,异常信息：InvocationTargetException,msg:null,caused by:Element not found {By.name: #su}
+Expected: visible
+Screenshot: file:/D:/git/phoenix_develop/build/reports/tests/1434005413383.0.png
+Timeout: 4 s.
+Caused by: NoSuchElementException: Unable to find element with name == #su,截图路径：null/screenshot/1434005413773.jpg
+2015-06-11 14:50:14 [ main:16288 ] - [ WARN ] 检查点 [checkIsFalse] 校验失败，相关参数：[true],校验结果：info:null
+2015-06-11 14:50:14 [ main:16388 ] - [ INFO ] 步骤 [ sleep ]执行成功，参数值：[100],执行结果返回值：null
+2015-06-11 14:50:15 [ main:17419 ] - [ INFO ] 步骤 [ closeWindow ]执行成功，参数值：null,执行结果返回值：null
