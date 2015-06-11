@@ -91,11 +91,18 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 		return webProxy;
 	}
 	
+	/**
+	 * 指定一个定位信息的标识，需要先将其录入数据库之后才会有该标识
+	 */
 	public ElementAction webElement(String name){
 		locatorBean = locators.get(name);	
 		return webProxy;
 	}
 	
+	/**
+	 * 不使用任何定位信息时，如close方法
+	 * @return
+	 */
 	public ElementAction getWebProxy() {
 		return webProxy;
 	}
@@ -103,11 +110,16 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 	public void setWebProxy(ElementAction webProxy) {
 		this.webProxy = webProxy;
 	}
-
+	/**
+	 * 产生检查点代理
+	 */
 	public ICheckPoint checkPoint(){
 		ICheckPoint checkPoint = (ICheckPoint)new CheckPointInvocationHandler(new CheckPoint(),unitLog,caseLogBean).getProxy();
 		return checkPoint;
 	}
+	/**
+	 * 如果将数据已经录入了数据库，则指定该数据的标识
+	 */
 	@Override
 	public String getData(String dataName){
 		return datas.get(dataName);
