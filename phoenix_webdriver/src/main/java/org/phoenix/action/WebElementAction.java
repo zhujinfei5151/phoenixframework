@@ -79,7 +79,12 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 	public ElementAction webElement(){
 		return webProxy;
 	}
-	
+	/**
+	 * 直接使用定位信息而无需将其先录入数据库
+	 * @param locatorData
+	 * @param locatorType 如果为null，则默认为locatorType 为CSS。Class和id可直接作为Css定位
+	 * @return
+	 */
 	public ElementAction webElement(String locatorData,LocatorType locatorType){
 		if(locatorType == null)locatorBean = new LocatorBean(locatorData);
 		else locatorBean = new LocatorBean(locatorData,locatorType);
