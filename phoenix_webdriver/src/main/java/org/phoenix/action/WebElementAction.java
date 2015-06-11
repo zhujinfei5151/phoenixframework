@@ -12,6 +12,7 @@ import org.phoenix.aop.CheckPointInvocationHandler;
 import org.phoenix.aop.PhoenixLogger;
 import org.phoenix.dao.DataDao;
 import org.phoenix.dao.LocatorDao;
+import org.phoenix.enums.LocatorType;
 import org.phoenix.model.CaseLogBean;
 import org.phoenix.model.DataBean;
 import org.phoenix.model.LocatorBean;
@@ -76,6 +77,12 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 	}
 
 	public ElementAction webElement(){
+		return webProxy;
+	}
+	
+	public ElementAction webElement(String locatorData,LocatorType locatorType){
+		if(locatorType == null)locatorBean = new LocatorBean(locatorData);
+		else locatorBean = new LocatorBean(locatorData,locatorType);
 		return webProxy;
 	}
 	
