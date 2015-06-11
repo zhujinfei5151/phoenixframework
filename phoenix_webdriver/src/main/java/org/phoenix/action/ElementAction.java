@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.logging.Level;
 
+import org.phoenix.enums.LocatorType;
 import org.phoenix.model.CaseLogBean;
 
 import com.codeborne.selenide.Condition;
@@ -18,12 +19,46 @@ import com.codeborne.selenide.SelenideElement;
  *
  */
 public interface ElementAction {
-	
+	/**
+	 * 加载数据与定位信息
+	 * @param caseId
+	 * @param caseLogBean
+	 */
 	void addLocatorAndDatas(int caseId,CaseLogBean caseLogBean);
+	/**
+	 * 加载数据与定位信息
+	 * @param caseName
+	 * @param caseLogBean
+	 */
 	void addLocatorAndDatas(String caseName,CaseLogBean caseLogBean);
+	/**
+	 * 不使用任何定位信息时，如close方法
+	 * @return
+	 */
 	ElementAction webElement();
+	/**
+	 * 指定一个定位信息的标识，需要先将其录入数据库之后才会有该标识
+	 * @param name
+	 * @return
+	 */
 	ElementAction webElement(String name);
+	/**
+	 * 直接使用定位信息而无需将其先录入数据库
+	 * @param locatorData
+	 * @param locatorType 如果为null，则默认为locatorType 为CSS。Class和id可直接作为Css定位
+	 * @return
+	 */
+	ElementAction webElement(String locatorData,LocatorType locatorType);
+	/**
+	 * 获取检查点代理方法
+	 * @return
+	 */
 	ICheckPoint checkPoint();
+	/**
+	 * 如果将数据已经录入了数据库，则指定该数据的标识
+	 * @param dataName
+	 * @return
+	 */
 	String getData(String dataName);
 	void setChromeDriverExePath(String path);
 	void setFirefoxExePath(String path);

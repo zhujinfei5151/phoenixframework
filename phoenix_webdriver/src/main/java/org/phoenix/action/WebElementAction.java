@@ -89,6 +89,7 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 	 * @param locatorType 如果为null，则默认为locatorType 为CSS。Class和id可直接作为Css定位
 	 * @return
 	 */
+	@Override
 	public ElementAction webElement(String locatorData,LocatorType locatorType){
 		if(locatorType == null)locatorBean = new LocatorBean(locatorData);
 		else locatorBean = new LocatorBean(locatorData,locatorType);

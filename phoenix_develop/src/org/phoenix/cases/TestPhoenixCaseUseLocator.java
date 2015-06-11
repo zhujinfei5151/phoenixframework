@@ -3,6 +3,7 @@ package org.phoenix.cases;
 import java.util.LinkedList;
 
 import org.phoenix.action.WebElementActionProxy;
+import org.phoenix.enums.LocatorType;
 import org.phoenix.model.CaseLogBean;
 import org.phoenix.model.UnitLogBean;
 
@@ -23,10 +24,10 @@ public class TestPhoenixCaseUseLocator extends WebElementActionProxy{
 		init(caseName,caseLogBean);
 		webProxy.openNewWindowByIE("http://www.baidu.com");
 		webProxy.webElement("#kw",null).setText("1");
-		String s = webProxy.webElement("click").getAttrValue("value");
+		String s = webProxy.webElement("#su",null).getAttrValue("value");
 		System.out.println(s);
 		webProxy.checkPoint().checkIsEqual("百度一下", s);
-		webProxy.webElement("click").click();
+		webProxy.webElement("#su",LocatorType.CSS).click();
 		webProxy.checkPoint().checkIsFalse(s!=null);
 		webProxy.sleep(100);
 		webProxy.closeWindow();	
