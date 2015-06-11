@@ -25,6 +25,8 @@ public interface ElementAction {
 	ElementAction webElement(String name);
 	ICheckPoint checkPoint();
 	String getData(String dataName);
+	void setChromeDriverExePath(String path);
+	void setFirefoxExePath(String path);
 	void setWebProxy(ElementAction webProxy);
 	
 	/*

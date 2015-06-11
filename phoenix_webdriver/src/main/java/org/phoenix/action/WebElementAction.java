@@ -7,6 +7,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.phoenix.aop.CheckPointInvocationHandler;
 import org.phoenix.aop.PhoenixLogger;
@@ -38,6 +40,8 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 	private HashMap<String,LocatorBean> locators = new HashMap<String,LocatorBean>();
 	private HashMap<String,String> datas = new HashMap<String,String>();
 	private CaseLogBean caseLogBean;
+	private String ChromeDriverPath;
+	private String FirefoxPath;
 
 	public WebElementAction(LinkedList<UnitLogBean> unitLog) {
 		new PhoenixLogger();
@@ -131,17 +135,33 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 			WebDriverRunner.setWebDriver(new InternetExplorerDriver());
 			Selenide.open(url);
 	}
-	
+	@Override
+	public void setChromeDriverExePath(String path){
+		ChromeDriverPath = path;
+	}
+	/**
+	 * 如果打不开Chrome浏览器或或者报异常，应先使用 setChromeDriverExePath(String path)方法指定chromedriver.exe路径<br>
+	 * 该程序的路径必须和Chrome.exe在同一目录下
+	 */
 	@Override
 	public void openNewWindowByChrome(String url) {
-		// TODO Auto-generated method stub
-		
+		System.setProperty("webdriver.chrome.driver",ChromeDriverPath);
+		WebDriverRunner.setWebDriver(new ChromeDriver());
+		Selenide.open(url);
 	}
-
+	
+	@Override
+	public void setFirefoxExePath(String path){
+		FirefoxPath = path;
+	}
+	/**
+	 * 如果打不开Firefox浏览器或或者报异常，应先使用 setFirefoxExePath(String path)方法指定Firefox主程序路径
+	 */
 	@Override
 	public void openNewWindowByFirefox(String url) {
-		// TODO Auto-generated method stub
-		
+		System.setProperty("webdriver.firefox.bin", FirefoxPath);
+		WebDriverRunner.setWebDriver(new FirefoxDriver());
+		Selenide.open(url);
 	}
 
 	@Override
