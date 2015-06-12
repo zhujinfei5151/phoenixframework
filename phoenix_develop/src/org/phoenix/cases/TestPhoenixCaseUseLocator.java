@@ -13,7 +13,7 @@ import org.phoenix.model.UnitLogBean;
  *
  */
 public class TestPhoenixCaseUseLocator extends WebElementActionProxy{
-	private static String caseName = "消息测试用例";//用例的名称
+	private static String caseName = "消息测试用例";//用例的名称或id都能加载到该用例下的定位信息和数据
 	//private static int caseName = 5;//用例的id
 	
 	public TestPhoenixCaseUseLocator() {
