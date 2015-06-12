@@ -23,7 +23,11 @@ public class TestPhoenixCaseUseLocator extends WebElementActionProxy{
 	@Override
 	public LinkedList<UnitLogBean> run(CaseLogBean caseLogBean) {
 		init(caseName,caseLogBean);
-		webProxy.openNewWindowByIE("http://www.baidu.com");
+		
+		//webProxy.openNewWindowByIE("http://www.baidu.com");
+		//webProxy.openNewWindowByFirefox("http://www.baidu.com");//首先需要指定Firefox.exe的路径，方法是：webProxy.setFirefoxExePath(arg0);
+		//webProxy.openNewWindowByChrome("http://www.baidu.com");//首先需要指定ChromeDriver.exe的路径，方法是：webProxy.setChromeDriverExePath(arg0);
+		webProxy.openNewWindowByPhantomJs("http://www.baidu.com");
 		webProxy.webElement("#kw",null).setText("1");
 		String s = webProxy.webElement("#su",null).getAttrValue("value");
 		System.out.println(s);

@@ -18,7 +18,7 @@ public class DataDao extends HibernateDaoImpl<DataBean> implements IModelDao<Dat
 
 	@Override
 	public List<DataBean> getModelList(String name) {
-		return super.loadAll("from DataBean d where d.caseBean.caseName="+name);
+		return super.loadAll("from DataBean d where d.caseBean.caseName='"+name+"'");
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class DataDao extends HibernateDaoImpl<DataBean> implements IModelDao<Dat
 
 	@Override
 	public DataBean loadModel(String name) {
-		return super.load("from DataBean where dataName="+name);
+		return super.load("from DataBean where dataName='"+name+"'");
 	}
 
 }

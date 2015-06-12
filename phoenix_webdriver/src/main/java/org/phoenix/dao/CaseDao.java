@@ -35,7 +35,7 @@ public class CaseDao extends HibernateDaoImpl<CaseBean> implements IModelDao<Cas
 	 */
 	@Override
 	public CaseBean loadModel(String name) {
-		return super.load("from CaseBean where caseName="+name);
+		return super.load("from CaseBean where caseName='"+name+"'");
 	}
 
 	/**

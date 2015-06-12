@@ -5,13 +5,13 @@
   <parent>
     <groupId>org.phoenixframe</groupId>
     <artifactId>phoenix_parent</artifactId>
-    <version>1.2.5</version>
+    <version>1.2.6</version>
     <relativePath>../phoenix_parent/pom.xml</relativePath>
   </parent>
   
   <artifactId>phoenix_web</artifactId>
   <packaging>war</packaging>
-  <description>add email send , quartz task, attach upload function. </description>
+  <description>add quartz time set description,</description>
   <name>phoenix_web Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
