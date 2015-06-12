@@ -8,12 +8,13 @@ import org.phoenix.model.CaseLogBean;
 import org.phoenix.model.UnitLogBean;
 
 /**
- * 使用本地数据作参数化
+ * 定位信息使用本地数据的方法
  * @author mengfeiyang
  *
  */
 public class TestPhoenixCaseUseLocator extends WebElementActionProxy{
-	private static int caseName = 5;
+	private static String caseName = "消息测试用例";//用例的名称
+	//private static int caseName = 5;//用例的id
 	
 	public TestPhoenixCaseUseLocator() {
 		

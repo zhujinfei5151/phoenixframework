@@ -2,14 +2,19 @@ package org.phoenix.action;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.phoenix.aop.CheckPointInvocationHandler;
 import org.phoenix.aop.PhoenixLogger;
 import org.phoenix.dao.DataDao;
@@ -128,6 +133,24 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 	@Override
 	public String getData(String dataName){
 		return datas.get(dataName);
+	}
+	public WebDriver getCurrentDriver(){
+		return WebDriverRunner.getWebDriver();
+	}
+	@Override
+	public void openNewWindowByPhantomJs(String url){
+		DesiredCapabilities sCaps = new DesiredCapabilities();
+        sCaps.setJavascriptEnabled(true);
+        sCaps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, WebElementAction.class.getResource("/").getPath().replace("%20", " ")+"drivers/phantomjs.exe");
+        sCaps.setCapability(PhantomJSDriverService.PHANTOMJS_GHOSTDRIVER_PATH_PROPERTY, WebElementAction.class.getResource("/").getPath().replace("%20", " ")+"drivers/js/main.js");
+        ArrayList<String> cliArgsCap = new ArrayList<String>();
+        cliArgsCap.add("--web-security=false");
+        cliArgsCap.add("--ssl-protocol=any");
+        cliArgsCap.add("--ignore-ssl-errors=true");
+        sCaps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);
+        sCaps.setCapability(PhantomJSDriverService.PHANTOMJS_GHOSTDRIVER_CLI_ARGS, new String[]{"--logLevel=INFO"});
+        WebDriverRunner.setWebDriver(new PhantomJSDriver(sCaps));
+        Selenide.open(url);
 	}
 	//WebElementAction.class.getResource("/").getPath().replace("%20", " ")
 	@Override

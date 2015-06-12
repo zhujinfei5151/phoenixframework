@@ -96,6 +96,11 @@ public class TaskController {
 		model.addAttribute("datas", taskService.getTaskModelPagerBySelect(u.getId(), tstatus, type,jobStatus));
 		return "task/list";
 	}
+	@RequestMapping("/strategyList")
+	public String strategyList(){
+		
+		return "task/strategy";
+	}
 	
 	@RequestMapping(value="/add",method=RequestMethod.GET)
 	public String add(Model model,HttpSession session){

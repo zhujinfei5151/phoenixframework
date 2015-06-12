@@ -42,19 +42,29 @@
     		typeSelect(data);
             $(".chosen-select").chosen();
     	}
-    	
+    	function constNum(num){
+    		if(num == "1"){
+    			$("#taskParameter").val("0/5 * * * * ?");
+    		}else if(num == "2"){
+    			$("#taskParameter").val("0 0/3 * * * ?");
+    		}else if (num == "3"){
+    			$("#taskParameter").val("0 0 */1 * * ?");
+    		} else if (num == "4"){
+    			$("#taskParameter").val("0 0 10 * * ?");
+    		}
+    	}
     </script>
 </head>
 <sf:form method="post" action="${taskModel.id }" modelAttribute="taskModelDTO">
 <table class="table table-bordered table-hover definewidth m10">
     <tr>
         <td width="10%" class="tableleft">任务名称</td>
-        <td><sf:input path="taskName" value="${taskModel.taskName}"/><sf:errors path="taskName"/></td>
+        <td colspan="2"><sf:input path="taskName"  style="width:255px;" value="${taskModel.taskName}"/><sf:errors path="taskName"/></td>
     </tr>
     <tr>
         <td width="10%" class="tableleft">任务类型</td>
-        <td>
-           <sf:select path="taskType" onchange="getSelect(this.value)">
+        <td colspan="2">
+           <sf:select path="taskType" onchange="getSelect(this.value)" style="width:260px;" >
               <c:forEach items="${types }" var="ts">
                 <c:choose>
                   <c:when test="${ts.key eq taskModel.taskType }">
@@ -70,7 +80,7 @@
     </tr>
     <tr>
         <td class="tableleft">任务数据Id</td>  
-        <td><%-- <sf:input path="taskData" value="${taskModel.taskData }"/> --%>
+        <td colspan="2"><%-- <sf:input path="taskData" value="${taskModel.taskData }"/> --%>
             <sf:select data-placeholder="请选择一个任务" class="chosen-select" style="width:260px;" tabindex="2" path="taskData">
 				<c:choose>
 					<c:when test="${'WEB_CASE' eq taskModel.taskType }">
@@ -96,8 +106,8 @@
     </tr> 
     <tr>
         <td class="tableleft">选择执行机</td>   
-        <td>
-          <sf:select path="slaveId">
+        <td colspan="2">
+          <sf:select path="slaveId" style="width:260px;" >
             <c:forEach items="${slaves }" var="sl">
                <c:choose>
                  <c:when test="${taskModel.slaveModel.id eq sl.id }">
@@ -113,16 +123,23 @@
         </td>
     </tr>  
     <tr>
-            <td class="tableleft">执行参数</td>   
-        <td>
-            <sf:input path="taskParameter" value="${taskModel.taskParameter}"/>
-              &nbsp;&nbsp;若为空，则代表仅执行一次或仅需要手动启动
+        <td class="tableleft" rowspan="2">执行参数</td>   
+        <td rowspan="2">
+            <sf:input path="taskParameter" id="taskParameter" style="width:255px;" value="${taskModel.taskParameter}"/>
         </td>
     </tr> 
+    <tr>
+		<td>
+			若不输入，则默认仅执行一次或仅需要手动启动<br>
+			常用参数：<a href="javascript:constNum('1')">每5秒一次</a>&nbsp;&nbsp;<a href="javascript:constNum('2')">每3分钟一次</a>
+			&nbsp;&nbsp;<a href="javascript:constNum('3')">每1小时一次</a>&nbsp;&nbsp;<a href="javascript:constNum('4')">每天10点</a>
+			&nbsp;&nbsp;&nbsp;<a href="<%=request.getContextPath()%>/task/strategyList">更多...</a>
+		</td>
+	</tr>
 
     <tr>
         <td class="tableleft"></td>
-        <td>
+        <td colspan="2">
             <button type="submit" class="btn btn-primary">提交</button>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
         </td>
     </tr>

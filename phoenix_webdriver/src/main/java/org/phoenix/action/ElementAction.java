@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.logging.Level;
 
+import org.openqa.selenium.WebDriver;
 import org.phoenix.enums.LocatorType;
 import org.phoenix.model.CaseLogBean;
 
@@ -60,10 +61,16 @@ public interface ElementAction {
 	 * @return
 	 */
 	String getData(String dataName);
+	WebDriver getCurrentDriver();
 	void setChromeDriverExePath(String path);
 	void setFirefoxExePath(String path);
 	void setWebProxy(ElementAction webProxy);
-	
+	/**
+	 * 使用Phantomjs驱动执行被测用例，Phantomjs执行用例时没有界面，url的加载，元素的定位等<br>
+	 * 都在内存中完成。在js兼容性方面比httpunit要好。
+	 * @param url
+	 */
+	void openNewWindowByPhantomJs(String url);
 	/*
 	 * 使用Ie打开被测的页面
 	 */
