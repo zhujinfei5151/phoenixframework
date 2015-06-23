@@ -1,16 +1,14 @@
-# phoenixframework
-自动化测试平台，包含WEB、Mobile、接口、安全测试模块。通过对测试代码的动态编译，执行，进行测试。
-网站：http://www.cewan.la
-
-最新版本：1.2.6
-更新内容：
-1、phoenix_webdriver模块新增在代码中直接使用定位信息，而无需在先将定位信息录入数据库
-2、phoenix_webdriver新增phantomjs驱动，即无浏览器界面执行，在js兼容性方面比httpunit好
-3、phoenix_web修复无法新增用户bug
-4、phoenix_web增加了定时任务时间配置说明
-5、phoenix_webdriver修复2个小bug
-
-系统名称：自动化测试平台 
+﻿# phoenixframework<br>
+自动化测试平台，包含WEB、Mobile、接口、安全测试模块。通过对测试代码的动态编译，执行，进行测试。<br>
+网站：http://www.cewan.la<br>
+<br>
+最新版本：1.2.7<br>
+更新内容：<br>
+1、phoenix_webdriver增加链式编程<br>
+2、phoenix_webdriver日志中增加enginetype<br>
+3、phoenix_webdriver完善chrome，Firefox浏览器支持<br>
+<br>
+系统名称：自动化测试平台<br> 
 系统介绍： <br>
 【支持的部署方式】：J2EE，Jenkins，maven，J2SE，分布式部署，Jetty部署 <br>
 【技术说明】：Apache quartz，Webmagic，httpunit，selendroid，<br>
