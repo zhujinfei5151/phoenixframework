@@ -44,12 +44,11 @@
     <tr>
         <th width="7%">Step编号</th>
         <th width="10%">步骤名称</th>
-        <th width="26%">步骤内容</th>
+        <th width="36%">步骤内容</th>
         <th width="10%">步骤类型</th>
         <th width="10%">状态</th>
         <th width="7%">用例LOG编号</th>
         <th width="20%">截图路径</th>
-        <th width="10%">管理操作</th>
     </tr>
     </thead>
     <tbody>
@@ -62,9 +61,6 @@
             <td>${us.status }</td>
             <td>${us.caseLogBean.id }</td>
             <td>${us.screenShot }</td>
-            <td>
-                <a href="execute/${cs.id}">详细</a>&nbsp;&nbsp;
-            </td>
         </tr>
         </c:forEach>
         </tbody>

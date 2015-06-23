@@ -100,6 +100,20 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 		else locatorBean = new LocatorBean(locatorData,locatorType);
 		return webProxy;
 	}
+	/**
+	 * 链式查询方法，直接调用了SelenideElement，调用了此方法后，后续的操作将不会被记录日志
+	 */
+	@Override
+	public SelenideElement webElementLinkFinder(String locatorData){
+		return WebElement(locatorData,LocatorType.CSS);
+	}
+	/**
+	 * 链式查询方法，直接调用了SelenideElement，调用了此方法后，后续的操作将不会被记录日志
+	 */
+	@Override
+	public SelenideElement webElementLinkFinder(String locatorData,LocatorType locatorType){
+		return WebElement(locatorData,locatorType);
+	}
 	
 	/**
 	 * 指定一个定位信息的标识，需要先将其录入数据库之后才会有该标识
@@ -134,11 +148,14 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 	public String getData(String dataName){
 		return datas.get(dataName);
 	}
+	@Override
 	public WebDriver getCurrentDriver(){
 		return WebDriverRunner.getWebDriver();
 	}
+	
 	@Override
 	public void openNewWindowByPhantomJs(String url){
+		caseLogBean.setEngineType("PhantomJsDriver");
 		DesiredCapabilities sCaps = new DesiredCapabilities();
         sCaps.setJavascriptEnabled(true);
         sCaps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, WebElementAction.class.getResource("/").getPath().replace("%20", " ")+"drivers/phantomjs.exe");
@@ -155,6 +172,7 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 	//WebElementAction.class.getResource("/").getPath().replace("%20", " ")
 	@Override
 	public void openNewWindowByIE(String url){
+			caseLogBean.setEngineType("IEDriver");
 			System.setProperty("webdriver.ie.driver", WebElementAction.class.getResource("/").getPath().replace("%20", " ")+"drivers/IEDriverServer64.exe");
 			WebDriverRunner.setWebDriver(new InternetExplorerDriver());
 			Selenide.open(url);
@@ -169,6 +187,7 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 	 */
 	@Override
 	public void openNewWindowByChrome(String url) {
+		caseLogBean.setEngineType("ChromeDriver");
 		System.setProperty("webdriver.chrome.driver",ChromeDriverPath);
 		WebDriverRunner.setWebDriver(new ChromeDriver());
 		Selenide.open(url);
@@ -183,6 +202,7 @@ public class WebElementAction extends WebElementLocator implements ElementAction
 	 */
 	@Override
 	public void openNewWindowByFirefox(String url) {
+		caseLogBean.setEngineType("FirefoxDriver");
 		System.setProperty("webdriver.firefox.bin", FirefoxPath);
 		WebDriverRunner.setWebDriver(new FirefoxDriver());
 		Selenide.open(url);

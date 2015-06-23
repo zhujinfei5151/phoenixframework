@@ -54,10 +54,10 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/testng-6.8.13.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/junit-4.10.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/phoenix_db-1.2.6.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/phoenix_webdriver-1.2.6.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/json-20131018.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/phantomjsdriver-1.2.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/selenium-api-2.41.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/phoenix_db-1.2.7.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/phoenix_webdriver-1.2.7.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

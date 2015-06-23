@@ -1,11 +1,15 @@
 package org.phoenix.cases;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
+import org.openqa.selenium.By;
 import org.phoenix.action.WebElementActionProxy;
 import org.phoenix.enums.LocatorType;
 import org.phoenix.model.CaseLogBean;
 import org.phoenix.model.UnitLogBean;
+
+import com.codeborne.selenide.SelenideElement;
 
 /**
  * 定位信息使用本地数据的方法
@@ -34,7 +38,16 @@ public class TestPhoenixCaseUseLocator extends WebElementActionProxy{
 		webProxy.checkPoint().checkIsEqual("百度一下", s);
 		webProxy.webElement("#su",LocatorType.CSS).click();
 		webProxy.checkPoint().checkIsFalse(s!=null);
-		webProxy.sleep(100);
+		webProxy.sleep(1000);
+		Iterator<SelenideElement> els = webProxy.webElementLinkFinder(".s_tab").$$(By.tagName("a")).iterator();
+		while(els.hasNext()){
+			SelenideElement se = els.next();
+			if(se.getText().equals("文库")){
+				se.click();
+				break;
+			}
+			System.out.println(se.getText());
+		}
 		webProxy.closeWindow();	
 		
 		return getUnitLog();

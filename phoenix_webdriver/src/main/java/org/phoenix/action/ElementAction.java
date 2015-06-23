@@ -51,6 +51,19 @@ public interface ElementAction {
 	 */
 	ElementAction webElement(String locatorData,LocatorType locatorType);
 	/**
+	 * 链式查询方法，直接调用SelenideElement，使用 了此方法后，后续的操作不能被记录日志
+	 * @param locatorData
+	 * @param locatorType 如果定位方式为非CSS，则需要手动指定定位类型，如LocatorType.XPATH
+	 * @return
+	 */
+	SelenideElement webElementLinkFinder(String locatorData,LocatorType locatorType);
+	/**
+	 * 链式查询方法，直接调用SelenideElement，使用 了此方法后，后续的操作不能被记录日志
+	 * @param locatorData 默认定位方式是CSS
+	 * @return
+	 */
+	SelenideElement webElementLinkFinder(String locatorData);
+	/**
 	 * 获取检查点代理方法
 	 * @return
 	 */

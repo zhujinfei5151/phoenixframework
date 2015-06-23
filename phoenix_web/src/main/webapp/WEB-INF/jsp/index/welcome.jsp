@@ -40,6 +40,13 @@
         <tr>
            <th colspan="3" align="center">版本说明</th>
         </tr>
+        <tr>
+            <td>版本1.2.7</td>
+            <td>phoenix_webdriver:新增链式定位方式<br>
+				完善了对Chrome，Firefox浏览器的支持。具体请参见phoenix_develop中的代码示例
+            </td>
+            <td>2015.6.23</td>
+         </tr>
 	     <tr>
             <td>版本1.2.6</td>
             <td>phoenix_webdriver:新增直接使用定位数据定位和使用数据库数据进行定位。<br>
